@@ -1774,7 +1774,7 @@
 
 
 														<form action="" method="POST" class="wdei-form">
-															<!-- {% csrf_token %} -->
+															{% csrf_token %}
 															<div class="field-group">
 																<label for="email">User name</label>
 																<input type="text" placeholder="Username..."
@@ -1836,14 +1836,14 @@
 								<p class="footer-social-container"><a
 										href="https://www.facebook.com/Waterfront-DEI-106669138398199"
 										target="_blank"><img decoding="async"
-											src="/wp-content/uploads/2021/10/BCMEA_Assets_Social_Media_Icons_Facebook.png"
+											src="{% static 'images/BCMEA_Assets_Social_Media_Icons_Facebook.png' %}"
 											alt="Facebook" class="footer-social-img"></a><br><a
 										href="https://www.instagram.com/waterfrontdei/?utm_medium=copy_link"
 										target="_blank"><img decoding="async"
-											src="/wp-content/uploads/2021/10/BCMEA_Assets_Social_Media_Icons_Instagram.png"
+											src="{% static 'images/BCMEA_Assets_Social_Media_Icons_Instagram.png' %}"
 											alt="Instagram" class="footer-social-img"></a><br>
 									<a href="https://twitter.com/WaterfrontDEI" target="_blank"><img decoding="async"
-											src="/wp-content/uploads/2021/10/BCMEA_Assets_Social_Media_Icons_Twitter.png"
+											src="{% static 'images/BCMEA_Assets_Social_Media_Icons_Twitter.png' %}"
 											alt="Twitter" class="footer-social-img"></a>
 								</p>
 							</section>

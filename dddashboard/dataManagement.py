@@ -57,11 +57,11 @@ pie_anotations_font_color = '#174F6D'
 
 #industry data donut charts
  
-def sex_donut_industrychart():
+def sex_donut_industrychart(filter):
     # if filter=='all':
-    male = CompanyData.objects.filter(gender_code='M').count()
-    female = CompanyData.objects.filter(gender_code='F').count()
-    other = CompanyData.objects.filter(gender_code='O').count()
+    male = CompanyData.objects.filter(gender_code='M', company_size=filter).count()
+    female = CompanyData.objects.filter(gender_code='F', company_size=filter).count()
+    other = CompanyData.objects.filter(gender_code='O', company_size=filter).count()
     total = CompanyData.objects.all().count()
     # else:
     #     male = CompanyData.objects.filter(gender_code='M', size=filter).count()
@@ -88,7 +88,7 @@ def sex_donut_industrychart():
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
 
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -123,7 +123,7 @@ def minority_donut_industrychart():
 
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False }
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -161,7 +161,7 @@ def aboriginal_donut_industrychart():
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -199,7 +199,7 @@ def disability_donut_industrychart():
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -233,7 +233,7 @@ def Companydata_sex_donut_industrychart(company):
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -264,7 +264,7 @@ def Companydata_minority_donut_industrychart(company):
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -298,7 +298,7 @@ def Companydata_aboriginal_donut_industrychart(company):
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -327,7 +327,7 @@ def Companydata_disability_donut_industrychart(company):
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='150')
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -345,9 +345,9 @@ def sex_barchart_industrychart(position, cheight):
     other_position = CompanyData.objects.filter(gender_code='O', position_category=position).count()
 
     fig = go.Figure()
-    fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1)))
-    fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2)))
-    fig.add_trace(go.Bar(y=[position], x=[other_position], name='0', orientation='h', marker=dict(color=colour3)))
+    fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1), hovertemplate=male_position))
+    fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2), hovertemplate=female_position))
+    fig.add_trace(go.Bar(y=[position], x=[other_position], name='0', orientation='h', marker=dict(color=colour3), hovertemplate=other_position))
 
     fig.update_layout(
         xaxis=dict(
@@ -369,7 +369,7 @@ def sex_barchart_industrychart(position, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=5, t=0, b=0, pad=0),
         showlegend=False,
-        # width=175,
+        # width=410,
         height=cheight,
 
         autosize=True,
@@ -452,8 +452,9 @@ def minority_barchart_industrychart(position, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_minority_executive,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -461,8 +462,9 @@ def minority_barchart_industrychart(position, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_minority_executive,
     ))
 
     fig.update_layout(
@@ -485,6 +487,7 @@ def minority_barchart_industrychart(position, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -505,8 +508,9 @@ def aboriginal_barchart_industrychart(position, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_aboriginal_executive,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -514,8 +518,9 @@ def aboriginal_barchart_industrychart(position, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_aboriginal_executive,
     ))
 
     fig.update_layout(
@@ -538,6 +543,7 @@ def aboriginal_barchart_industrychart(position, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -558,8 +564,9 @@ def disability_barchart_industrychart(position, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_disability,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -567,8 +574,9 @@ def disability_barchart_industrychart(position, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_disability,
     ))
 
     fig.update_layout(
@@ -591,6 +599,7 @@ def disability_barchart_industrychart(position, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -617,7 +626,8 @@ def c_sex_barchart_industrychart(position, company, cheight):
         orientation='h',
         marker=dict(
             color=colour1,
-        )
+        ), 
+        hovertemplate=male_position,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -626,7 +636,8 @@ def c_sex_barchart_industrychart(position, company, cheight):
         orientation='h',
         marker=dict(
             color=colour2,
-        )
+        ), 
+        hovertemplate=female_position,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -635,7 +646,8 @@ def c_sex_barchart_industrychart(position, company, cheight):
         orientation='h',
         marker=dict(
             color=colour3,
-        )
+        ), 
+        hovertemplate=other_position,
     ))
 
     fig.update_layout(
@@ -658,6 +670,7 @@ def c_sex_barchart_industrychart(position, company, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -679,8 +692,9 @@ def c_minority_barchart_industrychart(position, company, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_minority_executive,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -688,8 +702,9 @@ def c_minority_barchart_industrychart(position, company, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_minority_executive,
     ))
 
     fig.update_layout(
@@ -712,6 +727,7 @@ def c_minority_barchart_industrychart(position, company, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -732,8 +748,9 @@ def c_aboriginal_barchart_industrychart(position, company, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_aboriginal_executive,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -741,8 +758,9 @@ def c_aboriginal_barchart_industrychart(position, company, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_aboriginal_executive,
     ))
 
     fig.update_layout(
@@ -765,6 +783,7 @@ def c_aboriginal_barchart_industrychart(position, company, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )
@@ -785,8 +804,9 @@ def c_disability_barchart_industrychart(position, company, cheight):
         name='Y',
         orientation='h',
         marker=dict(
-            color=colour3,
-        )
+            color=colour2,
+        ), 
+        hovertemplate=Yes_disability,
     ))
     fig.add_trace(go.Bar(
         y=[position],
@@ -794,8 +814,9 @@ def c_disability_barchart_industrychart(position, company, cheight):
         name='N',
         orientation='h',
         marker=dict(
-            color=colour2,
-        )
+            color=colour3,
+        ), 
+        hovertemplate=No_disability,
     ))
 
     fig.update_layout(
@@ -818,6 +839,7 @@ def c_disability_barchart_industrychart(position, company, cheight):
         paper_bgcolor='#F4F9FA',
         margin=dict(l=0, r=0, t=0, b=0),
         showlegend=False,
+        #width=450,
         height=cheight,
         autosize=True,
     )

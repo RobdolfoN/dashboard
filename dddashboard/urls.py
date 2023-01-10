@@ -24,8 +24,8 @@ urlpatterns = [
     path('industry/', views.industry, name='industry'),
     path('company/', views.company, name='company'),
     path('historical_data/', views.historicalData, name='historicaldata'),
-    path('demographic_variables/aboriginal/', views.demographicAboriginal, name='demographic_aboriginal'),
-    path('demographic_variables/persons_with_disabilities.html/', views.demographicDisability, name='demographic_disability'),
+    path('demographic_variables/aboriginal.html', views.demographicAboriginal, name='demographic_aboriginal'),
+    path('demographic_variables/persons_with_disabilities.html', views.demographicDisability, name='demographic_disability'),
     path('demographic_variables/sex.html', views.demographicSex, name='demographic_sex'),
     path('demographic_variables/visible_minority.html', views.demographicMinority, name='demographic_minority'),
 

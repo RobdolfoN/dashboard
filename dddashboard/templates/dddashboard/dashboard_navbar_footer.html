@@ -1,5 +1,5 @@
 {% load static %}
-
+<!doctype html>
 <html lang="en-US">
 
     <head>
@@ -10,10 +10,10 @@
         <meta name='robots' content='noindex, nofollow' />
 
         <!-- This site is optimized with the Yoast SEO plugin v19.10 - https://yoast.com/wordpress/plugins/seo/ -->
-        <title>Industry - Waterfront Council</title>
+        <title>Main Dashboard - Waterfront Council</title>
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Industry - Waterfront Council" />
+        <meta property="og:title" content="Main Dashboard - Waterfront Council" />
         <meta property="og:description"
             content="DIVERSITY DATA DASHBOARD ALL COMPANY SIZESSMALLMEDIUMLARGE INDUSTRY OVERVIEW JOB LEVEL Executive Senior Leader Manager / Supervisor / Superintendent Foreman Individual [&hellip;]" />
         <meta property="og:url" content="https://wdei.hotsoupcreative.com/main-dashboard/" />
@@ -26,9 +26,7 @@
         <meta name="twitter:data1" content="14 minutes" />
         <script type="application/ld+json"
             class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://wdei.hotsoupcreative.com/main-dashboard/","url":"https://wdei.hotsoupcreative.com/main-dashboard/","name":"Main Dashboard - Waterfront Council","isPartOf":{"@id":"https://wdei.hotsoupcreative.com/#website"},"primaryImageOfPage":{"@id":"https://wdei.hotsoupcreative.com/main-dashboard/#primaryimage"},"image":{"@id":"https://wdei.hotsoupcreative.com/main-dashboard/#primaryimage"},"thumbnailUrl":"https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png","datePublished":"2022-11-08T18:04:21+00:00","dateModified":"2022-11-10T00:14:17+00:00","breadcrumb":{"@id":"https://wdei.hotsoupcreative.com/main-dashboard/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://wdei.hotsoupcreative.com/main-dashboard/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://wdei.hotsoupcreative.com/main-dashboard/#primaryimage","url":"https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png","contentUrl":"https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png","width":470,"height":466},{"@type":"BreadcrumbList","@id":"https://wdei.hotsoupcreative.com/main-dashboard/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://wdei.hotsoupcreative.com/"},{"@type":"ListItem","position":2,"name":"Main Dashboard"}]},{"@type":"WebSite","@id":"https://wdei.hotsoupcreative.com/#website","url":"https://wdei.hotsoupcreative.com/","name":"Waterfront Council","description":"WATERFRONT COUNCIL","publisher":{"@id":"https://wdei.hotsoupcreative.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://wdei.hotsoupcreative.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://wdei.hotsoupcreative.com/#organization","name":"Waterfront Council","url":"https://wdei.hotsoupcreative.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://wdei.hotsoupcreative.com/#/schema/logo/image/","url":"https://wdei.hotsoupcreative.com/wp-content/uploads/2021/10/BCMEA_Assets_Logo_Nav-1.png","contentUrl":"https://wdei.hotsoupcreative.com/wp-content/uploads/2021/10/BCMEA_Assets_Logo_Nav-1.png","width":1042,"height":277,"caption":"Waterfront Council"},"image":{"@id":"https://wdei.hotsoupcreative.com/#/schema/logo/image/"}}]}</script>
-        
-           <!-- / Yoast SEO plugin. -->
-
+        <!-- / Yoast SEO plugin. -->
 
 
         <link rel='dns-prefetch' href='//stackpath.bootstrapcdn.com' />
@@ -1011,9 +1009,6 @@
             href="https://wdei.hotsoupcreative.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwdei.hotsoupcreative.com%2Fmain-dashboard%2F" />
         <link rel="alternate" type="text/xml+oembed"
             href="https://wdei.hotsoupcreative.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwdei.hotsoupcreative.com%2Fmain-dashboard%2F&#038;format=xml" />
-        <!-- HTMX-->
-        <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
-        
         <!-- start Simple Custom CSS and JS -->
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
@@ -1051,6 +1046,11 @@
                 .footer-copyright {
                     font-size: .9em !important;
                 }
+
+                .main-navigation ul .subnav-toggle {
+                    height: auto;
+                    padding-top: 4px;
+                }
             }
 
             h1 {
@@ -1065,6 +1065,18 @@
 
             p {
                 font-size: 1em !important;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            .main-navigation ul ul li {
+                border-bottom: 1px solid #ffffff !important;
+            }
+
+            .main-navigation ul ul li {
+                padding: 10px;
             }
 
             .site-header {
@@ -1166,7 +1178,7 @@
             .single-item-info {
                 display: flex;
                 align-items: center;
-                padding-right: 30px;
+                width: 100%;
             }
 
             .single-item-info img {
@@ -1498,7 +1510,7 @@
 
             @media(min-width: 1200px) {
                 .manage-lable .bar {
-                    margin: 18px 0 !important;
+                    margin: 18px auto !important;
                 }
 
                 .manage-lable .bar figcaption {
@@ -1662,7 +1674,6 @@
         <div id="page" class="site">
             <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
-
             <header id="masthead" class="site-header">
 
                 <div class="container-fluid">
@@ -1705,22 +1716,24 @@
                                 <div class="menu-main-container">
                                     <ul id="primary-menu" class="menu">
                                         <li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1082 current_page_item menu-item-1330">
-                                            <a href="{% url 'industry' %}">Industry</a>
+                                            <a href="{% url 'industry' %}"  aria-current="page">Industry</a>
                                         </li>
                                         <li id="menu-item-1331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1331">
                                             <a href="{% url 'company' %}">Company</a>
                                         </li>
-                                        <li id="menu-item-1331" class="nav-item dropdown menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1267 current_page_item menu-item-1332">
-                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Demographic Variables
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_sex' %}">Sex</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_minority' %}">Visible Minority</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_aboriginal' %}">Aboriginal</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_disability' %}">Persons with Disabilities</a></li>
-                                                </ul>
-                                            </li>
+                                        <li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1332">
+                                            <a href="">Demographic Variables</a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-1411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1411">
+                                                    <a href="{% url 'demographic_sex' %}">Sex</a></li>
+                                                <li id="menu-item-1412" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1412">
+                                                    <a href="{% url 'demographic_minority' %}">Visible Minority</a></li>
+                                                <li id="menu-item-1413" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1413">
+                                                    <a href="{% url 'demographic_aboriginal' %}">Aboriginal</a></li>
+                                                <li id="menu-item-1414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1414">
+                                                    <a href="{% url 'demographic_disability' %}">Persons with Disabilities</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav><!-- #site-navigation -->

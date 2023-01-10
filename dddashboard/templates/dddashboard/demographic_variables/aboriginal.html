@@ -4,7 +4,7 @@
 
 	{% block content %}
 
-	<head>
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="https://gmpg.org/xfn/11">
@@ -1048,6 +1048,11 @@
                 .footer-copyright {
                     font-size: .9em !important;
                 }
+
+                .main-navigation ul .subnav-toggle {
+                    height: auto;
+                    padding-top: 4px;
+                }
             }
 
             h1 {
@@ -1062,6 +1067,18 @@
 
             p {
                 font-size: 1em !important;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            .main-navigation ul ul li {
+                border-bottom: 1px solid #ffffff !important;
+            }
+
+            .main-navigation ul ul li {
+                padding: 10px;
             }
 
             .site-header {
@@ -1163,7 +1180,7 @@
             .single-item-info {
                 display: flex;
                 align-items: center;
-                padding-right: 30px;
+                width: 100%;
             }
 
             .single-item-info img {
@@ -1495,7 +1512,7 @@
 
             @media(min-width: 1200px) {
                 .manage-lable .bar {
-                    margin: 18px 0 !important;
+                    margin: 18px auto !important;
                 }
 
                 .manage-lable .bar figcaption {
@@ -1557,7 +1574,7 @@
 												<select class="dashboard-select">
 													<option>ALL COMPANY SIZES</option>
 													<option>SMALL</option>
-													<option>MEDIUM</option>
+													<!--option>MEDIUM</option-->
 													<option>LARGE</option>
 												</select>
 
@@ -1591,7 +1608,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ aboriginal_executive_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -1694,7 +1711,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ c_aboriginal_executive_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -1823,7 +1840,7 @@
 
 
 																						<figure
-																							class="wp-block-image size-full" style="max-width:450;">
+																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ aboriginal_senior_leader_barchart|safe }}
 
 																							<!-- <img decoding="async"
@@ -1936,7 +1953,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ c_aboriginal_senior_leader_barchart|safe }} 
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -2069,7 +2086,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ aboriginal_manager_s_s_leader_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -2182,7 +2199,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ c_aboriginal_manager_s_s_leader_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -2310,7 +2327,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ aboriginal_foreperson_leader_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -2421,7 +2438,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ c_aboriginal_foreperson_leader_barchart|safe }}
 																							<!--img decoding="async"
 																								width="933" height="104"
@@ -2555,7 +2572,7 @@
 
 
 																						<figure
-																							class="wp-block-image size-full" style="max-width:450;">
+																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ aboriginal_individual_contributor_leader_barchart|safe }}
 																							<!-- <img decoding="async"
 																								width="933" height="104"
@@ -2667,7 +2684,7 @@
 
 
 
-																						<figure class="wp-block-image size-full" style="max-width:450;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ c_aboriginal_individual_contributor_leader_barchart|safe }}
 																							<!--img decoding="async"
 																								width="933" height="104"

@@ -89,18 +89,18 @@ class CompanyName(models.Model):
 		return self.name
 
 
-class CompanySize(models.Model):
-    class sizes(models.TextChoices):
-        small = 'small', _('small')
-        medium = 'medium', _('medium')
-        large = 'large', _('large')
+# class CompanySize(models.Model):
+#     class sizes(models.TextChoices):
+#         small = 'small', _('small')
+#         medium = 'medium', _('medium')
+#         large = 'large', _('large')
         
 
-    company_size = models.CharField(
-        max_length=50,
-        choices=sizes.choices,
-        null=True,
-        )
+#     company_size = models.CharField(
+#         max_length=50,
+#         choices=sizes.choices,
+#         null=True,
+#         )
 
 
 class CompanyData(models.Model):
@@ -115,12 +115,18 @@ class CompanyData(models.Model):
         blank=False,
     )
 
-    size = models.ForeignKey(
-        "CompanySize",
+
+    class sizes(models.TextChoices):
+        small = 'small', _('small')
+        medium = 'medium', _('medium')
+        large = 'large', _('large')
+        
+
+    company_size = models.CharField(
+        max_length=50,
+        choices=sizes.choices,
         null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-    )
+        )
 
     class GenderCode(models.TextChoices):
         male = 'M', _('Male')

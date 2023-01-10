@@ -41,9 +41,9 @@ class DataForm(forms.Form):
 		company_size = forms.ChoiceField(choices=size_choices, required=False)
 		file = forms.FileField()
 
-class CompanySizeform(forms.Form):
+# class CompanySizeform(forms.Form):
 
-		model = CompanySize
-		fields = ['small', 'medium', 'large']
+# 		model = CompanySize
+# 		fields = ['small', 'medium', 'large']
 		
 

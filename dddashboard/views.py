@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 
 from .models import *
-from .forms import CreateUserForm, CustomerForm, DataForm, CompanySizeform  #Orderform
+from .forms import CreateUserForm, CustomerForm, DataForm
 # from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
 from .dataManagement import  handle_uploaded_file, sex_donut_industrychart, minority_donut_industrychart, aboriginal_donut_industrychart, disability_donut_industrychart, Companydata_sex_donut_industrychart, Companydata_minority_donut_industrychart, Companydata_aboriginal_donut_industrychart, Companydata_disability_donut_industrychart, sex_barchart_industrychart, minority_barchart_industrychart, aboriginal_barchart_industrychart, disability_barchart_industrychart, c_sex_barchart_industrychart, c_minority_barchart_industrychart, c_aboriginal_barchart_industrychart, c_disability_barchart_industrychart
@@ -192,10 +192,8 @@ def updateOrder(request, pk):
 
 # 	context = {'item':order}
 # 	return render(request, 'dddashboard/delete.html', context)@login_required(login_url='login')
-
-@login_required(login_url='login')
-# @allowed_users(allowed_roles=['customer'])
-def industry(request):
+#industry view backup
+# def industry(request):
 	dashboarduser = request.user
 	print(dashboarduser)
 	
@@ -287,7 +285,33 @@ def industry(request):
 		'c_sex_executive_barchart':c_sex_executive_barchart, 'c_sex_senior_leader_barchart':c_sex_senior_leader_barchart, 'c_sex_manager_s_s_leader_barchart':c_sex_manager_s_s_leader_barchart, 'c_sex_foreperson_leader_barchart':c_sex_foreperson_leader_barchart, 'c_sex_individual_contributor_leader_barchart':c_sex_individual_contributor_leader_barchart, 'c_minority_executive_barchart':c_minority_executive_barchart, 'c_minority_senior_leader_barchart':c_minority_senior_leader_barchart, 'c_minority_manager_s_s_leader_barchart':c_minority_manager_s_s_leader_barchart, 'c_minority_foreperson_leader_barchart':c_minority_foreperson_leader_barchart, 'c_minority_individual_contributor_leader_barchart':c_minority_individual_contributor_leader_barchart, 'c_aboriginal_executive_barchart':c_aboriginal_executive_barchart, 'c_aboriginal_senior_leader_barchart':c_aboriginal_senior_leader_barchart, 'c_aboriginal_manager_s_s_leader_barchart':c_aboriginal_manager_s_s_leader_barchart, 'c_aboriginal_foreperson_leader_barchart':c_aboriginal_foreperson_leader_barchart, 'c_aboriginal_individual_contributor_leader_barchart':c_aboriginal_individual_contributor_leader_barchart, 'c_disability_executive_barchart':c_disability_executive_barchart, 'c_disability_senior_leader_barchart':c_disability_senior_leader_barchart, 'c_disability_manager_s_s_leader_barchart':c_disability_manager_s_s_leader_barchart, 'c_disability_foreperson_leader_barchart':c_disability_foreperson_leader_barchart, 'c_disability_individual_contributor_leader_barchart':c_disability_individual_contributor_leader_barchart,
 		}
 	if request.htmx:
-		return render(request, 'dddashboard/industry.html', context)
+		return render(request, 'partials/chart.html', context)
+	return render(request, 'dddashboard/industry.html', context)
+
+#industry view backup
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['customer'])
+def industry(request):
+	dashboarduser = request.user
+	print(dashboarduser)
+	
+	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
+	print(dashboarduserinfo)
+	dashboardusercompany = dashboarduserinfo.company_name
+	print(dashboardusercompany)
+
+	default = 'none'
+	filter = request.GET.get('filter', 'large')
+
+	#Industry data donut charts
+	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart(filter)
+	
+
+
+
+	context = {'sex_dchart1': sex_dchart1}
+	if request.htmx:
+		return render(request, 'partials/chart.html', context)
 	return render(request, 'dddashboard/industry.html', context)
 
 # @login_required(login_url='login')
@@ -312,62 +336,62 @@ def company(request):
 # INDUSTRY DATA QUERIES
 	#SEX DATA PER POSITION
 	
-	sex_executive_barchart = sex_barchart_industrychart('Executive', 30)
-	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 30)
-	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 30)
-	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 30)
-	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 30)
+	sex_executive_barchart = sex_barchart_industrychart('Executive', 25)
+	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 25)
+	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 25)
+	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 25)
+	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 25)
 
 	#VISIBLE MINORITY DATA PER POSITION
-	minority_executive_barchart = minority_barchart_industrychart('Executive', 30)
-	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 30)
-	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 30)
-	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 30)
-	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 30)
+	minority_executive_barchart = minority_barchart_industrychart('Executive', 25)
+	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 25)
+	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 25)
+	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 25)
+	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 25)
 
 	#aboriginal DATA PER POSITION
-	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 30)
-	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 30)
-	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 30)
-	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 30)
-	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 30)
+	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 25)
+	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 25)
+	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 25)
+	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 25)
+	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 25)
 
 	#disabilities DATA PER POSITION
-	disability_executive_barchart = disability_barchart_industrychart('Executive', 30)
-	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 30)
-	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 30)
-	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 30)
-	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 30)
+	disability_executive_barchart = disability_barchart_industrychart('Executive', 25)
+	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 25)
+	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 25)
+	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 25)
+	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 25)
 
 # Company DATA QUERIES
 	#SEX DATA PER POSITION
 	
-	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 30)
-	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 30)
-	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 30)
-	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 30)
-	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany,30)
+	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 25)
+	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 25)
+	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 25)
+	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 25)
+	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany,25)
 
 	#VISIBLE MINORITY DATA PER POSITION
-	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 30)
-	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 30)
-	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 30)
-	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 30)
-	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 30)
+	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 25)
+	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 25)
+	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 25)
+	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 25)
+	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 25)
 
 	#aboriginal DATA PER POSITION
-	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 30)
-	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 30)
-	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 30)
-	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 30)
-	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 30)
+	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 25)
+	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 25)
+	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 25)
+	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 25)
+	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 25)
 
 	#disabilities DATA PER POSITION
-	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 30)
-	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 30)
-	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 30)
-	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 30)
-	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 30)
+	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 25)
+	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 25)
+	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 25)
+	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 25)
+	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 25)
 
 
 
@@ -551,14 +575,14 @@ def admin_dashboard(request):
 			CompanyName.objects.filter(name=name_of_company).delete()
 			#se crea de nuevo una instancia en la tabla de los nombres.
 			n, created = CompanyName.objects.get_or_create(name=name_of_company)
-			s, created = CompanySize.objects.get_or_create(company_size=size_of_company)
+			# s, created = CompanySize.objects.get_or_create(company_size=size_of_company)
 
 			uploaded_data = handle_uploaded_file(request.FILES['file'])
 
 			for index, row in uploaded_data.iterrows():
 				company_data = CompanyData.objects.create(
 					name=n,
-					size=s, 
+					company_size=size_of_company, 
 					gender_code=row["gender code"],
 					aboriginal_peoples=row["aboriginal peoples"],
 					visible_minorities=row["visible minorities"],
@@ -882,62 +906,62 @@ def demographicMinority(request):
 # INDUSTRY DATA QUERIES
 	#SEX DATA PER POSITION
 	
-	sex_executive_barchart = sex_barchart_industrychart('Executive', 57)
-	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 57)
-	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 57)
-	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 57)
-	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 57)
+	sex_executive_barchart = sex_barchart_industrychart('Executive', 49)
+	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 49)
+	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 49)
+	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 49)
+	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 49)
 
 	#VISIBLE MINORITY DATA PER POSITION
-	minority_executive_barchart = minority_barchart_industrychart('Executive', 57)
-	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 57)
-	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 57)
-	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 57)
-	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 57)
+	minority_executive_barchart = minority_barchart_industrychart('Executive', 49)
+	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 49)
+	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 49)
+	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 49)
+	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 49)
 
 	#aboriginal DATA PER POSITION
-	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 57)
-	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 57)
-	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 57)
-	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 57)
-	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 57)
+	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 49)
+	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 49)
+	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 49)
+	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 49)
+	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 49)
 
 	#disabilities DATA PER POSITION
-	disability_executive_barchart = disability_barchart_industrychart('Executive', 57)
-	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 57)
-	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 57)
-	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 57)
-	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 57)
+	disability_executive_barchart = disability_barchart_industrychart('Executive', 49)
+	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 49)
+	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 49)
+	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 49)
+	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 49)
 
 # Company DATA QUERIES
 	#SEX DATA PER POSITION
 	
-	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 57)
-	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 57)
-	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 57)
-	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 57)
-	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 57)
+	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 49)
+	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 49)
+	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 49)
+	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 49)
+	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 49)
 
 	#VISIBLE MINORITY DATA PER POSITION
-	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 57)
-	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 57)
-	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 57)
-	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 57)
-	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 57)
+	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 49)
+	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 49)
+	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 49)
+	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 49)
+	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 49)
 
 	#aboriginal DATA PER POSITION
-	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 57)
-	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 57)
-	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 57)
-	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 57)
-	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 57)
+	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 49)
+	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 49)
+	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 49)
+	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 49)
+	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 49)
 
 	#disabilities DATA PER POSITION
-	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 57)
-	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 57)
-	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 57)
-	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 57)
-	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 57)
+	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 49)
+	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 49)
+	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 49)
+	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 49)
+	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 49)
 
 
 
