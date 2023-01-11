@@ -1,0 +1,97 @@
+{%  extends 'dddashboard/dashboard_navbar_footer.html' %}
+{% load static %}
+{% block content %}
+
+
+            <div id="content" class="site-content">
+
+                <div class="container">
+                    <div class="row">
+                        <div id="primary" class="content-area fullwidth col-md-12">
+                            <main id="main" class="site-main" role="main">
+
+
+                                <article id="post-1082" class="post-1082 page type-page status-publish hentry">
+                                    <header class="entry-header">
+                                        <h1 class="entry-title">Industry</h1>
+                                    </header><!-- .entry-header -->
+
+
+                                    <div class="entry-content">
+
+                                        <div class="is-layout-flex wp-container-70 wp-block-columns main-section1 site-container">
+                                            <div class="is-layout-flow wp-block-column">
+                                                <h1>DIVERSITY DATA DASHBOARD</h1>
+                                                <form>
+                                                <select id="select-size" 
+                                                        class="dashboard-select"
+                                                        name="size"
+                                                        autocomplete="off"
+                                                        hx-get="{% url 'industry' %}"
+                                                        hx-target="#holechart"
+                                                        > 
+                                                    <option>ALL COMPANY SIZES</option>
+                                                    <option value="{{filter}}">SMALL</option>
+                                                    <!--option value="{{medium}}">MEDIUM</option-->
+                                                    <option value="{{filter}}">LARGE</option>
+                                                </select>
+                                                </form>
+                                                <form action=""></form>
+
+                                                <div class="is-layout-flex wp-container-34 wp-block-columns section">
+                                                    <div class="is-layout-flow wp-block-column overview">
+                                                        <h3 class="header">INDUSTRY OVERVIEW</h3>
+
+
+
+                                                        <div class="is-layout-flex wp-container-32 wp-block-columns overview-inner-wrapper">
+                                                            <div class="is-layout-flow wp-block-column max-width-display manage-lable">
+                                                                <div class="is-layout-flex wp-container-29 wp-block-columns">
+                                                                    <div class="is-layout-flow wp-block-column vertical-title-wrapper" style="flex-basis:10px">
+                                                                        <p class="vertical-title">JOB LEVEL</p>
+                                                                    </div>
+
+                                                                    <div class="is-layout-flow wp-block-column bar-labels-wrapper">
+                                                                        <div class="is-layout-flex wp-container-3 wp-block-columns">
+                                                                            <div class="is-layout-flow wp-block-column">
+                                                                                <p>Executive</p>
+                                                                                <p>Senior Leader</p>
+                                                                                <p>Manager / Supervisor / Superintendent </p>
+                                                                                <p>Foreman</p>
+                                                                                <p>Individual Contributor</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="is-layout-flow wp-block-column d-flex">
+                                                                        <div class="is-layout-flex wp-container-15 wp-block-columns multi-graph-wrapper">
+                                                                            <div class="is-layout-flow wp-block-column single-graph">
+                                                                                <div  class="is-layout-flex wp-container-6 wp-block-columns">
+                                                                                    <div id='holechart' class="is-layout-flow wp-block-column">
+																						<!--figure class="wp-block-image size-full circle"-->
+																							<!--img decoding="async" width="470" height="466"  src="https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png" alt="" class="wp-image-1111" />
+                                                                                        </figure-->
+																						<figure class="wp-block-image size-full circle" style="max-width: 150; max-height: 175;">{% include 'partials/chart.html'%}</figure>
+                                                                                        
+																						<h6 class="has-text-align-center circle-title">Sex</h6>
+                                                                                        
+																							<div class="graph-info-colors">
+																								<div class="single-item-info">
+																									<img decoding="async" src="{% static 'images/BCMEA_Squares_2.png' %}"><span>Male</span>
+																								</div>
+																								<div class="single-item-info">
+																									<img decoding="async"  src="{% static 'images/BCMEA_Squares_3.png' %}"><span>Female</span>
+																								</div>
+																								<div class="single-item-info">
+																									<img decoding="async" src="{% static 'images/BCMEA_Squares_1.png' %}"><span>Other</span>
+																								</div>
+																							
+																							</div>
+
+                                                                                    </div>
+
+
+{% endblock content %}
+
+
+
