@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://dashboard-production-3f05.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://dashboard-production-3f05.up.railway.app/']
 
 
 # Application definition
