@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://limitless-teaching-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://wdeidashboard.up.railway.app']
 
 
 # Application definition
