@@ -57,7 +57,7 @@ pie_anotations_font_color = '#174F6D'
 
 #industry data donut charts
  
-def sex_donut_industrychart(filter):
+def sex_donut_industrychart():
     # if filter=='all':
     male = CompanyData.objects.filter(gender_code='M').count()
     female = CompanyData.objects.filter(gender_code='F').count()
