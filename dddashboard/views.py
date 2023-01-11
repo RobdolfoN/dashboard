@@ -192,8 +192,40 @@ def updateOrder(request, pk):
 
 # 	context = {'item':order}
 # 	return render(request, 'dddashboard/delete.html', context)@login_required(login_url='login')
-#industry view backup
+
+#HTMX VIEW TEST
+
 # def industry(request):
+# 	dashboarduser = request.user
+# 	print(dashboarduser)
+	
+# 	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
+# 	print(dashboarduserinfo)
+# 	dashboardusercompany = dashboarduserinfo.company_name
+# 	print(dashboardusercompany)
+
+# 	default = 'none'
+# 	filter = request.GET.get('filter', 'null')
+
+# 	#Industry data donut charts
+# 	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart(filter)
+	
+
+
+
+# 	context = {'sex_dchart1': sex_dchart1}
+# 	if request.htmx:
+# 		return render(request, 'partials/chart.html', context)
+# 	return render(request, 'dddashboard/industry.html', context)
+
+
+#HTMX VIEW TEST
+
+
+
+@login_required(login_url='login')
+# @allowed_users(allowed_roles=['customer'])
+def industry(request):
 	dashboarduser = request.user
 	print(dashboarduser)
 	
@@ -288,31 +320,6 @@ def updateOrder(request, pk):
 		return render(request, 'partials/chart.html', context)
 	return render(request, 'dddashboard/industry.html', context)
 
-#industry view backup
-@login_required(login_url='login')
-# @allowed_users(allowed_roles=['customer'])
-def industry(request):
-	dashboarduser = request.user
-	print(dashboarduser)
-	
-	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
-	print(dashboarduserinfo)
-	dashboardusercompany = dashboarduserinfo.company_name
-	print(dashboardusercompany)
-
-	default = 'none'
-	filter = request.GET.get('filter', 'large')
-
-	#Industry data donut charts
-	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart(filter)
-	
-
-
-
-	context = {'sex_dchart1': sex_dchart1}
-	if request.htmx:
-		return render(request, 'partials/chart.html', context)
-	return render(request, 'dddashboard/industry.html', context)
 
 # @login_required(login_url='login')
 # @allowed_users(allowed_roles=['customer'])

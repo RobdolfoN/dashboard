@@ -59,9 +59,9 @@ pie_anotations_font_color = '#174F6D'
  
 def sex_donut_industrychart(filter):
     # if filter=='all':
-    male = CompanyData.objects.filter(gender_code='M', company_size=filter).count()
-    female = CompanyData.objects.filter(gender_code='F', company_size=filter).count()
-    other = CompanyData.objects.filter(gender_code='O', company_size=filter).count()
+    male = CompanyData.objects.filter(gender_code='M').count()
+    female = CompanyData.objects.filter(gender_code='F').count()
+    other = CompanyData.objects.filter(gender_code='O').count()
     total = CompanyData.objects.all().count()
     # else:
     #     male = CompanyData.objects.filter(gender_code='M', size=filter).count()
