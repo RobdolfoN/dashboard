@@ -14,7 +14,7 @@ from .models import *
 from .forms import CreateUserForm, CustomerForm, DataForm
 # from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from .dataManagement import  handle_uploaded_file, sex_donut_industrychart, minority_donut_industrychart, aboriginal_donut_industrychart, disability_donut_industrychart, Companydata_sex_donut_industrychart, Companydata_minority_donut_industrychart, Companydata_aboriginal_donut_industrychart, Companydata_disability_donut_industrychart, sex_barchart_industrychart, minority_barchart_industrychart, aboriginal_barchart_industrychart, disability_barchart_industrychart, c_sex_barchart_industrychart, c_minority_barchart_industrychart, c_aboriginal_barchart_industrychart, c_disability_barchart_industrychart
+from .dataManagement import  handle_uploaded_file, sex_donut_industrychart, minority_donut_industrychart, aboriginal_donut_industrychart, disability_donut_industrychart, Companydata_sex_donut_industrychart, sex_barchart_industrychart, minority_barchart_industrychart, aboriginal_barchart_industrychart, disability_barchart_industrychart, c_sex_barchart_industrychart, c_minority_barchart_industrychart, c_aboriginal_barchart_industrychart, c_disability_barchart_industrychart, Companydata_create_donut_chart
 import pathlib
 import pandas as pd 
 import plotly.express as px
@@ -234,8 +234,6 @@ def industry(request):
 	dashboardusercompany = dashboarduserinfo.company_name
 	print(dashboardusercompany)
 
-	default = "all"
-	filter = request.GET.get('filter', default)
 
 	#Industry data donut charts
 	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart()
@@ -244,10 +242,20 @@ def industry(request):
 	disability_dchart1, disability_hole_info =  disability_donut_industrychart()
 
 	#Company data donut charts
+	# Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	# Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
+	# Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
+	# Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	
+	# Company data donut charts _ GPT optimized
+
 	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
-	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
-	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
-	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
+	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
+	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
+
+
+
 
 # INDUSTRY DATA QUERIES
 	#SEX DATA PER POSITION
@@ -336,9 +344,9 @@ def company(request):
 
 	#Company data donut charts
 	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
-	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
-	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
-	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
+	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
+	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
 
 # INDUSTRY DATA QUERIES
 	#SEX DATA PER POSITION

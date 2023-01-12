@@ -4,6 +4,7 @@ import pandas as pd
 from .models import *
 import plotly.express as px
 import plotly.graph_objects as go
+from django.db.models import Count
 
 
 
@@ -93,117 +94,174 @@ def sex_donut_industrychart():
     return chart, hole_info
 
 
-def minority_donut_industrychart():
-    # if filter=='all':
-    Yes_minority = CompanyData.objects.filter(visible_minorities='Y').count()
-    No_minority = CompanyData.objects.filter(visible_minorities='N').count()
-    total = CompanyData.objects.all().count()
-    # else:
-    #     Yes_minority = CompanyData.objects.filter(visible_minorities='Y', size=filter).count()
-    #     No_minority = CompanyData.objects.filter(visible_minorities='N', size=filter).count()
+# def minority_donut_industrychart():
+    
+#     Yes_minority = CompanyData.objects.filter(visible_minorities='Y').count()
+#     No_minority = CompanyData.objects.filter(visible_minorities='N').count()
+#     total = CompanyData.objects.all().count()
 
 
 
-    labels = ['Yes','No']
-    values = [Yes_minority, No_minority]
-    colors = [colour2, colour3]
+#     labels = ['Yes','No']
+#     values = [Yes_minority, No_minority]
+#     colors = [colour2, colour3]
 
-        # hole_info
-    hole_info = ((Yes_minority*100)/total)
-    hole_info = str(round(hole_info))+str('%')
+#         # hole_info
+#     hole_info = ((Yes_minority*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
     
 
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.55, marker = dict(colors= colors), automargin=True)])
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.55, marker = dict(colors= colors), automargin=True)])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Minority', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
+
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False }
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+#     return chart, hole_info
+
+
+# def aboriginal_donut_industrychart():
+#     # if filter=='all':
+#     Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y').count()
+#     No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N').count()
+#     total = CompanyData.objects.all().count()
+#     # else: 
+#     #     Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y', size=filter).count()
+#     #     No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N', size=filter).count()
+#     #     total = CompanyData.objects.all().count()
+
+
+
+#     labels = ['Yes','No']
+#     values = [Yes_aboriginal, No_aboriginal]
+#     colors = [colour2, colour3]
+
+#         # hole_info 
+#     hole_info = ((Yes_aboriginal*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
+#     print(hole_info)
+
+
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Aboriginal', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
+    
+    
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+#     return chart, hole_info
+
+# def disability_donut_industrychart():
+#     # if filter=='all':
+#     Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y').count()
+#     No_disability = CompanyData.objects.filter(person_with_disabilities='N').count()
+#     total = CompanyData.objects.all().count()
+#     # else:
+#     #     Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', size=filter).count()
+#     #     No_disability = CompanyData.objects.filter(person_with_disabilities='N', size=filter).count()
+#     #     total = CompanyData.objects.all().count()
+
+
+
+
+#     labels = ['Yes','No']
+#     values = [Yes_disability, No_disability]
+#     colors = [colour2, colour3]
+
+#         # hole_info
+#     hole_info = ((Yes_disability*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
+#     print(hole_info)
+
+
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
+    
+    
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+#     return chart, hole_info
+
+#Company data donut charts
+
+def create_donut_chart(category, category_field, labels, colors, hole_info_text):
+    """
+    Creates a donut chart for the given category
+
+    Args:
+    category (str): The name of the category for the chart (e.g. 'Disability')
+    category_field (str): The field of the CompanyData object to filter on (e.g. 'person_with_disabilities')
+    labels (list of str): The labels for the chart's segments
+    colors (list of str): The colors for the chart's segments
+    hole_info_text (str): The text to be displayed in the center of the chart
+
+    Returns:
+    tuple: containing chart data in html format and hole_info
+    """
+    # filter the data and count the number of items that match the filter
+    data = {}
+    for label, value in zip(labels, ['Y', 'N', 'O']):
+        data[label] = CompanyData.objects.filter(**{category_field: value}).count()
+    total = CompanyData.objects.all().count()
+
+    # calculate the percentage of the hole_info
+    hole_info = ((data[hole_info_text]*100)/total)
+    hole_info = str(round(hole_info))+str('%')
+
+    # Create the donut chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=list(data.values()), hole=.6, marker = dict(colors= colors))])
     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Minority', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+        dict(text=hole_info_text, x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
          )
-
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False }
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
-
-    return chart, hole_info
-
-
-def aboriginal_donut_industrychart():
-    # if filter=='all':
-    Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y').count()
-    No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N').count()
-    total = CompanyData.objects.all().count()
-    # else: 
-    #     Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y', size=filter).count()
-    #     No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N', size=filter).count()
-    #     total = CompanyData.objects.all().count()
-
-
-
-    labels = ['Yes','No']
-    values = [Yes_aboriginal, No_aboriginal]
-    colors = [colour2, colour3]
-
-        # hole_info 
-    hole_info = ((Yes_aboriginal*100)/total)
-    hole_info = str(round(hole_info))+str('%')
-    print(hole_info)
-
-
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Aboriginal', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
-    
-    
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
+
     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
+
 
 def disability_donut_industrychart():
-    # if filter=='all':
-    Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y').count()
-    No_disability = CompanyData.objects.filter(person_with_disabilities='N').count()
-    total = CompanyData.objects.all().count()
-    # else:
-    #     Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', size=filter).count()
-    #     No_disability = CompanyData.objects.filter(person_with_disabilities='N', size=filter).count()
-    #     total = CompanyData.objects.all().count()
-
-
-
-
     labels = ['Yes','No']
-    values = [Yes_disability, No_disability]
     colors = [colour2, colour3]
+    return create_donut_chart("Disability", "person_with_disabilities", labels, colors, "Yes")
 
-        # hole_info
-    hole_info = ((Yes_disability*100)/total)
-    hole_info = str(round(hole_info))+str('%')
-    print(hole_info)
+# def sex_donut_industrychart():
+#     labels = ['Male','Female','Other']
+#     colors = [colour1, colour2, colour3]
+#     return create_donut_chart("Sex", "gender_code", labels, colors, "Female")
 
+def minority_donut_industrychart():
+    labels = ['Yes','No']
+    colors = [colour2, colour3]
+    return create_donut_chart("Minority", "visible_minorities", labels, colors, "Yes")
 
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
-    
-    
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+def aboriginal_donut_industrychart():
+    labels = ['Yes','No']
+    colors = [colour2, colour3]
+    return create_donut_chart('Aboriginal', "aboriginal_peoples", labels, colors, "Yes")
 
-    return chart, hole_info
-
-#Company data donut charts
  
 def Companydata_sex_donut_industrychart(company):
     male = CompanyData.objects.filter(gender_code='M', name=company).count()
@@ -238,98 +296,140 @@ def Companydata_sex_donut_industrychart(company):
     return chart, hole_info
 
 
-def Companydata_minority_donut_industrychart(company):
-    Yes_minority = CompanyData.objects.filter(visible_minorities='Y', name=company).count()
-    No_minority = CompanyData.objects.filter(visible_minorities='N', name=company).count()
-    total = CompanyData.objects.filter(name=company).count()
+# def Companydata_minority_donut_industrychart(company):
+#     Yes_minority = CompanyData.objects.filter(visible_minorities='Y', name=company).count()
+#     No_minority = CompanyData.objects.filter(visible_minorities='N', name=company).count()
+#     total = CompanyData.objects.filter(name=company).count()
 
 
-    labels = ['Yes','No']
-    values = [Yes_minority, No_minority]
-    colors = [colour2, colour3]
+#     labels = ['Yes','No']
+#     values = [Yes_minority, No_minority]
+#     colors = [colour2, colour3]
 
-        # hole_info
-    hole_info = ((Yes_minority*100)/total)
-    hole_info = str(round(hole_info))+str('%')
+#         # hole_info
+#     hole_info = ((Yes_minority*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
 
 
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Minority', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Minority', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
 
     
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
-    return chart, hole_info
+#     return chart, hole_info
 
 
-def Companydata_aboriginal_donut_industrychart(company):
-    Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y', name=company).count()
-    No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N', name=company).count()
-    total = CompanyData.objects.filter(name=company).count()
+# def Companydata_aboriginal_donut_industrychart(company):
+#     Yes_aboriginal = CompanyData.objects.filter(aboriginal_peoples='Y', name=company).count()
+#     No_aboriginal = CompanyData.objects.filter(aboriginal_peoples='N', name=company).count()
+#     total = CompanyData.objects.filter(name=company).count()
 
+
+#     labels = ['Yes','No']
+#     values = [Yes_aboriginal, No_aboriginal]
+#     colors = [colour2, colour3]
+
+#         # hole_info
+#     hole_info = ((Yes_aboriginal*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
+
+
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Aboriginal', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
+    
+#     # hole_info = ((female*100)/total) + str('%')
+#     hole_info = ((Yes_aboriginal*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
+    
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+#     return chart, hole_info
+
+# def Companydata_disability_donut_industrychart(company):
+#     Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', name=company).count()
+#     No_disability = CompanyData.objects.filter(person_with_disabilities='N', name=company).count()
+#     total = CompanyData.objects.filter(name=company).count()
+
+
+#     labels = ['Yes','No']
+#     values = [Yes_disability, No_disability]
+#     colors = [colour2, colour3]
+
+#         # hole_info 
+#     hole_info = ((Yes_disability*100)/total)
+#     hole_info = str(round(hole_info))+str('%')
+
+#             # Use `hole` to create a donut-like pie chart
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+#     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+#         annotations=[ 
+#         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+#         dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+#          )
+
+    
+#     fig.update_traces(textinfo='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+#     return chart, hole_info
+
+##### Company Specific Donut Chart GPT optimized ####
+
+
+
+def Companydata_create_donut_chart(field_name, company):
+    # Get the count of 'Y' and 'N' values for the field
+    data = CompanyData.objects.filter(name=company).values(field_name).annotate(count=Count(field_name))
+    yes_count = next((item for item in data if item[field_name] == 'Y'), {'count': 0})['count']
+    no_count = next((item for item in data if item[field_name] == 'N'), {'count': 0})['count']
+    total = yes_count + no_count
 
     labels = ['Yes','No']
-    values = [Yes_aboriginal, No_aboriginal]
+    values = [yes_count, no_count]
     colors = [colour2, colour3]
 
-        # hole_info
-    hole_info = ((Yes_aboriginal*100)/total)
-    hole_info = str(round(hole_info))+str('%')
+    # hole_info
+    hole_info = ((yes_count*100)/total)
+    hole_info = str(round(hole_info)) + '%'
 
-
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Aboriginal', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
-    
-    # hole_info = ((female*100)/total) + str('%')
-    hole_info = ((Yes_aboriginal*100)/total)
-    hole_info = str(round(hole_info))+str('%')
-    
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
-
-    return chart, hole_info
-
-def Companydata_disability_donut_industrychart(company):
-    Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', name=company).count()
-    No_disability = CompanyData.objects.filter(person_with_disabilities='N', name=company).count()
-    total = CompanyData.objects.filter(name=company).count()
-
-
-    labels = ['Yes','No']
-    values = [Yes_disability, No_disability]
-    colors = [colour2, colour3]
-
-        # hole_info 
-    hole_info = ((Yes_disability*100)/total)
-    hole_info = str(round(hole_info))+str('%')
-
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+    # Create the donut chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors=colors))])
     fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
         dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
          )
 
-    
+    # Disable hover text
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+    chart = fig.to_html(config=config, default_height='175')
 
     return chart, hole_info
+
+
+
+##### Company Specific Donut Chart GPT optimized ####
+
+
+
+
 
 
 #chart colours
@@ -338,7 +438,8 @@ def Companydata_disability_donut_industrychart(company):
 # colour3 = '#F6CB7F' #othersexamarillo
 
 #BAR CHARTS
-#PX.BAR test
+
+
 def sex_barchart_industrychart(position, cheight):
     male_position = CompanyData.objects.filter(gender_code='M', position_category=position).count()
     female_position = CompanyData.objects.filter(gender_code='F', position_category=position).count()
@@ -385,61 +486,6 @@ def sex_barchart_industrychart(position, cheight):
     # chart = fig.to_html(config=config, default_width='220', default_height='24')
     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
     return chart
-
-#PX.BAR test
-
-
-
-# def sex_barchart_industrychart(position):
-#     male_position = CompanyData.objects.filter(gender_code='M', position_category=position).count()
-#     female_position = CompanyData.objects.filter(gender_code='F', position_category=position).count()
-#     other_position = CompanyData.objects.filter(gender_code='O', position_category=position).count()
-
-#     fig = go.Figure()
-#     fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1)))
-#     fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2)))
-#     fig.add_trace(go.Bar(
-#         y=[position],
-#         x=[other_position],
-#         name='0',
-#         orientation='h',
-#         marker=dict(
-#             color=colour3,
-#         )
-#     ))
-
-#     fig.update_layout(
-#         xaxis=dict(
-#             showgrid=False,
-#             showline=False,
-#             showticklabels=False,
-#             zeroline=False,
-#             domain=[0, 1]
-#         ),
-#         yaxis=dict(
-#             showgrid=False,
-#             showline=False,
-#             showticklabels=False,
-#             zeroline=False,
-#         ),
-
-#         barmode='stack',
-#         plot_bgcolor='#F4F9FA',
-#         paper_bgcolor='#F4F9FA',
-#         margin=dict(l=0, r=0, t=0, b=0, pad=0),
-#         showlegend=False,
-
-#         autosize=True, 
-#          )
-
-
-    
-#     # fig.update_traces(text='none')
-#     config = {'displayModeBar': False}
-#     # chart = fig.to_html(config=config, default_width='220', default_height='24')
-#     chart = fig.to_html(config=config, default_width='175', default_height='24')
-#     return chart
-
 
 def minority_barchart_industrychart(position, cheight):
     Yes_minority_executive = CompanyData.objects.filter(visible_minorities='Y', position_category=position).count()
@@ -608,6 +654,221 @@ def disability_barchart_industrychart(position, cheight):
     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
 
     return chart
+
+
+#### BAR CHARTS GPT OPTIMIZED ######
+
+
+# def sex_barchart_industrychart(position, cheight):
+#     data = CompanyData.objects.values('gender_code').filter(position_category=position).annotate(count=Count('gender_code'))
+#     male_position = data.get(gender_code='M', count=0)['count']
+#     female_position = data.get(gender_code='F', count=0)['count']
+#     other_position = data.get(gender_code='O', count=0)['count']
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1), hovertemplate=male_position))
+#     fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2), hovertemplate=female_position))
+#     fig.add_trace(go.Bar(y=[position], x=[other_position], name='0', orientation='h', marker=dict(color=colour3), hovertemplate=other_position))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=5, t=0, b=0, pad=0),
+#         showlegend=False,
+#         height=cheight,
+#         autosize=True
+#     )
+
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)
+#     return chart
+
+# def minority_barchart_industrychart(position, cheight):
+#     data = CompanyData.objects.values('visible_minorities').filter(position_category=position).annotate(count=Count('visible_minorities'))
+#     Yes_minority_executive = data.get(visible_minorities='Y', count=0)['count']
+#     No_minority_executive = data.get(visible_minorities='N', count=0)['count']
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_minority_executive],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_minority_executive,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_minority_executive],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#             color=colour3,
+#         ), 
+#         hovertemplate=No_minority_executive,
+#     ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_
+#     return chart
+
+# def aboriginal_barchart_industrychart(position, cheight):
+#     data = CompanyData.objects.values('aboriginal_peoples').filter(position_category=position).annotate(count=Count('aboriginal_peoples'))
+#     Yes_aboriginal_executive = data.get(aboriginal_peoples='Y', count=0)['count']
+#     No_aboriginal_executive = data.get(aboriginal_peoples='N', count=0)['count']
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_aboriginal_executive],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_aboriginal_executive,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_aboriginal_executive],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#         color=colour3,
+#         ), 
+#         hovertemplate=No_aboriginal_executive,
+#     ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         #width=450,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+#     return chart
+
+# def disability_barchart_industrychart(position, cheight):
+#     data = CompanyData.objects.values('person_with_disabilities').filter(position_category=position).annotate(count=Count('person_with_disabilities'))
+#     Yes_disability = data.get(person_with_disabilities='Y', count=0)['count']
+#     No_disability = data.get(person_with_disabilities='N', count=0)['count']
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_disability],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_disability,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_disability],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#             color=colour3,
+#         ), 
+#         hovertemplate=No_disability,
+#             ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         #width=450,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+#     return chart
+
+
+       
 
 
 
