@@ -877,515 +877,265 @@ def Companydata_create_donut_chart(field_name, company):
 #     return chart
 
 
-#### BAR CHARTS GPT OPTIMIZED (OPTION 3 with cache) ######
+#### BAR CHARTS GPT OPTIMIZED (OPTION 3 with cache WORKS) ######
 
-def sex_barchart_industrychart(position, cheight):
-    cache_key = f'sex_chart_{position}'
-    data = cache.get(cache_key)
-    if data is None:
-        male_position = CompanyData.objects.filter(Q(gender_code='M') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        female_position = CompanyData.objects.filter(Q(gender_code='F') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        other_position = CompanyData.objects.filter(Q(gender_code='O') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        data = (male_position, female_position, other_position) 
-        cache.set(cache_key, data, 3600)
-    else:
-        male_position, female_position, other_position = data
-
-    
-    fig = go.Figure()
-    fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1), hovertemplate=male_position))
-    fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2), hovertemplate=female_position))
-    fig.add_trace(go.Bar(y=[position], x=[other_position], name='0', orientation='h', marker=dict(color=colour3), hovertemplate=other_position))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=5, t=0, b=0, pad=0),
-        showlegend=False,
-        # width=410,
-        height=cheight,
-
-        autosize=True,
-        #hoverlabel={'position':False}, 
-
-        
-         )
-
-
-    
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    # chart = fig.to_html(config=config, default_width='220', default_height='24')
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-    return chart
-
-def minority_barchart_industrychart(position, cheight):
-    cache_key = f'minority_chart_{position}'
-    data = cache.get(cache_key)
-    if data is None:
-        Yes_minority_executive = CompanyData.objects.filter(Q(visible_minorities='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        No_minority_executive = CompanyData.objects.filter(Q(visible_minorities='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        data = (Yes_minority_executive, No_minority_executive) 
-        cache.set(cache_key, data, 3600)
-    else:
-        Yes_minority_executive, No_minority_executive = data
-
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_minority_executive],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_minority_executive,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_minority_executive],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_minority_executive,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-def aboriginal_barchart_industrychart(position, cheight):
-    cache_key = f'aboriginal_chart_{position}'
-    data = cache.get(cache_key)
-    if data is None:
-        Yes_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        No_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        data = (Yes_aboriginal_executive, No_aboriginal_executive) 
-        cache.set(cache_key, data, 3600)
-    else:
-        Yes_aboriginal_executive, No_aboriginal_executive = data
-
-
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_aboriginal_executive],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_aboriginal_executive,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_aboriginal_executive],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_aboriginal_executive,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-def disability_barchart_industrychart(position, cheight):
-    cache_key = f'disability_chart_{position}'
-    data = cache.get(cache_key)
-    if data is None:
-        Yes_disability = CompanyData.objects.filter(Q(person_with_disabilities='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        No_disability = CompanyData.objects.filter(Q(person_with_disabilities='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
-        data = (Yes_disability, No_disability) 
-        cache.set(cache_key, data, 3600)
-    else:
-        Yes_disability, No_disability = data
-
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_disability],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_disability,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_disability],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_disability,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-
-
-#COMPANY BAR CHARTS 
-
-def c_sex_barchart_industrychart(position, company, cheight):
-        
-    male_position = CompanyData.objects.filter(Q(gender_code='M') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-    female_position = CompanyData.objects.filter(Q(gender_code='F') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-    other_position = CompanyData.objects.filter(Q(gender_code='O') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[male_position],
-        name='M',
-        orientation='h',
-        marker=dict(
-            color=colour1,
-        ), 
-        hovertemplate=male_position,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[female_position],
-        name='F',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=female_position,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[other_position],
-        name='0',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=other_position,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-def c_minority_barchart_industrychart(position, company, cheight):
-    Yes_minority_executive = CompanyData.objects.filter(Q(visible_minorities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-    No_minority_executive = CompanyData.objects.filter(Q(visible_minorities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_minority_executive],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_minority_executive,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_minority_executive],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_minority_executive,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-def c_aboriginal_barchart_industrychart(position, company, cheight):
-    Yes_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-    No_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_aboriginal_executive],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_aboriginal_executive,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_aboriginal_executive],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_aboriginal_executive,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-def c_disability_barchart_industrychart(position, company, cheight):
-    Yes_disability = CompanyData.objects.filter(Q(person_with_disabilities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-    No_disability = CompanyData.objects.filter(Q(person_with_disabilities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[Yes_disability],
-        name='Y',
-        orientation='h',
-        marker=dict(
-            color=colour2,
-        ), 
-        hovertemplate=Yes_disability,
-    ))
-    fig.add_trace(go.Bar(
-        y=[position],
-        x=[No_disability],
-        name='N',
-        orientation='h',
-        marker=dict(
-            color=colour3,
-        ), 
-        hovertemplate=No_disability,
-    ))
-
-    fig.update_layout(
-        xaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-            domain=[0, 1]
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False,
-            showticklabels=False,
-            zeroline=False,
-        ),
-
-        barmode='stack',
-        plot_bgcolor='#F4F9FA',
-        paper_bgcolor='#F4F9FA',
-        margin=dict(l=0, r=0, t=0, b=0),
-        showlegend=False,
-        #width=450,
-        height=cheight,
-        autosize=True,
-    )
-    # fig.update_traces(text='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-
-    return chart
-
-####COMPANY BAR CHARTS GPT optimized####
-
-
-# def c_sex_barchart_industrychart(position, company, cheight):
-#     cache_key = f'sex_chart_{position}_{company}'
+# def sex_barchart_industrychart(position, cheight):
+#     cache_key = f'sex_chart_{position}'
 #     data = cache.get(cache_key)
 #     if data is None:
-        
-#         male_position = CompanyData.objects.filter(Q(gender_code='M') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         female_position = CompanyData.objects.filter(Q(gender_code='F') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         other_position = CompanyData.objects.filter(Q(gender_code='O') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-
-#         data = (male_position, female_position, other_position)
+#         male_position = CompanyData.objects.filter(Q(gender_code='M') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         female_position = CompanyData.objects.filter(Q(gender_code='F') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         other_position = CompanyData.objects.filter(Q(gender_code='O') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         data = (male_position, female_position, other_position) 
 #         cache.set(cache_key, data, 3600)
 #     else:
 #         male_position, female_position, other_position = data
 
+    
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1), hovertemplate=male_position))
+#     fig.add_trace(go.Bar(y=[position], x=[female_position], name='F', orientation='h', marker=dict(color=colour2), hovertemplate=female_position))
+#     fig.add_trace(go.Bar(y=[position], x=[other_position], name='0', orientation='h', marker=dict(color=colour3), hovertemplate=other_position))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=5, t=0, b=0, pad=0),
+#         showlegend=False,
+#         # width=410,
+#         height=cheight,
+
+#         autosize=True,
+#         #hoverlabel={'position':False}, 
+
+        
+#          )
+
+
+    
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     # chart = fig.to_html(config=config, default_width='220', default_height='24')
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+#     return chart
+
+# def minority_barchart_industrychart(position, cheight):
+#     cache_key = f'minority_chart_{position}'
+#     data = cache.get(cache_key)
+#     if data is None:
+#         Yes_minority_executive = CompanyData.objects.filter(Q(visible_minorities='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         No_minority_executive = CompanyData.objects.filter(Q(visible_minorities='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         data = (Yes_minority_executive, No_minority_executive) 
+#         cache.set(cache_key, data, 3600)
+#     else:
+#         Yes_minority_executive, No_minority_executive = data
+
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_minority_executive],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_minority_executive,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_minority_executive],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#             color=colour3,
+#         ), 
+#         hovertemplate=No_minority_executive,
+#     ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         #width=450,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+#     return chart
+
+# def aboriginal_barchart_industrychart(position, cheight):
+#     cache_key = f'aboriginal_chart_{position}'
+#     data = cache.get(cache_key)
+#     if data is None:
+#         Yes_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         No_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         data = (Yes_aboriginal_executive, No_aboriginal_executive) 
+#         cache.set(cache_key, data, 3600)
+#     else:
+#         Yes_aboriginal_executive, No_aboriginal_executive = data
+
+
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_aboriginal_executive],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_aboriginal_executive,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_aboriginal_executive],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#             color=colour3,
+#         ), 
+#         hovertemplate=No_aboriginal_executive,
+#     ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         #width=450,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+#     return chart
+
+# def disability_barchart_industrychart(position, cheight):
+#     cache_key = f'disability_chart_{position}'
+#     data = cache.get(cache_key)
+#     if data is None:
+#         Yes_disability = CompanyData.objects.filter(Q(person_with_disabilities='Y') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         No_disability = CompanyData.objects.filter(Q(person_with_disabilities='N') & Q(position_category=position)).aggregate(Count('id'))['id__count']
+#         data = (Yes_disability, No_disability) 
+#         cache.set(cache_key, data, 3600)
+#     else:
+#         Yes_disability, No_disability = data
+
+
+#     fig = go.Figure()
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[Yes_disability],
+#         name='Y',
+#         orientation='h',
+#         marker=dict(
+#             color=colour2,
+#         ), 
+#         hovertemplate=Yes_disability,
+#     ))
+#     fig.add_trace(go.Bar(
+#         y=[position],
+#         x=[No_disability],
+#         name='N',
+#         orientation='h',
+#         marker=dict(
+#             color=colour3,
+#         ), 
+#         hovertemplate=No_disability,
+#     ))
+
+#     fig.update_layout(
+#         xaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#             domain=[0, 1]
+#         ),
+#         yaxis=dict(
+#             showgrid=False,
+#             showline=False,
+#             showticklabels=False,
+#             zeroline=False,
+#         ),
+
+#         barmode='stack',
+#         plot_bgcolor='#F4F9FA',
+#         paper_bgcolor='#F4F9FA',
+#         margin=dict(l=0, r=0, t=0, b=0),
+#         showlegend=False,
+#         #width=450,
+#         height=cheight,
+#         autosize=True,
+#     )
+#     # fig.update_traces(text='none')
+#     config = {'displayModeBar': False}
+#     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+#     return chart
+
+
+
+#COMPANY BAR CHARTS WORKS 
+
+# def c_sex_barchart_industrychart(position, company, cheight):
+        
+#     male_position = CompanyData.objects.filter(Q(gender_code='M') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
+#     female_position = CompanyData.objects.filter(Q(gender_code='F') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
+#     other_position = CompanyData.objects.filter(Q(gender_code='O') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
 
 
 #     fig = go.Figure()
@@ -1447,21 +1197,12 @@ def c_disability_barchart_industrychart(position, company, cheight):
 #     # fig.update_traces(text='none')
 #     config = {'displayModeBar': False}
 #     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-    
-#     cache.set(cache_key, chart)
+
 #     return chart
 
 # def c_minority_barchart_industrychart(position, company, cheight):
-#     cache_key = f'minority_chart_{position}_{company}'
-#     data = cache.get(cache_key)
-#     if data is None:
-        
-#         Yes_minority_executive = CompanyData.objects.filter(Q(visible_minorities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         No_minority_executive = CompanyData.objects.filter(Q(visible_minorities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         data = (Yes_minority_executive, No_minority_executive)    
-#         cache.set(cache_key, data, 3600)
-#     else:
-#         Yes_minority_executive, No_minority_executive = data
+#     Yes_minority_executive = CompanyData.objects.filter(Q(visible_minorities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
+#     No_minority_executive = CompanyData.objects.filter(Q(visible_minorities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
 
 
 #     fig = go.Figure()
@@ -1513,23 +1254,12 @@ def c_disability_barchart_industrychart(position, company, cheight):
 #     # fig.update_traces(text='none')
 #     config = {'displayModeBar': False}
 #     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-    
-#     cache.set(cache_key, chart)
+
 #     return chart
 
 # def c_aboriginal_barchart_industrychart(position, company, cheight):
-#     cache_key = f'c_aboriginal_{position}_{company}'
-#     data = cache.get(cache_key)
-#     if data is None:
-
-#         Yes_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         No_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         data = (Yes_aboriginal_executive, No_aboriginal_executive)
-#         cache.set(cache_key, data)
-#     else:
-#         Yes_aboriginal_executive, No_aboriginal_executive = data
-
-
+#     Yes_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
+#     No_aboriginal_executive = CompanyData.objects.filter(Q(aboriginal_peoples='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
 
 #     fig = go.Figure()
 #     fig.add_trace(go.Bar(
@@ -1580,22 +1310,12 @@ def c_disability_barchart_industrychart(position, company, cheight):
 #     # fig.update_traces(text='none')
 #     config = {'displayModeBar': False}
 #     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-    
-#     cache.set(cache_key, chart)
+
 #     return chart
 
 # def c_disability_barchart_industrychart(position, company, cheight):
-#     cache_key = f'c_disability_{position}_{company}'
-#     data = cache.get(cache_key)
-#     if data is None:
-#         Yes_disability = CompanyData.objects.filter(Q(person_with_disabilities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         No_disability = CompanyData.objects.filter(Q(person_with_disabilities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
-#         data = (Yes_disability, No_disability)
-#         cache.set(cache_key, data, 3600)
-#     else:
-#         Yes_disability, No_disability = data
-
-
+#     Yes_disability = CompanyData.objects.filter(Q(person_with_disabilities='Y') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
+#     No_disability = CompanyData.objects.filter(Q(person_with_disabilities='N') & Q(position_category=position) & Q(name=company)).aggregate(Count('id'))['id__count']
 
 #     fig = go.Figure()
 #     fig.add_trace(go.Bar(
@@ -1646,9 +1366,218 @@ def c_disability_barchart_industrychart(position, company, cheight):
 #     # fig.update_traces(text='none')
 #     config = {'displayModeBar': False}
 #     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
-    
-#     cache.set(cache_key, chart)
+
 #     return chart
+
+####COMPANY BAR CHARTS GPT optimized####
+
+def customize_chart(fig, cheight):
+    fig.update_layout(
+        xaxis=dict(
+            showgrid=False,
+            showline=False,
+            showticklabels=False,
+            zeroline=False,
+            domain=[0, 1]
+        ),
+        yaxis=dict(
+            showgrid=False,
+            showline=False,
+            showticklabels=False,
+            zeroline=False,
+        ),
+
+        barmode='stack',
+        plot_bgcolor='#F4F9FA',
+        paper_bgcolor='#F4F9FA',
+        margin=dict(l=0, r=0, t=0, b=0),
+        showlegend=False,
+        #width=450,
+        height=cheight,
+        autosize=True,
+    )
+    config = {'displayModeBar': False}
+    return fig
+
+def sex_barchart_industrychart(position, cheight):
+    gender_codes = ['M', 'F', 'O']
+    data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position)).values('gender_code').annotate(count=Count('gender_code'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['gender_code'],
+            orientation='h',
+            marker=dict(
+                color=colour1 if d['gender_code'] == 'M' else colour2 if d['gender_code'] == 'F' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def c_sex_barchart_industrychart(position, company, cheight):
+    gender_codes = ['M', 'F', 'O']
+    data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(name=company)).values('gender_code').annotate(count=Count('gender_code'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['gender_code'],
+            orientation='h',
+            marker=dict(
+                color=colour1 if d['gender_code'] == 'M' else colour2 if d['gender_code'] == 'F' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+
+
+def minority_barchart_industrychart(position, cheight):
+    visible_minorities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position)).values('visible_minorities').annotate(count=Count('visible_minorities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['visible_minorities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['visible_minorities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def c_minority_barchart_industrychart(position, company, cheight):
+    visible_minorities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(name=company)).values('visible_minorities').annotate(count=Count('visible_minorities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['visible_minorities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['visible_minorities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def aboriginal_barchart_industrychart(position, cheight):
+    aboriginal_peoples = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['aboriginal_peoples'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['aboriginal_peoples'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def c_aboriginal_barchart_industrychart(position, company, cheight):
+    aboriginal_peoples = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(name=company)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['aboriginal_peoples'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['aboriginal_peoples'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def disability_barchart_industrychart(position, cheight):
+    person_with_disabilities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['person_with_disabilities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['person_with_disabilities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def c_disability_barchart_industrychart(position, company, cheight):
+    person_with_disabilities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(name=company)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['person_with_disabilities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['person_with_disabilities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+
 
 
 def contextCreator(dashboardusercompany):
