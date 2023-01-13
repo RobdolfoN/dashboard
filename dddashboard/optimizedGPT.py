@@ -1,8 +1,8 @@
 
 def sex_barchart_industrychart(position, cheight):
-    male_position = CompanyData.objects.filter(gender_code='M', position_category=position).count()
-    female_position = CompanyData.objects.filter(gender_code='F', position_category=position).count()
-    other_position = CompanyData.objects.filter(gender_code='O', position_category=position).count()
+    male_position = CompanyData.objects.filter(gender_code='M', position_category=position).values('id').count()
+    female_position = CompanyData.objects.filter(gender_code='F', position_category=position).values('id').count()
+    other_position = CompanyData.objects.filter(gender_code='O', position_category=position).values('id').count()
 
     fig = go.Figure()
     fig.add_trace(go.Bar(y=[position], x=[male_position], name='M', orientation='h', marker=dict(color=colour1), hovertemplate=male_position))
@@ -47,8 +47,8 @@ def sex_barchart_industrychart(position, cheight):
     return chart
 
 def minority_barchart_industrychart(position, cheight):
-    Yes_minority_executive = CompanyData.objects.filter(visible_minorities='Y', position_category=position).count()
-    No_minority_executive = CompanyData.objects.filter(visible_minorities='N', position_category=position).count()
+    Yes_minority_executive = CompanyData.objects.filter(visible_minorities='Y', position_category=position).values('id').count()
+    No_minority_executive = CompanyData.objects.filter(visible_minorities='N', position_category=position).values('id').count()
 
     fig = go.Figure()
     fig.add_trace(go.Bar(
@@ -103,8 +103,8 @@ def minority_barchart_industrychart(position, cheight):
     return chart
 
 def aboriginal_barchart_industrychart(position, cheight):
-    Yes_aboriginal_executive = CompanyData.objects.filter(aboriginal_peoples='Y', position_category=position).count()
-    No_aboriginal_executive = CompanyData.objects.filter(aboriginal_peoples='N', position_category=position).count()
+    Yes_aboriginal_executive = CompanyData.objects.filter(aboriginal_peoples='Y', position_category=position).values('id').count()
+    No_aboriginal_executive = CompanyData.objects.filter(aboriginal_peoples='N', position_category=position).values('id').count()
 
     fig = go.Figure()
     fig.add_trace(go.Bar(
@@ -159,8 +159,9 @@ def aboriginal_barchart_industrychart(position, cheight):
     return chart
 
 def disability_barchart_industrychart(position, cheight):
-    Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', position_category=position).count()
-    No_disability = CompanyData.objects.filter(person_with_disabilities='N', position_category=position).count()
+    Yes_disability = CompanyData.objects.filter(person_with_disabilities='Y', position_category=position).values('id').count()
+    No_disability = CompanyData.objects.filter(person_with_disabilities='N', position_category=position).values('id').count()
+
 
     fig = go.Figure()
     fig.add_trace(go.Bar(
@@ -213,8 +214,6 @@ def disability_barchart_industrychart(position, cheight):
     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
 
     return chart
-
-
 
 
 
