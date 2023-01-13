@@ -14,7 +14,7 @@ from .models import *
 from .forms import CreateUserForm, CustomerForm, DataForm
 # from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
-from .dataManagement import  handle_uploaded_file, sex_donut_industrychart, minority_donut_industrychart, aboriginal_donut_industrychart, disability_donut_industrychart, Companydata_sex_donut_industrychart, sex_barchart_industrychart, minority_barchart_industrychart, aboriginal_barchart_industrychart, disability_barchart_industrychart, c_sex_barchart_industrychart, c_minority_barchart_industrychart, c_aboriginal_barchart_industrychart, c_disability_barchart_industrychart, Companydata_create_donut_chart, contextCreator
+from .dataManagement import  handle_uploaded_file, sex_donut_industrychart, minority_donut_industrychart, aboriginal_donut_industrychart, disability_donut_industrychart, Companydata_sex_donut_industrychart, sex_barchart_industrychart, minority_barchart_industrychart, aboriginal_barchart_industrychart, disability_barchart_industrychart, c_sex_barchart_industrychart, c_minority_barchart_industrychart, c_aboriginal_barchart_industrychart, c_disability_barchart_industrychart, Companydata_create_donut_chart, contextCreator, size_sex_donut_industrychart
 import pathlib
 import pandas as pd 
 import plotly.express as px

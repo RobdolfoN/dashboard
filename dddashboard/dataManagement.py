@@ -1818,3 +1818,38 @@ def size_Companydata_create_donut_chart(field_name, size):
 
     return chart, hole_info
 
+def size_sex_donut_industrychart(size):
+    male = CompanyData.objects.filter(gender_code='M', company_size=size).count()
+    print(male)
+    female = CompanyData.objects.filter(gender_code='F', company_size=size).count()
+    other = CompanyData.objects.filter(gender_code='O', company_size=size).count()
+    total = CompanyData.objects.filter(company_size=size).count()
+    print(female)
+    print(total)
+
+
+    labels = ['Male','Female','Other']
+    values = [male, female, other]
+    colors = [colour1, colour2, colour3]
+
+        # hole_info 
+    hole_info = ((female*100)/total)
+    hole_info = str(round(hole_info))+str('%')
+    print(hole_info)
+
+
+            # Use `hole` to create a donut-like pie chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+        annotations=[ 
+        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+        dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+         )
+    
+    
+    fig.update_traces(textinfo='none')
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+    return chart, hole_info
+
