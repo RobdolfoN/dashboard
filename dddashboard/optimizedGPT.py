@@ -1,3 +1,4 @@
+
 def sex_barchart_industrychart(position, cheight):
     male_position = CompanyData.objects.filter(gender_code='M', position_category=position).count()
     female_position = CompanyData.objects.filter(gender_code='F', position_category=position).count()
@@ -212,6 +213,8 @@ def disability_barchart_industrychart(position, cheight):
     chart = fig.to_html(config=config)#, default_width='175', default_height='24')
 
     return chart
+
+
 
 
 
