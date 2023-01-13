@@ -22,6 +22,8 @@ urlpatterns = [
     # path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order"),
 
     path('industry/', views.industry, name='industry'),
+    path('small_industry/', views.small_industry, name='small_industry'),
+    path('large_industry/', views.large_industry, name='large_industry'),
     path('company/', views.company, name='company'),
     path('historical_data/', views.historicalData, name='historicaldata'),
     path('demographic_variables/aboriginal.html', views.demographicAboriginal, name='demographic_aboriginal'),

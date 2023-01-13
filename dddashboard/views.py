@@ -232,103 +232,306 @@ def industry(request):
 	
 	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
 	dashboardusercompany = dashboarduserinfo.company_name
-	context = contextCreator(dashboardusercompany)
+	# context = contextCreator(dashboardusercompany)
 
 
-# 	#Industry data donut charts
-# 	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart()
-# 	minority_dchart1, minority_hole_info =  minority_donut_industrychart()
-# 	aboriginal_dchart1, aboriginal_hole_info =  aboriginal_donut_industrychart()
-# 	disability_dchart1, disability_hole_info =  disability_donut_industrychart()
+	#Industry data donut charts
+	sex_dchart1, sexchart_hole_info =  sex_donut_industrychart()
+	minority_dchart1, minority_hole_info =  minority_donut_industrychart()
+	aboriginal_dchart1, aboriginal_hole_info =  aboriginal_donut_industrychart()
+	disability_dchart1, disability_hole_info =  disability_donut_industrychart()
 
-# 	#Company data donut charts
-# 	# Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
-# 	# Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
-# 	# Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
-# 	# Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	#Company data donut charts
+	# Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	# Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
+	# Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
+	# Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
 	
-# 	# Company data donut charts _ GPT optimized
+	# Company data donut charts _ GPT optimized
 
-# 	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
-# 	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
-# 	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
-# 	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
-
-
+	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
+	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
+	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
 
 
-# # # INDUSTRY DATA QUERIES
-# # 	#SEX DATA PER POSITION
-	
-# 	sex_executive_barchart = sex_barchart_industrychart('Executive', 24)
-# 	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 24)
-# 	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
-# 	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 24)
-# 	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 24)
 
-# 	#VISIBLE MINORITY DATA PER POSITION
-# 	minority_executive_barchart = minority_barchart_industrychart('Executive', 24)
-# 	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 24)
-# 	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
-# 	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 24)
-# 	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 24)
 
-# 	#aboriginal DATA PER POSITION
-# 	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 24)
-# 	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 24)
-# 	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
-# 	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 24)
-# 	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 24)
-
-# 	#disabilities DATA PER POSITION
-# 	disability_executive_barchart = disability_barchart_industrychart('Executive', 24)
-# 	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 24)
-# 	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
-# 	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 24)
-# 	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 24)
-
-# # Company DATA QUERIES
+# # INDUSTRY DATA QUERIES
 # 	#SEX DATA PER POSITION
 	
-# 	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 24)
-# 	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
-# 	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
-# 	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 24)
-# 	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+	sex_executive_barchart = sex_barchart_industrychart('Executive', 24)
+	sex_senior_leader_barchart = sex_barchart_industrychart('Senior Leader', 24)
+	sex_manager_s_s_leader_barchart = sex_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
+	sex_foreperson_leader_barchart = sex_barchart_industrychart('Foreperson', 24)
+	sex_individual_contributor_leader_barchart = sex_barchart_industrychart('Individual Contributor', 24)
 
-# 	#VISIBLE MINORITY DATA PER POSITION
-# 	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 24)
-# 	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
-# 	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
-# 	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 24)
-# 	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+	#VISIBLE MINORITY DATA PER POSITION
+	minority_executive_barchart = minority_barchart_industrychart('Executive', 24)
+	minority_senior_leader_barchart = minority_barchart_industrychart('Senior Leader', 24)
+	minority_manager_s_s_leader_barchart = minority_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
+	minority_foreperson_leader_barchart = minority_barchart_industrychart('Foreperson', 24)
+	minority_individual_contributor_leader_barchart = minority_barchart_industrychart('Individual Contributor', 24)
 
-# 	#aboriginal DATA PER POSITION
-# 	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 24)
-# 	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
-# 	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
-# 	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 24)
-# 	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+	#aboriginal DATA PER POSITION
+	aboriginal_executive_barchart = aboriginal_barchart_industrychart('Executive', 24)
+	aboriginal_senior_leader_barchart = aboriginal_barchart_industrychart('Senior Leader', 24)
+	aboriginal_manager_s_s_leader_barchart = aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
+	aboriginal_foreperson_leader_barchart = aboriginal_barchart_industrychart('Foreperson', 24)
+	aboriginal_individual_contributor_leader_barchart = aboriginal_barchart_industrychart('Individual Contributor', 24)
 
-# 	#disabilities DATA PER POSITION
-# 	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 24)
-# 	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
-# 	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
-# 	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 24)
-# 	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+	#disabilities DATA PER POSITION
+	disability_executive_barchart = disability_barchart_industrychart('Executive', 24)
+	disability_senior_leader_barchart = disability_barchart_industrychart('Senior Leader', 24)
+	disability_manager_s_s_leader_barchart = disability_barchart_industrychart('Manager/Supervisor/Superintendent', 24)
+	disability_foreperson_leader_barchart = disability_barchart_industrychart('Foreperson', 24)
+	disability_individual_contributor_leader_barchart = disability_barchart_industrychart('Individual Contributor', 24)
+
+# Company DATA QUERIES
+	#SEX DATA PER POSITION
+	
+	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#VISIBLE MINORITY DATA PER POSITION
+	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#aboriginal DATA PER POSITION
+	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#disabilities DATA PER POSITION
+	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
 
 
 
 
-# 	context = {'sex_dchart1': sex_dchart1, 'minority_dchart1':minority_dchart1, 'aboriginal_dchart1':aboriginal_dchart1, 'disability_dchart1':disability_dchart1, 'Companydata_sex_dchart1':Companydata_sex_dchart1, 'Companydata_minority_dchart1':Companydata_minority_dchart1, 'Companydata_aboriginal_dchart1':Companydata_aboriginal_dchart1, 'Companydata_disability_dchart1':Companydata_disability_dchart1,
-# 		'sex_executive_barchart':sex_executive_barchart, 'sex_senior_leader_barchart':sex_senior_leader_barchart, 'sex_manager_s_s_leader_barchart':sex_manager_s_s_leader_barchart, 'sex_foreperson_leader_barchart':sex_foreperson_leader_barchart, 'sex_individual_contributor_leader_barchart':sex_individual_contributor_leader_barchart, 'minority_executive_barchart':minority_executive_barchart, 'minority_senior_leader_barchart':minority_senior_leader_barchart, 'minority_manager_s_s_leader_barchart':minority_manager_s_s_leader_barchart, 'minority_foreperson_leader_barchart':minority_foreperson_leader_barchart, 'minority_individual_contributor_leader_barchart':minority_individual_contributor_leader_barchart, 'aboriginal_executive_barchart':aboriginal_executive_barchart, 'aboriginal_senior_leader_barchart':aboriginal_senior_leader_barchart, 'aboriginal_manager_s_s_leader_barchart':aboriginal_manager_s_s_leader_barchart, 'aboriginal_foreperson_leader_barchart':aboriginal_foreperson_leader_barchart, 'aboriginal_individual_contributor_leader_barchart':aboriginal_individual_contributor_leader_barchart, 'disability_executive_barchart':disability_executive_barchart, 'disability_senior_leader_barchart':disability_senior_leader_barchart, 'disability_manager_s_s_leader_barchart':disability_manager_s_s_leader_barchart, 'disability_foreperson_leader_barchart':disability_foreperson_leader_barchart, 'disability_individual_contributor_leader_barchart':disability_individual_contributor_leader_barchart,
-# 		'c_sex_executive_barchart':c_sex_executive_barchart, 'c_sex_senior_leader_barchart':c_sex_senior_leader_barchart, 'c_sex_manager_s_s_leader_barchart':c_sex_manager_s_s_leader_barchart, 'c_sex_foreperson_leader_barchart':c_sex_foreperson_leader_barchart, 'c_sex_individual_contributor_leader_barchart':c_sex_individual_contributor_leader_barchart, 'c_minority_executive_barchart':c_minority_executive_barchart, 'c_minority_senior_leader_barchart':c_minority_senior_leader_barchart, 'c_minority_manager_s_s_leader_barchart':c_minority_manager_s_s_leader_barchart, 'c_minority_foreperson_leader_barchart':c_minority_foreperson_leader_barchart, 'c_minority_individual_contributor_leader_barchart':c_minority_individual_contributor_leader_barchart, 'c_aboriginal_executive_barchart':c_aboriginal_executive_barchart, 'c_aboriginal_senior_leader_barchart':c_aboriginal_senior_leader_barchart, 'c_aboriginal_manager_s_s_leader_barchart':c_aboriginal_manager_s_s_leader_barchart, 'c_aboriginal_foreperson_leader_barchart':c_aboriginal_foreperson_leader_barchart, 'c_aboriginal_individual_contributor_leader_barchart':c_aboriginal_individual_contributor_leader_barchart, 'c_disability_executive_barchart':c_disability_executive_barchart, 'c_disability_senior_leader_barchart':c_disability_senior_leader_barchart, 'c_disability_manager_s_s_leader_barchart':c_disability_manager_s_s_leader_barchart, 'c_disability_foreperson_leader_barchart':c_disability_foreperson_leader_barchart, 'c_disability_individual_contributor_leader_barchart':c_disability_individual_contributor_leader_barchart,
-# 		}
+	context = {'sex_dchart1': sex_dchart1, 'minority_dchart1':minority_dchart1, 'aboriginal_dchart1':aboriginal_dchart1, 'disability_dchart1':disability_dchart1, 'Companydata_sex_dchart1':Companydata_sex_dchart1, 'Companydata_minority_dchart1':Companydata_minority_dchart1, 'Companydata_aboriginal_dchart1':Companydata_aboriginal_dchart1, 'Companydata_disability_dchart1':Companydata_disability_dchart1,
+		'sex_executive_barchart':sex_executive_barchart, 'sex_senior_leader_barchart':sex_senior_leader_barchart, 'sex_manager_s_s_leader_barchart':sex_manager_s_s_leader_barchart, 'sex_foreperson_leader_barchart':sex_foreperson_leader_barchart, 'sex_individual_contributor_leader_barchart':sex_individual_contributor_leader_barchart, 'minority_executive_barchart':minority_executive_barchart, 'minority_senior_leader_barchart':minority_senior_leader_barchart, 'minority_manager_s_s_leader_barchart':minority_manager_s_s_leader_barchart, 'minority_foreperson_leader_barchart':minority_foreperson_leader_barchart, 'minority_individual_contributor_leader_barchart':minority_individual_contributor_leader_barchart, 'aboriginal_executive_barchart':aboriginal_executive_barchart, 'aboriginal_senior_leader_barchart':aboriginal_senior_leader_barchart, 'aboriginal_manager_s_s_leader_barchart':aboriginal_manager_s_s_leader_barchart, 'aboriginal_foreperson_leader_barchart':aboriginal_foreperson_leader_barchart, 'aboriginal_individual_contributor_leader_barchart':aboriginal_individual_contributor_leader_barchart, 'disability_executive_barchart':disability_executive_barchart, 'disability_senior_leader_barchart':disability_senior_leader_barchart, 'disability_manager_s_s_leader_barchart':disability_manager_s_s_leader_barchart, 'disability_foreperson_leader_barchart':disability_foreperson_leader_barchart, 'disability_individual_contributor_leader_barchart':disability_individual_contributor_leader_barchart,
+		'c_sex_executive_barchart':c_sex_executive_barchart, 'c_sex_senior_leader_barchart':c_sex_senior_leader_barchart, 'c_sex_manager_s_s_leader_barchart':c_sex_manager_s_s_leader_barchart, 'c_sex_foreperson_leader_barchart':c_sex_foreperson_leader_barchart, 'c_sex_individual_contributor_leader_barchart':c_sex_individual_contributor_leader_barchart, 'c_minority_executive_barchart':c_minority_executive_barchart, 'c_minority_senior_leader_barchart':c_minority_senior_leader_barchart, 'c_minority_manager_s_s_leader_barchart':c_minority_manager_s_s_leader_barchart, 'c_minority_foreperson_leader_barchart':c_minority_foreperson_leader_barchart, 'c_minority_individual_contributor_leader_barchart':c_minority_individual_contributor_leader_barchart, 'c_aboriginal_executive_barchart':c_aboriginal_executive_barchart, 'c_aboriginal_senior_leader_barchart':c_aboriginal_senior_leader_barchart, 'c_aboriginal_manager_s_s_leader_barchart':c_aboriginal_manager_s_s_leader_barchart, 'c_aboriginal_foreperson_leader_barchart':c_aboriginal_foreperson_leader_barchart, 'c_aboriginal_individual_contributor_leader_barchart':c_aboriginal_individual_contributor_leader_barchart, 'c_disability_executive_barchart':c_disability_executive_barchart, 'c_disability_senior_leader_barchart':c_disability_senior_leader_barchart, 'c_disability_manager_s_s_leader_barchart':c_disability_manager_s_s_leader_barchart, 'c_disability_foreperson_leader_barchart':c_disability_foreperson_leader_barchart, 'c_disability_individual_contributor_leader_barchart':c_disability_individual_contributor_leader_barchart,
+		}
 
 	if request.htmx:
 		return render(request, 'partials/chart.html', context)
 	return render(request, 'dddashboard/industry.html', context)
 
+def small_industry(request):
+	dashboarduser = request.user
+	
+	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
+	dashboardusercompany = dashboarduserinfo.company_name
+	# context = contextCreator(dashboardusercompany)
+
+
+	#Industry data donut charts
+	sex_dchart1, sexchart_hole_info =  size_sex_donut_industrychart(small)
+	minority_dchart1, minority_hole_info =  size_minority_donut_industrychart(small)
+	aboriginal_dchart1, aboriginal_hole_info =  size_aboriginal_donut_industrychart(small)
+	disability_dchart1, disability_hole_info =  size_disability_donut_industrychart(small)
+
+	#Company data donut charts
+	# Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	# Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
+	# Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
+	# Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	
+	# Company data donut charts _ GPT optimized
+
+	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
+	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
+	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
+
+
+
+
+# # INDUSTRY DATA QUERIES
+# 	#SEX DATA PER POSITION
+	
+	sex_executive_barchart = size_sex_barchart_industrychart('Executive', 24, small)
+	sex_senior_leader_barchart = size_sex_barchart_industrychart('Senior Leader', 24, small)
+	sex_manager_s_s_leader_barchart = size_sex_barchart_industrychart('Manager/Supervisor/Superintendent', 24, small)
+	sex_foreperson_leader_barchart = size_sex_barchart_industrychart('Foreperson', 24, small)
+	sex_individual_contributor_leader_barchart = size_sex_barchart_industrychart('Individual Contributor', 24, small)
+
+	#VISIBLE MINORITY DATA PER POSITION
+	minority_executive_barchart = size_minority_barchart_industrychart('Executive', 24, small)
+	minority_senior_leader_barchart = size_minority_barchart_industrychart('Senior Leader', 24, small)
+	minority_manager_s_s_leader_barchart = size_minority_barchart_industrychart('Manager/Supervisor/Superintendent', 24,small)
+	minority_foreperson_leader_barchart = size_minority_barchart_industrychart('Foreperson', 24, small)
+	minority_individual_contributor_leader_barchart = size_minority_barchart_industrychart('Individual Contributor', 24, small)
+
+	#aboriginal DATA PER POSITION
+	aboriginal_executive_barchart = size_aboriginal_barchart_industrychart('Executive', 24, small)
+	aboriginal_senior_leader_barchart = size_aboriginal_barchart_industrychart('Senior Leader', 24, small)
+	aboriginal_manager_s_s_leader_barchart = size_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 24, small)
+	aboriginal_foreperson_leader_barchart = size_aboriginal_barchart_industrychart('Foreperson', 24, small)
+	aboriginal_individual_contributor_leader_barchart = size_aboriginal_barchart_industrychart('Individual Contributor', 24, small)
+
+	#disabilities DATA PER POSITION
+	disability_executive_barchart = size_disability_barchart_industrychart('Executive', 24, small)
+	disability_senior_leader_barchart = size_disability_barchart_industrychart('Senior Leader', 24, small)
+	disability_manager_s_s_leader_barchart = size_disability_barchart_industrychart('Manager/Supervisor/Superintendent', 24, small)
+	disability_foreperson_leader_barchart = size_disability_barchart_industrychart('Foreperson', 24, small)
+	disability_individual_contributor_leader_barchart = size_disability_barchart_industrychart('Individual Contributor', 24, small)
+
+# Company DATA QUERIES
+	#SEX DATA PER POSITION
+	
+	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#VISIBLE MINORITY DATA PER POSITION
+	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#aboriginal DATA PER POSITION
+	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#disabilities DATA PER POSITION
+	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+
+
+
+	context = {'sex_dchart1': sex_dchart1, 'minority_dchart1':minority_dchart1, 'aboriginal_dchart1':aboriginal_dchart1, 'disability_dchart1':disability_dchart1, 'Companydata_sex_dchart1':Companydata_sex_dchart1, 'Companydata_minority_dchart1':Companydata_minority_dchart1, 'Companydata_aboriginal_dchart1':Companydata_aboriginal_dchart1, 'Companydata_disability_dchart1':Companydata_disability_dchart1,
+		'sex_executive_barchart':sex_executive_barchart, 'sex_senior_leader_barchart':sex_senior_leader_barchart, 'sex_manager_s_s_leader_barchart':sex_manager_s_s_leader_barchart, 'sex_foreperson_leader_barchart':sex_foreperson_leader_barchart, 'sex_individual_contributor_leader_barchart':sex_individual_contributor_leader_barchart, 'minority_executive_barchart':minority_executive_barchart, 'minority_senior_leader_barchart':minority_senior_leader_barchart, 'minority_manager_s_s_leader_barchart':minority_manager_s_s_leader_barchart, 'minority_foreperson_leader_barchart':minority_foreperson_leader_barchart, 'minority_individual_contributor_leader_barchart':minority_individual_contributor_leader_barchart, 'aboriginal_executive_barchart':aboriginal_executive_barchart, 'aboriginal_senior_leader_barchart':aboriginal_senior_leader_barchart, 'aboriginal_manager_s_s_leader_barchart':aboriginal_manager_s_s_leader_barchart, 'aboriginal_foreperson_leader_barchart':aboriginal_foreperson_leader_barchart, 'aboriginal_individual_contributor_leader_barchart':aboriginal_individual_contributor_leader_barchart, 'disability_executive_barchart':disability_executive_barchart, 'disability_senior_leader_barchart':disability_senior_leader_barchart, 'disability_manager_s_s_leader_barchart':disability_manager_s_s_leader_barchart, 'disability_foreperson_leader_barchart':disability_foreperson_leader_barchart, 'disability_individual_contributor_leader_barchart':disability_individual_contributor_leader_barchart,
+		'c_sex_executive_barchart':c_sex_executive_barchart, 'c_sex_senior_leader_barchart':c_sex_senior_leader_barchart, 'c_sex_manager_s_s_leader_barchart':c_sex_manager_s_s_leader_barchart, 'c_sex_foreperson_leader_barchart':c_sex_foreperson_leader_barchart, 'c_sex_individual_contributor_leader_barchart':c_sex_individual_contributor_leader_barchart, 'c_minority_executive_barchart':c_minority_executive_barchart, 'c_minority_senior_leader_barchart':c_minority_senior_leader_barchart, 'c_minority_manager_s_s_leader_barchart':c_minority_manager_s_s_leader_barchart, 'c_minority_foreperson_leader_barchart':c_minority_foreperson_leader_barchart, 'c_minority_individual_contributor_leader_barchart':c_minority_individual_contributor_leader_barchart, 'c_aboriginal_executive_barchart':c_aboriginal_executive_barchart, 'c_aboriginal_senior_leader_barchart':c_aboriginal_senior_leader_barchart, 'c_aboriginal_manager_s_s_leader_barchart':c_aboriginal_manager_s_s_leader_barchart, 'c_aboriginal_foreperson_leader_barchart':c_aboriginal_foreperson_leader_barchart, 'c_aboriginal_individual_contributor_leader_barchart':c_aboriginal_individual_contributor_leader_barchart, 'c_disability_executive_barchart':c_disability_executive_barchart, 'c_disability_senior_leader_barchart':c_disability_senior_leader_barchart, 'c_disability_manager_s_s_leader_barchart':c_disability_manager_s_s_leader_barchart, 'c_disability_foreperson_leader_barchart':c_disability_foreperson_leader_barchart, 'c_disability_individual_contributor_leader_barchart':c_disability_individual_contributor_leader_barchart,
+		}
+
+	if request.htmx:
+		return render(request, 'partials/chart.html', context)
+	return render(request, 'dddashboard/small_industry.html', context)
+
+def large_industry(request):
+	dashboarduser = request.user
+	
+	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
+	dashboardusercompany = dashboarduserinfo.company_name
+	# context = contextCreator(dashboardusercompany)
+
+
+	#Industry data donut charts
+	sex_dchart1, sexchart_hole_info =  size_sex_donut_industrychart(large)
+	minority_dchart1, minority_hole_info =  size_minority_donut_industrychart(large)
+	aboriginal_dchart1, aboriginal_hole_info =  size_aboriginal_donut_industrychart(large)
+	disability_dchart1, disability_hole_info =  size_disability_donut_industrychart(large)
+
+	#Company data donut charts
+	# Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	# Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_minority_donut_industrychart(dashboardusercompany)
+	# Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_aboriginal_donut_industrychart(dashboardusercompany)
+	# Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_disability_donut_industrychart(dashboardusercompany)
+	
+	# Company data donut charts _ GPT optimized
+
+	Companydata_sex_dchart1, Companydata_sexchart_hole_info =  Companydata_sex_donut_industrychart(dashboardusercompany)
+	Companydata_minority_dchart1, Companydata_minority_hole_info =  Companydata_create_donut_chart('visible_minorities', dashboardusercompany)
+	Companydata_aboriginal_dchart1, Companydata_aboriginal_hole_info =  Companydata_create_donut_chart('aboriginal_peoples', dashboardusercompany)
+	Companydata_disability_dchart1, Companydata_disability_hole_info =  Companydata_create_donut_chart('person_with_disabilities', dashboardusercompany)
+
+
+
+
+# # INDUSTRY DATA QUERIES
+# 	#SEX DATA PER POSITION
+	
+	sex_executive_barchart = size_sex_barchart_industrychart('Executive', 24, large)
+	sex_senior_leader_barchart = size_sex_barchart_industrychart('Senior Leader', 24, large)
+	sex_manager_s_s_leader_barchart = size_sex_barchart_industrychart('Manager/Supervisor/Superintendent', 24, large)
+	sex_foreperson_leader_barchart = size_sex_barchart_industrychart('Foreperson', 24, large)
+	sex_individual_contributor_leader_barchart = size_sex_barchart_industrychart('Individual Contributor', 24, large)
+
+	#VISIBLE MINORITY DATA PER POSITION
+	minority_executive_barchart = size_minority_barchart_industrychart('Executive', 24, large)
+	minority_senior_leader_barchart = size_minority_barchart_industrychart('Senior Leader', 24, large)
+	minority_manager_s_s_leader_barchart = size_minority_barchart_industrychart('Manager/Supervisor/Superintendent', 24,large)
+	minority_foreperson_leader_barchart = size_minority_barchart_industrychart('Foreperson', 24, large)
+	minority_individual_contributor_leader_barchart = size_minority_barchart_industrychart('Individual Contributor', 24, large)
+
+	#aboriginal DATA PER POSITION
+	aboriginal_executive_barchart = size_aboriginal_barchart_industrychart('Executive', 24, large)
+	aboriginal_senior_leader_barchart = size_aboriginal_barchart_industrychart('Senior Leader', 24, large)
+	aboriginal_manager_s_s_leader_barchart = size_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', 24, large)
+	aboriginal_foreperson_leader_barchart = size_aboriginal_barchart_industrychart('Foreperson', 24, large)
+	aboriginal_individual_contributor_leader_barchart = size_aboriginal_barchart_industrychart('Individual Contributor', 24, large)
+
+	#disabilities DATA PER POSITION
+	disability_executive_barchart = size_disability_barchart_industrychart('Executive', 24, large)
+	disability_senior_leader_barchart = size_disability_barchart_industrychart('Senior Leader', 24, large)
+	disability_manager_s_s_leader_barchart = size_disability_barchart_industrychart('Manager/Supervisor/Superintendent', 24, large)
+	disability_foreperson_leader_barchart = size_disability_barchart_industrychart('Foreperson', 24, large)
+	disability_individual_contributor_leader_barchart = size_disability_barchart_industrychart('Individual Contributor', 24, large)
+
+# Company DATA QUERIES
+	#SEX DATA PER POSITION
+	
+	c_sex_executive_barchart = c_sex_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_sex_senior_leader_barchart = c_sex_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_sex_manager_s_s_leader_barchart = c_sex_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_sex_foreperson_leader_barchart = c_sex_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_sex_individual_contributor_leader_barchart = c_sex_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#VISIBLE MINORITY DATA PER POSITION
+	c_minority_executive_barchart = c_minority_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_minority_senior_leader_barchart = c_minority_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_minority_manager_s_s_leader_barchart = c_minority_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_minority_foreperson_leader_barchart = c_minority_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_minority_individual_contributor_leader_barchart = c_minority_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#aboriginal DATA PER POSITION
+	c_aboriginal_executive_barchart = c_aboriginal_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_aboriginal_senior_leader_barchart = c_aboriginal_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_aboriginal_manager_s_s_leader_barchart = c_aboriginal_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_aboriginal_foreperson_leader_barchart = c_aboriginal_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_aboriginal_individual_contributor_leader_barchart = c_aboriginal_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+	#disabilities DATA PER POSITION
+	c_disability_executive_barchart = c_disability_barchart_industrychart('Executive', dashboardusercompany, 24)
+	c_disability_senior_leader_barchart = c_disability_barchart_industrychart('Senior Leader', dashboardusercompany, 24)
+	c_disability_manager_s_s_leader_barchart = c_disability_barchart_industrychart('Manager/Supervisor/Superintendent', dashboardusercompany, 24)
+	c_disability_foreperson_leader_barchart = c_disability_barchart_industrychart('Foreperson', dashboardusercompany, 24)
+	c_disability_individual_contributor_leader_barchart = c_disability_barchart_industrychart('Individual Contributor', dashboardusercompany, 24)
+
+
+
+
+	context = {'sex_dchart1': sex_dchart1, 'minority_dchart1':minority_dchart1, 'aboriginal_dchart1':aboriginal_dchart1, 'disability_dchart1':disability_dchart1, 'Companydata_sex_dchart1':Companydata_sex_dchart1, 'Companydata_minority_dchart1':Companydata_minority_dchart1, 'Companydata_aboriginal_dchart1':Companydata_aboriginal_dchart1, 'Companydata_disability_dchart1':Companydata_disability_dchart1,
+		'sex_executive_barchart':sex_executive_barchart, 'sex_senior_leader_barchart':sex_senior_leader_barchart, 'sex_manager_s_s_leader_barchart':sex_manager_s_s_leader_barchart, 'sex_foreperson_leader_barchart':sex_foreperson_leader_barchart, 'sex_individual_contributor_leader_barchart':sex_individual_contributor_leader_barchart, 'minority_executive_barchart':minority_executive_barchart, 'minority_senior_leader_barchart':minority_senior_leader_barchart, 'minority_manager_s_s_leader_barchart':minority_manager_s_s_leader_barchart, 'minority_foreperson_leader_barchart':minority_foreperson_leader_barchart, 'minority_individual_contributor_leader_barchart':minority_individual_contributor_leader_barchart, 'aboriginal_executive_barchart':aboriginal_executive_barchart, 'aboriginal_senior_leader_barchart':aboriginal_senior_leader_barchart, 'aboriginal_manager_s_s_leader_barchart':aboriginal_manager_s_s_leader_barchart, 'aboriginal_foreperson_leader_barchart':aboriginal_foreperson_leader_barchart, 'aboriginal_individual_contributor_leader_barchart':aboriginal_individual_contributor_leader_barchart, 'disability_executive_barchart':disability_executive_barchart, 'disability_senior_leader_barchart':disability_senior_leader_barchart, 'disability_manager_s_s_leader_barchart':disability_manager_s_s_leader_barchart, 'disability_foreperson_leader_barchart':disability_foreperson_leader_barchart, 'disability_individual_contributor_leader_barchart':disability_individual_contributor_leader_barchart,
+		'c_sex_executive_barchart':c_sex_executive_barchart, 'c_sex_senior_leader_barchart':c_sex_senior_leader_barchart, 'c_sex_manager_s_s_leader_barchart':c_sex_manager_s_s_leader_barchart, 'c_sex_foreperson_leader_barchart':c_sex_foreperson_leader_barchart, 'c_sex_individual_contributor_leader_barchart':c_sex_individual_contributor_leader_barchart, 'c_minority_executive_barchart':c_minority_executive_barchart, 'c_minority_senior_leader_barchart':c_minority_senior_leader_barchart, 'c_minority_manager_s_s_leader_barchart':c_minority_manager_s_s_leader_barchart, 'c_minority_foreperson_leader_barchart':c_minority_foreperson_leader_barchart, 'c_minority_individual_contributor_leader_barchart':c_minority_individual_contributor_leader_barchart, 'c_aboriginal_executive_barchart':c_aboriginal_executive_barchart, 'c_aboriginal_senior_leader_barchart':c_aboriginal_senior_leader_barchart, 'c_aboriginal_manager_s_s_leader_barchart':c_aboriginal_manager_s_s_leader_barchart, 'c_aboriginal_foreperson_leader_barchart':c_aboriginal_foreperson_leader_barchart, 'c_aboriginal_individual_contributor_leader_barchart':c_aboriginal_individual_contributor_leader_barchart, 'c_disability_executive_barchart':c_disability_executive_barchart, 'c_disability_senior_leader_barchart':c_disability_senior_leader_barchart, 'c_disability_manager_s_s_leader_barchart':c_disability_manager_s_s_leader_barchart, 'c_disability_foreperson_leader_barchart':c_disability_foreperson_leader_barchart, 'c_disability_individual_contributor_leader_barchart':c_disability_individual_contributor_leader_barchart,
+		}
+
+	if request.htmx:
+		return render(request, 'partials/chart.html', context)
+	return render(request, 'dddashboard/large_industry.html', context)
 
 # @login_required(login_url='login')
 # @allowed_users(allowed_roles=['customer'])

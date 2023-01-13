@@ -1577,7 +1577,94 @@ def c_disability_barchart_industrychart(position, company, cheight):
 
     return chart
 
+### company size  filter##
+def size_sex_barchart_industrychart(position, size, cheight):
+    gender_codes = ['M', 'F', 'O']
+    data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(company_size=size)).values('gender_code').annotate(count=Count('gender_code'))
 
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['gender_code'],
+            orientation='h',
+            marker=dict(
+                color=colour1 if d['gender_code'] == 'M' else colour2 if d['gender_code'] == 'F' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def size_minority_barchart_industrychart(position, size, cheight):
+    visible_minorities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(company_size=size)).values('visible_minorities').annotate(count=Count('visible_minorities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['visible_minorities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['visible_minorities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def size_aboriginal_barchart_industrychart(position, size, cheight):
+    aboriginal_peoples = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(company_size=size)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['aboriginal_peoples'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['aboriginal_peoples'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
+
+def size_disability_barchart_industrychart(position, size, cheight):
+    person_with_disabilities = ['Y', 'N']
+    data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(company_size=size)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
+
+    fig = go.Figure()
+    for d in data:
+        fig.add_trace(go.Bar(
+            y=[position],
+            x=[d['count']],
+            name=d['person_with_disabilities'],
+            orientation='h',
+            marker=dict(
+                color=colour2 if d['person_with_disabilities'] == 'Y' else colour3,
+            ), 
+            hovertemplate=d['count'],
+        ))
+    customize_chart(fig, cheight)
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+
+    return chart
 
 
 def contextCreator(dashboardusercompany):
@@ -1669,4 +1756,65 @@ def contextCreator(dashboardusercompany):
 
 	return context
 
+def size_Companydata_sex_donut_industrychart(size):
+    male = CompanyData.objects.filter(gender_code='M', company_size=size).count()
+    female = CompanyData.objects.filter(gender_code='F', company_size=size).count()
+    other = CompanyData.objects.filter(gender_code='O', company_size=size).count()
+    total = CompanyData.objects.filter(name=company).count()
+
+
+    labels = ['Male','Female','Other']
+    values = [male, female, other]
+    colors = [colour1, colour2, colour3]
+
+        # hole_info 
+    hole_info = ((female*100)/total)
+    hole_info = str(round(hole_info))+str('%')
+    print(hole_info)
+
+
+            # Use `hole` to create a donut-like pie chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+        annotations=[ 
+        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+        dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+         )
+    
+    
+    fig.update_traces(textinfo='none')
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+    return chart, hole_info
+
+def size_Companydata_create_donut_chart(field_name, size):
+    # Get the count of 'Y' and 'N' values for the field
+    data = CompanyData.objects.filter(company_size=size).values(field_name).annotate(count=Count(field_name))
+    yes_count = next((item for item in data if item[field_name] == 'Y'), {'count': 0})['count']
+    no_count = next((item for item in data if item[field_name] == 'N'), {'count': 0})['count']
+    total = yes_count + no_count
+
+    labels = ['Yes','No']
+    values = [yes_count, no_count]
+    colors = [colour2, colour3]
+
+    # hole_info
+    hole_info = ((yes_count*100)/total)
+    hole_info = str(round(hole_info)) + '%'
+
+    # Create the donut chart
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors=colors))])
+    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+        annotations=[ 
+        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+        dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+         )
+
+    # Disable hover text
+    fig.update_traces(textinfo='none')
+    config = {'displayModeBar': False}
+    chart = fig.to_html(config=config, default_height='175')
+
+    return chart, hole_info
 
