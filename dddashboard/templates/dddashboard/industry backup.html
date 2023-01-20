@@ -22,20 +22,25 @@
                                         <div class="is-layout-flex wp-container-70 wp-block-columns main-section1 site-container">
                                             <div class="is-layout-flow wp-block-column">
                                                 <h1>DIVERSITY DATA DASHBOARD</h1>
-                                                <form>
-                                                    <select class="dashboard-select" onchange="location = this.value;"> 
-                                                        <option value="{% url 'industry' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'industry' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'small_industry' %}">SMALL</option>
-                                                        <!--option value="{{medium}}">MEDIUM</option-->
-                                                        <option value="{% url 'large_industry' %}">LARGE</option>
-                                                    </select>
+                                                <form action="{{filter}}">
+                                                <select id="select-size" 
+                                                class="dashboard-select"
+                                                name="size"
+                                                autocomplete="off"
+                                                hx-get="{% url 'industry' %}"
+                                                hx-target="{% url 'industry' %}"
+                                                onchange="this.form.submit();"> 
+                                                    <option value="{% url 'industry' %}">ALL COMPANY SIZES</a>
+                                                    <option href="{% url 'small_industry' %}" type="submit">SMALL</a>
+                                                    <!--option value="{{medium}}">MEDIUM</option-->
+                                                    <option href="{% url 'large_industry' %}" type="submit">LARGE</a>
+                                                </select>
                                                 </form>
                                                 <form action=""></form>
 
                                                 <div class="is-layout-flex wp-container-34 wp-block-columns section">
                                                     <div class="is-layout-flow wp-block-column overview">
-                                                        <h3 class="header">SMALL INDUSTRY OVERVIEW</h3>
+                                                        <h3 class="header">INDUSTRY OVERVIEW</h3>
 
 
 

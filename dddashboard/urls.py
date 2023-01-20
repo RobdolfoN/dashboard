@@ -26,10 +26,21 @@ urlpatterns = [
     path('large_industry/', views.large_industry, name='large_industry'),
     path('company/', views.company, name='company'),
     path('historical_data/', views.historicalData, name='historicaldata'),
+    
     path('demographic_variables/aboriginal.html', views.demographicAboriginal, name='demographic_aboriginal'),
     path('demographic_variables/persons_with_disabilities.html', views.demographicDisability, name='demographic_disability'),
     path('demographic_variables/sex.html', views.demographicSex, name='demographic_sex'),
     path('demographic_variables/visible_minority.html', views.demographicMinority, name='demographic_minority'),
+
+    path('demographic_variables/small_aboriginal.html', views.small_demographicAboriginal, name='small_demographic_aboriginal'),
+    path('demographic_variables/small_persons_with_disabilities.html', views.small_demographicDisability, name='small_demographic_disability'),
+    path('demographic_variables/small_sex.html', views.small_demographicSex, name='small_demographic_sex'),
+    path('demographic_variables/small_visible_minority.html', views.small_demographicMinority, name='small_demographic_minority'),
+
+    path('demographic_variables/large_aboriginal.html', views.large_demographicAboriginal, name='large_demographic_aboriginal'),
+    path('demographic_variables/large_persons_with_disabilities.html', views.large_demographicDisability, name='large_demographic_disability'),
+    path('demographic_variables/large_sex.html', views.large_demographicSex, name='large_demographic_sex'),
+    path('demographic_variables/large_visible_minority.html', views.large_demographicMinority, name='large_demographic_minority'),
 
 
     path('upload/', views.uploadFile, name='upload'),

@@ -38,20 +38,514 @@
 			/*! This file is auto-generated */
 			!function (e, a, t) { var n, r, o, i = a.createElement("canvas"), p = i.getContext && i.getContext("2d"); function s(e, t) { var a = String.fromCharCode, e = (p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, e), 0, 0), i.toDataURL()); return p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, t), 0, 0), e === i.toDataURL() } function c(e) { var t = a.createElement("script"); t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t) } for (o = Array("flag", "emoji"), t.supports = { everything: !0, everythingExceptFlag: !0 }, r = 0; r < o.length; r++)t.supports[o[r]] = function (e) { if (p && p.fillText) switch (p.textBaseline = "top", p.font = "600 32px Arial", e) { case "flag": return s([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) ? !1 : !s([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !s([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]); case "emoji": return !s([129777, 127995, 8205, 129778, 127999], [129777, 127995, 8203, 129778, 127999]) }return !1 }(o[r]), t.supports.everything = t.supports.everything && t.supports[o[r]], "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]); t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function () { t.DOMReady = !0 }, t.supports.everything || (n = function () { t.readyCallback() }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () { "complete" === a.readyState && t.readyCallback() })), (e = t.source || {}).concatemoji ? c(e.concatemoji) : e.wpemoji && e.twemoji && (c(e.twemoji), c(e.wpemoji))) }(window, document, window._wpemojiSettings);
 		</script>
-		<style type="text/css">
-			img.wp-smiley,
-			img.emoji {
-				display: inline !important;
-				border: none !important;
-				box-shadow: none !important;
-				height: 1em !important;
-				width: 1em !important;
-				margin: 0 0.07em !important;
-				vertical-align: -0.1em !important;
-				background: none !important;
-				padding: 0 !important;
-			}
-		</style>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: 'Roboto Condensed', sans-serif !important;
+            }
+
+            @media (max-width: 1199px) {
+                .mobile-menu-active .main-navigation {
+                    top: 0 !important;
+                    padding-top: 10px;
+                    height: 100vh !important;
+                }
+
+                .menuStyle2 .mobile-menu-toggle_lines,
+                .menuStyle2 .mobile-menu-toggle_lines:before,
+                .menuStyle2 .mobile-menu-toggle_lines:after {
+                    transition: none !important;
+                }
+
+                .action-slider-social-wrapper {
+                    width: auto;
+                }
+
+                .mobile-menu-active .main-navigation {
+                    z-index: 120 !important;
+                }
+
+                .footer-copyright {
+                    font-size: .9em !important;
+                }
+
+                .main-navigation ul .subnav-toggle {
+                    height: auto;
+                    padding-top: 4px;
+                }
+            }
+
+            h1 {
+                margin-bottom: 10px;
+                font-size: 40px !important;
+            }
+
+            h3,
+            h4 {
+                color: var(--darkBlue);
+            }
+
+            p {
+                font-size: 1em !important;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            .main-navigation ul ul li {
+                border-bottom: 1px solid #ffffff !important;
+            }
+
+            .main-navigation ul ul li {
+                padding: 10px;
+            }
+
+            .site-header {
+                padding: 0;
+            }
+
+            .site-main {
+                padding-top: 50px;
+            }
+
+            .weight-light {
+                font-weight: 400 !important;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-bottom {
+                padding-bottom: 50px;
+            }
+
+            .site-container {
+                padding: 0 75px;
+            }
+
+            .overview-inner-wrapper {
+                background: var(--lightestBlue);
+                padding: 60px 30px;
+                border-radius: 10px;
+            }
+
+            .overview {
+                position: relative;
+            }
+
+            .yellow-btn a,
+            .form-yellow-btn {
+                border-radius: 7px;
+                background: var(--siteYellow);
+                color: var(--darkestBlue) !important;
+                padding: 5px 20px;
+                font-size: 1em;
+            }
+
+            .form-yellow-btn:hover {
+                background: var(--siteYellow);
+            }
+
+            .vertical-title {
+                transform: rotate(180deg);
+                writing-mode: vertical-rl;
+                color: var(--darkestBlue);
+                position: absolute;
+                top: 60%;
+                left: 0;
+            }
+
+            .circle {
+                max-width: 150px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .small-circle {
+                max-width: 100px;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .small-circle figcaption {
+                color: var(--darkestBlue);
+                font-size: 12px;
+                margin-top: 20px;
+            }
+
+            .bar {
+                max-width: 220px;
+                margin: 0 auto !important;
+            }
+
+            .big-bar img {
+                max-width: 500px;
+            }
+
+            .bar figcaption {
+                font-size: 12px;
+                margin-top: 2px;
+            }
+
+            .circle-title {
+                color: var(--darkBlue);
+                font-weight: 500;
+                font-size: 18px;
+                padding-top: 20px;
+                min-height: 70px;
+            }
+
+            .single-item-info {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .single-item-info img {
+                width: 12px;
+                margin-right: 5px;
+            }
+
+            .single-item-info span {
+                font-size: 14px;
+            }
+
+            .graph-info-colors {
+                display: flex;
+                max-width: 220px;
+                flex-wrap: wrap;
+                margin: 0 auto;
+                flex-wrap: wrap;
+                padding-bottom: 30px;
+            }
+
+            .single-graph {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .multi-graph-wrapper {
+                width: 100%;
+            }
+
+            select.dashboard-select {
+                border: 1px solid var(--darkestBlue);
+                border-radius: 5px;
+                padding: 5px 10px;
+                color: var(--darkestBlue);
+                font-size: 14px;
+                background: white;
+            }
+
+            .max-width-display {
+                max-width: 1400px;
+                margin: 0 auto !important;
+            }
+
+            .bar-title {
+                color: var(--darkBlue);
+                font-weight: 500;
+                font-size: 18px;
+                padding-bottom: 10px;
+            }
+
+            .right-devider {
+                border-right: 1px solid var(--lightBlue);
+                padding-right: 2em;
+            }
+
+            .mytab-wrapper {
+                margin-top: 50px !important;
+            }
+
+            .mytab-title {
+                color: var(--darkestBlue);
+                text-decoration: underline;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                position: relative;
+                width: fit-content;
+                cursor: pointer;
+            }
+
+            .mytab-title::after {
+                content: '\f077';
+                position: absolute;
+                right: -30px;
+                top: 0;
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                color: var(--darkestBlue);
+            }
+
+            .mytab-wrapper.close-mytab .mytab-title::after {
+                content: '\f078';
+            }
+
+            .mytab-body {
+                width: fit-content;
+                flex-wrap: nowrap !important;
+                min-height: 100%;
+                max-height: 150px;
+                opacity: 1;
+                transition: .2s linear all;
+            }
+
+            .mytab-wrapper.close-mytab .mytab-body {
+                min-height: 0;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+            }
+
+            .bar-labels-wrapper {
+                display: flex;
+                align-items: end;
+                flex-basis: 150px !important;
+                flex-grow: 0 !important;
+            }
+
+            .bar-labels-wrapper p {
+                font-size: 14px !important;
+            }
+
+            /* Login */
+            .login-wrapper:where(.wp-block-columns.is-layout-flex) {
+                gap: 0;
+            }
+
+            .page-id-1333 .site-content .container {
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .page-id-1333 .site-main {
+                padding-top: 0;
+            }
+
+            .login-image {
+                background-image: url(/wp-content/uploads/2022/11/BCMEA_Dashboard_Login.jpg);
+                min-height: 300px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: top;
+            }
+
+            .login-form {
+                background: var(--lightestBlue);
+                height: 70vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .login-form form {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            /* Form */
+            .wdei-form .field-group {
+                display: flex;
+                flex-direction: column;
+                padding: 8px 0;
+            }
+
+            .wdei-form .field-group label,
+            .wdei-form .field-group p,
+            .wdei-form .field-group a,
+            .wdei-form .field-group input::placeholder {
+                color: var(--darkestBlue);
+            }
+
+            .wdei-form .field-group a {
+                text-decoration: underline;
+            }
+
+            .wdei-form .field-group label {
+                margin-bottom: 0;
+            }
+
+            .wdei-form input[type="text"],
+            .wdei-form input[type="email"],
+            .wdei-form input[type="password"] {
+                border: 1px solid var(--darkestBlue);
+                border-radius: 10px;
+                background: none !important;
+                padding: 7px 15px;
+            }
+
+            @media(max-width:1200px) {
+                .bar-labels-wrapper {
+                    display: none;
+                }
+            }
+
+            @media(max-width:820px) {
+                main h1 {
+                    font-size: 2.5em !important;
+                }
+
+                .overview-inner-wrapper {
+                    border-radius: 0 0 10px 10px;
+                }
+
+                .overview .header {
+                    background: var(--lightestBlue);
+                    border-radius: 10px;
+                    margin-bottom: 0;
+                    padding: 15px 20px;
+                }
+
+                .collapsible {
+                    background: var(--lightestBlue);
+                    border-radius: 10px;
+                }
+
+                .section {
+                    padding: 30px 0;
+                }
+
+                .section-bottom {
+                    padding-bottom: 30px;
+                }
+
+                .site-container {
+                    padding: 0 15px;
+                }
+
+                .login-form {
+                    height: auto;
+                }
+
+                .overview-inner-wrapper {
+                    padding: 30px 20px;
+                }
+            }
+
+            @media(max-width: 781px) {
+                header .site-branding img {
+                    max-width: 250px;
+                }
+
+                .multi-graph-wrapper {
+                    flex-wrap: nowrap !important;
+                }
+
+                .vertical-title-wrapper {
+                    display: none !important;
+                }
+
+                .right-devider {
+                    border-right: none;
+                    padding-right: 0;
+                }
+
+                .collapsible h3.header {
+                    font-size: 1.2em;
+                    cursor: pointer;
+                }
+
+                .collapsible .overview-inner-wrapper {}
+
+                .collapsible .close-tab {
+                    height: 0;
+                    overflow: hidden;
+                    padding: 0;
+                }
+
+                .collapsible .overview-inner-wrapper::after {
+                    position: absolute;
+                    right: 30px;
+                    top: 15px;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    color: var(--darkBlue);
+                }
+
+                .collapsible .overview-inner-wrapper.close-tab::after {
+                    content: '\f078';
+                }
+
+                .collapsible .overview-inner-wrapper::after {
+                    content: '\f077';
+                }
+
+                .top-divider {
+                    border-top: 1px solid var(--lightBlue);
+                    padding-top: 2em;
+                }
+
+                .section {
+                    padding: 20px 0;
+                }
+
+                .section-bottom {
+                    padding-bottom: 20px;
+                }
+
+                .big-bar h4 {
+                    font-size: 1.1em;
+                }
+
+                .mytab-wrapper {
+                    margin-top: 30px !important;
+                }
+            }
+
+            @media(max-width:600px) {
+                main h1 {
+                    font-size: 30px !important;
+                }
+
+                main p {
+                    font-size: 1em !important;
+                }
+
+                header .site-branding img {
+                    max-width: 220px;
+                }
+
+                .collapsible h3.header {
+                    font-size: 1.05em;
+                }
+
+                .overview-inner-wrapper {
+                    padding: 10px 20px 20px;
+                }
+            }
+
+            @media(min-width: 781px) {
+
+                header .site-branding img,
+                .is-sticky .site-header .custom-logo-link img {
+                    max-width: 400px !important;
+                }
+
+                #primary-menu li a {
+                    font-size: 1.1em !important;
+                }
+            }
+
+            @media(min-width: 1200px) {
+                .manage-lable .bar {
+                    margin: 18px auto !important;
+                }
+
+                .manage-lable .bar figcaption {
+                    display: none;
+                }
+            }
+        </style>
 		<link rel='stylesheet' id='airi-bootstrap-css'
 			href='https://wdei.hotsoupcreative.com/wp-content/themes/airi/css/bootstrap/bootstrap.min.css?ver=1'
 			type='text/css' media='all' />
@@ -1676,65 +2170,67 @@
 							</button>
 						</div>
 
-						<div class="d-flex justify-content-end col-md-8">
+                        <div class="d-flex justify-content-end col-md-8">
 
-							<nav id="site-navigation" class="main-navigation">
+                            <nav id="site-navigation" class="main-navigation">
 
-								<!-- adding the header logo to the mobile menu -->
-								<header id="masthead" class="site-header mobile-nav">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="site-branding col-md-4 col-sm-6 col-9">
-												<a href="https://www.waterfrontdei.com/" class="custom-logo-link"
-													rel="home" aria-current="page"><img width="1042" height="277"
-														src="https://bcmea.hotsoupcreative.com/wp-content/uploads/2021/10/BCMEA_Assets_Logo_White.png"
-														class="custom-logo" alt="BCMEA"
-														sizes="(max-width: 1042px) 100vw, 1042px"></a>
-											</div><!-- .site-branding -->
-										</div>
-									</div>
-								</header><!-- #masthead -->
+                                <!-- adding the header logo to the mobile menu -->
+                                <header id="masthead" class="site-header mobile-nav">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="site-branding col-md-4 col-sm-6 col-9">
+                                                <a href="https://www.waterfrontdei.com/" class="custom-logo-link"
+                                                    rel="home" aria-current="page"><img width="1042" height="277"
+                                                        src="https://bcmea.hotsoupcreative.com/wp-content/uploads/2021/10/BCMEA_Assets_Logo_White.png"
+                                                        class="custom-logo" alt="BCMEA"
+                                                        sizes="(max-width: 1042px) 100vw, 1042px"></a>
+                                            </div><!-- .site-branding -->
+                                        </div>
+                                    </div>
+                                </header><!-- #masthead -->
 
                                 <div class="menu-main-container">
                                     <ul id="primary-menu" class="menu">
                                         <li id="menu-item-1330" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1082 current_page_item menu-item-1330">
-                                            <a href="{% url 'industry' %}">Industry</a>
+                                            <a href="{% url 'industry' %}"  aria-current="page">Industry</a>
                                         </li>
                                         <li id="menu-item-1331" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1331">
                                             <a href="{% url 'company' %}">Company</a>
                                         </li>
-                                        <li id="menu-item-1331" class="nav-item dropdown menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1267 current_page_item menu-item-1332">
-                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Demographic Variables
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_sex' %}">Sex</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_minority' %}">Visible Minority</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_aboriginal' %}">Aboriginal</a></li>
-                                                  <li><a class="dropdown-item" href="{% url 'demographic_disability' %}">Persons with Disabilities</a></li>
-                                                </ul>
-                                            </li>
+                                        <li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1332">
+                                            <a href="">Demographic Variables</a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-1411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1411">
+                                                    <a href="{% url 'demographic_sex' %}">Sex</a></li>
+                                                <li id="menu-item-1412" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1412">
+                                                    <a href="{% url 'demographic_minority' %}">Visible Minority</a></li>
+                                                <li id="menu-item-1413" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1413">
+                                                    <a href="{% url 'demographic_aboriginal' %}">Aboriginal</a></li>
+                                                <li id="menu-item-1414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1414">
+                                                    <a href="{% url 'demographic_disability' %}">Persons with Disabilities</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
-							</nav><!-- #site-navigation -->
+                            </nav><!-- #site-navigation -->
 
-							<div class="header-search-wrapper d-none d-xl-flex">
-								<div class="header-search-form">
-									<form role="search" method="get" class="search-form"
-										action="https://wdei.hotsoupcreative.com/">
-										<label>
-											<span class="screen-reader-text">Search for:</span>
-											<input type="search" class="search-field" placeholder="Search &hellip;"
-												value="" name="s" />
-										</label>
-										<input type="submit" class="search-submit" value="Search" />
-									</form>
-								</div>
-								<div class="header-search">
-									<div class="header-search-toggle"><a><i class="fas fa-search"></i></a></div>
-								</div>
-							</div>
-						</div>
+                            <div class="header-search-wrapper d-none d-xl-flex">
+                                <div class="header-search-form">
+                                    <form role="search" method="get" class="search-form"
+                                        action="https://wdei.hotsoupcreative.com/">
+                                        <label>
+                                            <span class="screen-reader-text">Search for:</span>
+                                            <input type="search" class="search-field" placeholder="Search &hellip;"
+                                                value="" name="s" />
+                                        </label>
+                                        <input type="submit" class="search-submit" value="Search" />
+                                    </form>
+                                </div>
+                                <div class="header-search">
+                                    <div class="header-search-toggle"><a><i class="fas fa-search"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
 
 					</div>
 				</div>
@@ -1776,7 +2272,7 @@
 														<form action="" method="POST" class="wdei-form">
 															{% csrf_token %}
 															<div class="field-group">
-																<label for="email">User name</label>
+																<label for="email">Username</label>
 																<input type="text" placeholder="Username..."
 																	name="username" required="">
 															</div>
@@ -1786,15 +2282,14 @@
 																	placeholder="Password..."
 																	name="password" required="">
 															</div>
-															<div class="field-group">
+															<!-- <div class="field-group">
 																<label>
 																	<input type="checkbox" name="remember"> Keep me
 																	logged in
 																</label>
-															</div>
+															</div> -->
 															<div class="field-group">
-																<p>Login as admin <a href="https://wdeidashboard.up.railway.app/admin/login/">click
-																		here.</a></p>
+																<p><a href="{% url 'admin:login' %}">Login as Admin</a></p>
 															</div>
 															<div class="text-center mt-4">
 																<button type="submit" class="btn form-yellow-btn">LOG

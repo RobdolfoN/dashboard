@@ -39,6 +39,7 @@ class DataForm(forms.Form):
 
 		company_name = forms.CharField()
 		company_size = forms.ChoiceField(choices=size_choices, required=False)
+		year_collected = forms.IntegerField(required=True)
 		file = forms.FileField()
 
 # class CompanySizeform(forms.Form):

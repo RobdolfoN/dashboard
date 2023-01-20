@@ -27,7 +27,7 @@ class Dashboard_user(models.Model):
     # company = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
     # profile_pic = models.ImageField(default="profile1.png", null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    # date_created = models.DateTimeField(auto_now_add=True, null=True)
     company_name = models.ForeignKey('CompanyName', on_delete=models.CASCADE, null=True, blank=False)
     user_group = models.ForeignKey(Group, null=True, on_delete=models.CASCADE)
     # user_group = models.OneToOneField(null=True, on_delete=models.CASCADE, choices=UserGroup.choices)
@@ -83,7 +83,7 @@ class Dashboard_user(models.Model):
 # 		return self.product.name
 
 class CompanyName(models.Model):
-	name = models.CharField(max_length=200, null=True, blank=False)
+	name = models.CharField(max_length=300, null=True, blank=False)
 
 	def __str__(self):
 		return self.name
@@ -104,9 +104,7 @@ class CompanyName(models.Model):
 
 
 class CompanyData(models.Model):
-
-    
-
+      
 
     name = models.ForeignKey(
         'CompanyName',
@@ -115,6 +113,9 @@ class CompanyData(models.Model):
         blank=False,
     )
 
+    class Meta:
+        verbose_name = "Company Data"
+        verbose_name_plural = "Company Data"
 
     class sizes(models.TextChoices):
         small = 'small', _('small')
@@ -123,7 +124,7 @@ class CompanyData(models.Model):
         
 
     company_size = models.CharField(
-        max_length=50,
+        max_length=100,
         choices=sizes.choices,
         null=True,
         )
@@ -134,7 +135,7 @@ class CompanyData(models.Model):
         Other = 'O', _('Other')
 
     gender_code = models.CharField(
-        max_length=1,
+        max_length=6,
         choices=GenderCode.choices,
         null=True,
     )
@@ -145,7 +146,7 @@ class CompanyData(models.Model):
         no = 'N', _('No')
 
     aboriginal_peoples = models.CharField(
-        max_length=1,
+        max_length=3,
         choices=AboriginalPeoples.choices,
         null=True,
     )
@@ -155,7 +156,7 @@ class CompanyData(models.Model):
         no = 'N', _('No')
 
     visible_minorities = models.CharField(
-        max_length=1,
+        max_length=3,
         choices=VisibleMinorities.choices,
         null=True,
     )
@@ -165,7 +166,7 @@ class CompanyData(models.Model):
         no = 'N', _('No')
 
     person_with_disabilities = models.CharField(
-        max_length=1,
+        max_length=3,
         choices=PersonWithDisabilities.choices,
         null=True,
     )
@@ -178,10 +179,12 @@ class CompanyData(models.Model):
         individual_contributor = 'Individual Contributor', _('Individual Contributor')
 
     position_category = models.CharField(
-        max_length=200,
+        max_length=500,
         choices=PositionCategory.choices,
         null=True,
     )
+
+    year_created = models.IntegerField(null=False)
 
 
 
