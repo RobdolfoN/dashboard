@@ -1679,7 +1679,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="site-branding col-md-4 col-sm-6 col-9">
-                            <a href="https://wdei.hotsoupcreative.com/" class="custom-logo-link" rel="home"><img
+                            <a href="{% url 'industry' %}" class="custom-logo-link" rel="home"><img
                                     width="1042" height="277"
                                     src="https://wdei.hotsoupcreative.com/wp-content/uploads/2021/10/BCMEA_Assets_Logo_Nav-1.png"
                                     class="custom-logo" alt="Waterfront Council" decoding="async"
@@ -1733,6 +1733,9 @@
                                                 <li id="menu-item-1414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1414">
                                                     <a href="{% url 'demographic_disability' %}">Persons with Disabilities</a></li>
                                             </ul>
+                                        </li>
+                                        <li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1331">
+                                            <a href="{% url 'logout' %}">logout</a>
                                         </li>
                                     </ul>
                                 </div>
