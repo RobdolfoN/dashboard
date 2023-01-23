@@ -2004,26 +2004,48 @@ def Companydata_sex_donut_industrychart(company):
     values = [male, female, other]
     colors = [colour1, colour2, colour3]
 
-        # hole_info 
-    hole_info = ((female*100)/total)
-    hole_info = str(round(hole_info))+str('%')
-    print(hole_info)
+    if total is not 0:
+
+            # hole_info 
+        hole_info = ((female*100)/total)
+        hole_info = str(round(hole_info))+str('%')
+        print(hole_info)
 
 
-            # Use `hole` to create a donut-like pie chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
-    
-    
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+                # Use `hole` to create a donut-like pie chart
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+        fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+            annotations=[ 
+            dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+            dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            )
+        
+        
+        fig.update_traces(textinfo='none')
+        config = {'displayModeBar': False}
+        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
-    return chart, hole_info
+        return chart, hole_info
+
+    else:
+
+                        # Use `hole` to create a donut-like pie chart
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
+        fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+            annotations=[ 
+            dict(text='No Company Info', x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+            dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            )
+        
+        
+        fig.update_traces(textinfo='none')
+        config = {'displayModeBar': False}
+        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+
+        return chart, "No Company info"
+
+
+
 
 def Companydata_create_donut_chart(field_name, company):
     # Get the count of 'Y' and 'N' values for the field
@@ -2037,24 +2059,45 @@ def Companydata_create_donut_chart(field_name, company):
     values = [yes_count, no_count]
     colors = [colour2, colour3]
 
-    # hole_info
-    hole_info = ((yes_count*100)/total)
-    hole_info = str(round(hole_info)) + '%'
+    if total is not 0:
 
-    # Create the donut chart
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors=colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
-        annotations=[ 
-        dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-         )
+        # hole_info
+        hole_info = ((yes_count*100)/total)
+        hole_info = str(round(hole_info)) + '%'
 
-    # Disable hover text
-    fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-    chart = fig.to_html(config=config, default_height='175')
+        # Create the donut chart
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors=colors))])
+        fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+            annotations=[ 
+            dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+            dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            )
 
-    return chart, hole_info
+        # Disable hover text
+        fig.update_traces(textinfo='none')
+        config = {'displayModeBar': False}
+        chart = fig.to_html(config=config, default_height='175')
+
+        return chart, hole_info
+
+    else:
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors=colors))])
+        fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+            annotations=[ 
+            dict(text="No Company Info", x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
+            dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            )
+
+        # Disable hover text
+        fig.update_traces(textinfo='none')
+        config = {'displayModeBar': False}
+        chart = fig.to_html(config=config, default_height='175')
+
+        return chart, "No Company Info"
+
+
+
+    
 
 def customize_chart(fig, cheight):
     fig.update_layout(

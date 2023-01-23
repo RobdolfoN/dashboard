@@ -7,6 +7,7 @@ from .models import *
 # admin.site.register(Customer)
 admin.site.register(Dashboard_user)
 admin.site.register(CompanyData)
+admin.site.register(CompanyName)
 # admin.site.register(Tag)
 # admin.site.register(Order)
 
