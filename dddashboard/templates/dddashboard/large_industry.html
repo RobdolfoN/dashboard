@@ -24,11 +24,13 @@
                                                 <h1>DIVERSITY DATA DASHBOARD</h1>
                                                 <form>
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
-                                                        <option value="{% url 'industry' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'industry' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'small_industry' %}">SMALL</option>
+                                                        <!--option value="{% url 'industry' %}">ALL COMPANY SIZES</option-->
+                                                        <!--option value="{% url 'small_industry' %}">SMALL</option-->
                                                         <!--option value="{{medium}}">MEDIUM</option-->
                                                         <option value="{% url 'large_industry' %}">LARGE</option>
+                                                        <option value="{% url 'small_industry' %}">SMALL</option>
+                                                        <option value="{% url 'industry' %}">ALL COMPANY SIZES</option>
+
                                                     </select>
                                                 </form>
                                                 <form action=""></form>
@@ -429,7 +431,7 @@
 
                                                 <div class="is-layout-flex wp-container-68 wp-block-columns section">
                                                     <div class="is-layout-flow wp-block-column overview">
-                                                        <h3 class="header">COMPANY OVERVIEW</h3>
+                                                        <h3 class="header">{{companyname}} OVERVIEW</h3>
 
 
 

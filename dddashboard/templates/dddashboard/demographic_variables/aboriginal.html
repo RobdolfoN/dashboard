@@ -1574,10 +1574,10 @@
                                                 <form>
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
                                                         <option value="{% url 'demographic_aboriginal' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'demographic_aboriginal' %}">ALL COMPANY SIZES</option>
                                                         <option value="{% url 'small_demographic_aboriginal' %}">SMALL</option>
                                                         <!--option value="{{medium}}">MEDIUM</option-->
                                                         <option value="{% url 'large_demographic_aboriginal' %}">LARGE</option>
+                                                        <!--option value="{% url 'demographic_aboriginal' %}">ALL COMPANY SIZES</option-->
                                                     </select>
                                                 </form>
 
@@ -1620,19 +1620,19 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-4 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title"> HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title"> HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
 																						<div class="is-layout-flex wp-container-8 wp-block-columns mytab-body">
-																							<div class="is-layout-flow wp-block-column">
+																							<!--div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px; max-height: 470px;" decoding="async" loading="lazy">
                                                                                                     {{ aboriginal_executive_second_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">{{year_info}}</figcaption>
 																								</figure>
-																							</div>
+																							</div-->
 
 
 
@@ -1670,7 +1670,7 @@
 																				<div class="is-layout-flex wp-container-15 wp-block-columns">
 																					<div class="is-layout-flow wp-block-column big-bar">
 																						<h4 class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -1686,21 +1686,21 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-17 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title"> HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title"> HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-21 wp-block-columns mytab-body">
-																							<div class="is-layout-flow wp-block-column">
+																						<!--div class="is-layout-flex wp-container-21 wp-block-columns mytab-body">
+																							<!--div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" decoding="async" loading="lazy">
                                                                                                         {{ Companydata_executive_aboriginal_second_mostrecent_dchart1|safe }}   
 																									<figcaption class="wp-element-caption">
 																										{{year_info}}
 																									</figcaption>
 																								</figure>
-																							</div>
+																							</div-->
 
 
 
@@ -1723,7 +1723,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div>
 																				</div>
 																			</div>
@@ -1781,13 +1781,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-35 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-39 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-39 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" loading="lazy">
                                                                                                     {{ aboriginal_senior_leader_second_mostrecent_dchart1|safe }}
@@ -1818,7 +1818,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div>
 																				</div>
 																			</div>
@@ -1838,7 +1838,7 @@
 																						class="is-layout-flow wp-block-column big-bar">
 																						<h4
 																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -1854,13 +1854,13 @@
                                                                                     <div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
                                                                                        <div class="is-layout-flex wp-container-48 wp-block-columns mytab-header">
                                                                                            <div class="is-layout-flow wp-block-column">
-                                                                                               <p class="mytab-title">HISTORICAL TRENDS</p>
+                                                                                               <!--p class="mytab-title">HISTORICAL TRENDS</p-->
                                                                                            </div>
                                                                                        </div>
 
 
 
-                                                                                       <div class="is-layout-flex wp-container-52 wp-block-columns mytab-body">
+                                                                                       <!--div class="is-layout-flex wp-container-52 wp-block-columns mytab-body">
                                                                                            <div class="is-layout-flow wp-block-column">
                                                                                                <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                    {{ Companydata_senior_leader_aboriginal_second_mostrecent_dchart1|safe }}
@@ -1891,7 +1891,7 @@
                                                                                                    </figcaption>
                                                                                                </figure>
                                                                                            </div> -->
-                                                                                       </div>
+                                                                                       </div-->
                                                                                    </div>
                                                                                </div>
                                                                            </div>
@@ -1946,13 +1946,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-66 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-70 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-70 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
                                                                                                 <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                     {{ aboriginal_manager_s_s_second_mostrecent_dchart1|safe }}																									<figcaption
@@ -1983,7 +1983,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div>
 																				</div>
 																			</div>
@@ -2003,7 +2003,7 @@
 																						class="is-layout-flow wp-block-column big-bar">
 																						<h4
 																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2019,13 +2019,13 @@
                                                                                     <div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
                                                                                        <div class="is-layout-flex wp-container-79 wp-block-columns mytab-header">
                                                                                            <div class="is-layout-flow wp-block-column">
-                                                                                               <p class="mytab-title">HISTORICAL TRENDS</p>
+                                                                                               <!--p class="mytab-title">HISTORICAL TRENDS</p-->
                                                                                            </div>
                                                                                        </div>
 
 
 
-                                                                                        <div class="is-layout-flex wp-container-83 wp-block-columns mytab-body">
+                                                                                        <!--div class="is-layout-flex wp-container-83 wp-block-columns mytab-body">
                                                                                             <div class="is-layout-flow wp-block-column">
                                                                                                <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                    {{ Companydata_manager_s_s_aboriginal_second_mostrecent_dchart1|safe }}
@@ -2056,7 +2056,7 @@
                                                                                                    </figcaption>
                                                                                                </figure>
                                                                                            </div> -->
-                                                                                       </div> 
+                                                                                       </div--> 
                                                                                    </div>
                                                                                </div>
                                                                            </div>
@@ -2110,13 +2110,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-97 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-101 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-101 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									{{ aboriginal_foreperson_leader_second_mostrecent_dchart1|safe }}
@@ -2147,7 +2147,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div> 
 																				</div>
 																			</div>
@@ -2166,7 +2166,7 @@
 																					<div
 																						class="is-layout-flow wp-block-column big-bar">
 																						<h4 class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2182,13 +2182,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-110 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-114 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-114 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									{{ Companydata_foreperson_leader_aboriginal_second_mostrecent_dchart1|safe }}
@@ -2219,7 +2219,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div> 
+																						</div--> 
 																					</div> 
 																				</div>
 																			</div>
@@ -2275,13 +2275,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-128 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-132 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-132 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                         {{ aboriginal_individual_contributor_second_mostrecent_dchart1|safe }}
@@ -2312,7 +2312,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div> 
 																				</div>
 																			</div>
@@ -2332,7 +2332,7 @@
 																						class="is-layout-flow wp-block-column big-bar">
 																						<h4
 																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2348,13 +2348,13 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-141 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<p class="mytab-title">HISTORICAL TRENDS</p>
+																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<div class="is-layout-flex wp-container-145 wp-block-columns mytab-body">
+																						<!--div class="is-layout-flex wp-container-145 wp-block-columns mytab-body">
 																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									
@@ -2386,7 +2386,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div>
+																						</div-->
 																					</div>
 																				</div>
 																			</div>

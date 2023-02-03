@@ -1573,11 +1573,12 @@
 												<h1><span class="weight-light">VISIBLE MINORITY/</span>DETAILS</h1>
                                                 <form>
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
-                                                        <option value="{% url 'demographic_minority' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'demographic_minority' %}">ALL COMPANY SIZES</option>
-                                                        <option value="{% url 'small_demographic_minority' %}">SMALL</option>
+                                                        <!--option value="{% url 'demographic_minority' %}">ALL COMPANY SIZES</option-->
+                                                        
                                                         <!--option value="{{medium}}">MEDIUM</option-->
                                                         <option value="{% url 'large_demographic_minority' %}">LARGE</option>
+                                                        <option value="{% url 'small_demographic_minority' %}">SMALL</option>
+                                                        <option value="{% url 'demographic_minority' %}">ALL COMPANY SIZES</option>
                                                     </select>
                                                 </form>
 
@@ -1618,7 +1619,7 @@
 
 
 																				<div class="is-layout-flex wp-container-10 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-4 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -1637,7 +1638,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							 <div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" decoding="async" loading="lazy">
                                                                                                     {{ sex_executive_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption"> {{year_info}}
@@ -1653,9 +1654,9 @@
 																									<figcaption class="wp-element-caption"> {{year_info}}
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div>
+																					</div-->
 																				</div>
 																			</div>
 																		</div>
@@ -1671,7 +1672,7 @@
 																				<div class="is-layout-flex wp-container-15 wp-block-columns">
 																					<div class="is-layout-flow wp-block-column big-bar">
 																						<h4 class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -1684,7 +1685,7 @@
 
 
 																				<div class="is-layout-flex wp-container-23 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-17 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -1705,7 +1706,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" decoding="async" loading="lazy">
                                                                                                         {{ Companydata_executive_sex_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">
@@ -1723,9 +1724,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div>
+																					</div-->
 																				</div>
 																			</div>
 																		</div>
@@ -1779,7 +1780,7 @@
 
 
 																				<div class="is-layout-flex wp-container-41 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-35 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -1800,7 +1801,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" loading="lazy">
                                                                                                     {{ sex_individual_contributor_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">
@@ -1818,9 +1819,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div>
+																					</div-->
 																				</div>
 																			</div>
 																		</div>
@@ -1828,18 +1829,13 @@
 
 
 
-																	<div
-																		class="is-layout-flow wp-block-column d-flex top-divider">
-																		<div
-																			class="is-layout-flex wp-container-56 wp-block-columns multi-graph-wrapper">
+																	<div class="is-layout-flow wp-block-column d-flex top-divider">
+																		<div class="is-layout-flex wp-container-56 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-46 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
-																						<h4
-																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																				<div class="is-layout-flex wp-container-46 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
+																						<h4 class="has-text-align-left weight-light">
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -1852,7 +1848,7 @@
 
 
 																				<div class="is-layout-flex wp-container-54 wp-block-columns">
-                                                                                    <div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+                                                                                    <!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
                                                                                        <div class="is-layout-flex wp-container-48 wp-block-columns mytab-header">
                                                                                            <div class="is-layout-flow wp-block-column">
                                                                                                <p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -1873,7 +1869,7 @@
 
 
 
-                                                                                           <!-- <div class="is-layout-flow wp-block-column">
+                                                                                           <div class="is-layout-flow wp-block-column">
                                                                                                <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                    {{ sex_individual_contributor_mostrecent_dchart1|safe }}
                                                                                                    <figcaption class="wp-element-caption">
@@ -1891,9 +1887,9 @@
                                                                                                        Fall 2018
                                                                                                    </figcaption>
                                                                                                </figure>
-                                                                                           </div> -->
+                                                                                           </div> 
                                                                                        </div>
-                                                                                   </div>
+                                                                                   </div-->
                                                                                </div>
                                                                            </div>
 																		</div>
@@ -1944,7 +1940,7 @@
 
 
 																				<div class="is-layout-flex wp-container-72 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-66 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -1965,7 +1961,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									{{ sex_individual_contributor_mostrecent_dchart1|safe }} 
 																									<figcaption class="wp-element-caption">
@@ -1983,9 +1979,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div>
+																					</div-->
 																				</div>
 																			</div>
 																		</div>
@@ -1993,18 +1989,13 @@
 
 
 
-																	<div
-																		class="is-layout-flow wp-block-column d-flex top-divider">
-																		<div
-																			class="is-layout-flex wp-container-87 wp-block-columns multi-graph-wrapper">
+																	<div class="is-layout-flow wp-block-column d-flex top-divider">
+																		<div class="is-layout-flex wp-container-87 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-77 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
-																						<h4
-																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																				<div class="is-layout-flex wp-container-77 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
+																						<h4 class="has-text-align-left weight-light">
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2017,7 +2008,7 @@
 
 
 																				<div class="is-layout-flex wp-container-85 wp-block-columns">
-                                                                                    <div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+                                                                                    <!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
                                                                                        <div class="is-layout-flex wp-container-79 wp-block-columns mytab-header">
                                                                                            <div class="is-layout-flow wp-block-column">
                                                                                                <p class="mytab-title">HISTORICAL TRENDS</p>
@@ -2038,27 +2029,27 @@
 
 
 
-                                                                                           <!-- <div class="is-layout-flow wp-block-column">
+                                                                                           <div class="is-layout-flow wp-block-column">
                                                                                                <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                     {{ sex_individual_contributor_mostrecent_dchart1|safe }} 
                                                                                                    <figcaption class="wp-element-caption">
                                                                                                        Fall 2017
                                                                                                    </figcaption>
                                                                                                </figure>
-                                                                                           </div> -->
+                                                                                           </div>
 
 
 
-                                                                                           <!-- <div class="is-layout-flow wp-block-column">
+                                                                                           <div class="is-layout-flow wp-block-column">
                                                                                                <figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                     {{ sex_individual_contributor_mostrecent_dchart1|safe }}
                                                                                                    <figcaption class="wp-element-caption">
                                                                                                        Fall 2018
                                                                                                    </figcaption>
                                                                                                </figure>
-                                                                                           </div> -->
+                                                                                           </div>
                                                                                        </div> 
-                                                                                   </div>
+                                                                                   </div-->
                                                                                </div>
                                                                            </div>
 																		</div>
@@ -2078,24 +2069,15 @@
 
 
 
-														<div
-															class="is-layout-flex wp-container-122 wp-block-columns overview-inner-wrapper close-tab">
-															<div
-																class="is-layout-flow wp-block-column max-width-display">
-																<div
-																	class="is-layout-flex wp-container-120 wp-block-columns">
-																	<div
-																		class="is-layout-flow wp-block-column d-flex right-devider">
-																		<div
-																			class="is-layout-flex wp-container-105 wp-block-columns multi-graph-wrapper">
+														<div class="is-layout-flex wp-container-122 wp-block-columns overview-inner-wrapper close-tab">
+															<div class="is-layout-flow wp-block-column max-width-display">
+																<div class="is-layout-flex wp-container-120 wp-block-columns">
+																	<div class="is-layout-flow wp-block-column d-flex right-devider">
+																		<div class="is-layout-flex wp-container-105 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-95 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
-																						<h4
-																							class="has-text-align-left weight-light">
-																							INDUSTRY DATA</h4>
+																				<div class="is-layout-flex wp-container-95 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
+																						<h4 class="has-text-align-left weight-light"> INDUSTRY DATA</h4>
 
 
 
@@ -2108,7 +2090,7 @@
 
 
 																				<div class="is-layout-flex wp-container-103 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-97 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -2129,7 +2111,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									{{ sex_individual_contributor_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">
@@ -2147,9 +2129,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div> 
+																					</div--> 
 																				</div>
 																			</div>
 																		</div>
@@ -2157,17 +2139,13 @@
 
 
 
-																	<div
-																		class="is-layout-flow wp-block-column d-flex top-divider">
-																		<div
-																			class="is-layout-flex wp-container-118 wp-block-columns multi-graph-wrapper">
+																	<div class="is-layout-flow wp-block-column d-flex top-divider">
+																		<div class="is-layout-flex wp-container-118 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-108 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
+																				<div class="is-layout-flex wp-container-108 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
 																						<h4 class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																							{{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2180,7 +2158,7 @@
 
 
 																				<div class="is-layout-flex wp-container-116 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-110 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -2201,7 +2179,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
 																									{{ sex_individual_contributor_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">
@@ -2219,9 +2197,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div> 
-																					</div> 
+																					</div--> 
 																				</div>
 																			</div>
 																		</div>
@@ -2234,37 +2212,27 @@
 
 
 
-												<div
-													class="is-layout-flex wp-container-155 wp-block-columns section-bottom">
+												<div class="is-layout-flex wp-container-155 wp-block-columns section-bottom">
 													<div class="is-layout-flow wp-block-column overview collapsible">
 														<h3 class="header"><span
 																class="weight-light">VISIBLE MINORITY/</span>INDIVIDUAL CONTRIBUTOR</h3>
 
 
 
-														<div
-															class="is-layout-flex wp-container-153 wp-block-columns overview-inner-wrapper close-tab">
-															<div
-																class="is-layout-flow wp-block-column max-width-display">
-																<div
-																	class="is-layout-flex wp-container-151 wp-block-columns">
-																	<div
-																		class="is-layout-flow wp-block-column d-flex right-devider">
-																		<div
-																			class="is-layout-flex wp-container-136 wp-block-columns multi-graph-wrapper">
+														<div class="is-layout-flex wp-container-153 wp-block-columns overview-inner-wrapper close-tab">
+															<div class="is-layout-flow wp-block-column max-width-display">
+																<div class="is-layout-flex wp-container-151 wp-block-columns">
+																	<div class="is-layout-flow wp-block-column d-flex right-devider">
+																		<div class="is-layout-flex wp-container-136 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-126 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
-																						<h4
-																							class="has-text-align-left weight-light">
+																				<div class="is-layout-flex wp-container-126 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
+																						<h4 class="has-text-align-left weight-light">
 																							INDUSTRY DATA</h4>
 
 
 
-																						<figure
-																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
                                                                                             {{ minority_individual_contributor_leader_barchart|safe }}
 																						</figure>
 																					</div>
@@ -2273,7 +2241,7 @@
 
 
 																				<div class="is-layout-flex wp-container-134 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-128 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title">HISTORICAL TRENDS</p>
@@ -2294,7 +2262,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                      {{ sex_individual_contributor_mostrecent_dchart1|safe }}
                                                                                                     <figcaption class="wp-element-caption">
@@ -2312,9 +2280,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div> 
+																					</div--> 
 																				</div>
 																			</div>
 																		</div>
@@ -2322,18 +2290,12 @@
 
 
 
-																	<div
-																		class="is-layout-flow wp-block-column d-flex top-divider">
-																		<div
-																			class="is-layout-flex wp-container-149 wp-block-columns multi-graph-wrapper">
+																	<div class="is-layout-flow wp-block-column d-flex top-divider">
+																		<div class="is-layout-flex wp-container-149 wp-block-columns multi-graph-wrapper">
 																			<div class="is-layout-flow wp-block-column">
-																				<div
-																					class="is-layout-flex wp-container-139 wp-block-columns">
-																					<div
-																						class="is-layout-flow wp-block-column big-bar">
-																						<h4
-																							class="has-text-align-left weight-light">
-																							COMPANY DATA</h4>
+																				<div class="is-layout-flex wp-container-139 wp-block-columns">
+																					<div class="is-layout-flow wp-block-column big-bar">
+																						<h4 class="has-text-align-left weight-light"> {{dashboardusercompany}} DATA</h4>
 
 
 
@@ -2346,7 +2308,7 @@
 
 
 																				<div class="is-layout-flex wp-container-147 wp-block-columns">
-																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
+																					<!--div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-141 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
 																								<p class="mytab-title"> HISTORICAL TRENDS</p>
@@ -2368,7 +2330,7 @@
 
 
 
-																							<!-- <div class="is-layout-flow wp-block-column">
+																							<div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;">
                                                                                                         {{ Companydata_individual_contributor_sex_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">
@@ -2386,9 +2348,9 @@
 																										Fall 2018
 																									</figcaption>
 																								</figure>
-																							</div> -->
+																							</div>
 																						</div>
-																					</div>
+																					</div-->
 																				</div>
 																			</div>
 																		</div>
