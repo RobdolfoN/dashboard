@@ -47,6 +47,10 @@ urlpatterns = [
     path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('dashboard_navbar_footer/', views.navbarfooter, name='dashboard_navbar_footer'),
 
+
+    
+
+
    
 
 
