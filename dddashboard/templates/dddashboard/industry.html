@@ -97,7 +97,9 @@
                                                                             <div class="is-layout-flow wp-block-column single-graph">
                                                                                 <div  class="is-layout-flex wp-container-6 wp-block-columns">
                                                                                     <div class="is-layout-flow wp-block-column">
-                                                                                        <div id="plot1"></div>
+                                                                                        
+																							
+                                                                                        <div class="wp-block-image size-full circle" id="plot1"></div>
                                                                                         <h6 class="has-text-align-center circle-title">Sex</h6>
                                                                                         
 																							<div class="graph-info-colors">
@@ -763,9 +765,10 @@
 
             <script>
                 var data = {{ sex_dchart1|safe }}; 
-                var layout = { autosize: true };
+                var layout = { autosize: true, responsive: true, maxWidth: '175px' };
                 Plotly.newPlot('plot1', data, layout);
             </script>
+
             <script>
                 var data = {{ sex_executive_barchart|safe }}; 
                 var layout = { autosize: true };
