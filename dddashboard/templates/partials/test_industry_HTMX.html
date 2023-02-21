@@ -2,6 +2,10 @@
 
 {% load static %}
 {% block content %}
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
 <div class="is-layout-flow wp-block-column max-width-display manage-lable">
                                                                 <div class="is-layout-flex wp-container-29 wp-block-columns">
                                                                     <div class="is-layout-flow wp-block-column vertical-title-wrapper" style="flex-basis:10px">
@@ -25,10 +29,10 @@
                                                                             <div class="is-layout-flow wp-block-column single-graph">
                                                                                 <div  class="is-layout-flex wp-container-6 wp-block-columns">
                                                                                     <div class="is-layout-flow wp-block-column">
-																						<!--figure class="wp-block-image size-full circle"-->
-																							<!--img decoding="async" width="470" height="466"  src="https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png" alt="" class="wp-image-1111" />
-                                                                                        </figure-->
-																						<figure class="wp-block-image size-full circle" style="max-width: 150; max-height: 175;">{{ sex_dchart1|safe }}</figure>
+																						<figure class="wp-block-image size-full circle" style="max-width: 150; max-height: 175;">
+                                                                                            <div id="industry_pie_chart"></div>
+                                                                                            
+                                                                                        </figure>
                                                                                         
 																						<h6 class="has-text-align-center circle-title">Sex</h6>
                                                                                         
@@ -46,10 +50,19 @@
 																							</div>
 
                                                                                     </div>
-																					
-																						
-																					
                                                                                 </div>
+                                                                                <script>
+                                                                                    // Load the Plotly library
+                                                                                    var Plotly = require('plotly.js');
+                                                                                
+                                                                                    // Get the chart data from the response
+                                                                                    var chartData = {{sex_dchart1|safe}};
+                                                                                
+                                                                                    // Render the chart in the "industry_pie_chart" div
+                                                                                    Plotly.newPlot('industry_pie_chart', chartData.data, chartData.layout, chartData.config);
+                                                                                </script>
+                                                                                
+
 
                                                                                 <div class="is-layout-flex wp-container-8 wp-block-columns">
                                                                                     <div class="is-layout-flow wp-block-column">
@@ -91,6 +104,12 @@
                                                                             <div class="is-layout-flow wp-block-column single-graph">
                                                                                 <div  class="is-layout-flex wp-container-11 wp-block-columns">
                                                                                     <div  class="is-layout-flow wp-block-column">
+                                                                                        <!--figure class="wp-block-image size-full circle">
+                                                                                            <img decoding="async"  width="470" height="466"
+                                                                                                src="https://wdei.hotsoupcreative.com/wp-content/uploads/2022/11/BCMEA_Dashboard_Pie_Chart.png"
+                                                                                                alt="" class="wp-image-1111" />
+                                                                                        </figure-->
+																						<!--div class="wp-block-image size-full circle">{{ minority_dchart1|safe }}</div-->
                                                                                         <figure class="wp-block-image size-full circle" style="max-width: 150; max-height: 175;">{{ minority_dchart1|safe }}</figure>
 																						
                                                                                         <h6 class="has-text-align-center circle-title"> Visible Minority</h6>

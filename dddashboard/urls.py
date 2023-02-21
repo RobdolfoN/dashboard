@@ -48,7 +48,7 @@ urlpatterns = [
     path('dashboard_navbar_footer/', views.navbarfooter, name='dashboard_navbar_footer'),
 
 
-    
+    path('test/', views.test, name='test'),
 
 
    

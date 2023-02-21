@@ -36,11 +36,15 @@ from .dataManagement import  (
 	contextCreatorLargeindustry,
 
 )
+from .jsonTest import jcontextCreator
 import pathlib
 import pandas as pd 
 import plotly.express as px
 import plotly.graph_objects as go
-import concurrent.futures
+import concurrent
+import json
+import plotly.graph_objs as go
+import plotly.io as pio
 
 
 
@@ -1292,7 +1296,30 @@ def large_demographicMinority(request):
 #######################
 
 
+def test(request):
+	dashboarduser = request.user
+	
+	dashboarduserinfo = Dashboard_user.objects.get(name=dashboarduser)
+	dashboardusercompany = dashboarduserinfo.company_name
+	dashboardusercompany_ID = dashboarduserinfo.company_name_id
+	
+	chart_key_1 = 'queryset1'
+	cached_queryset1 = cache.get(chart_key_1)
+	if not cached_queryset1:
 
+		queryset1 = CompanyData.objects.all().select_related('name')
+		cache.set(chart_key_1, queryset1, 3600)
+		cached_queryset1 = cache.get(chart_key_1)
 
+	chart_key_2 = f'queryset2_{dashboardusercompany_ID}'
+	cached_queryset2 = cache.get(chart_key_2)
+	if not cached_queryset2:
 
+		queryset2 = CompanyData.objects.filter(name_id=dashboardusercompany_ID).select_related('name')
+		cache.set(chart_key_2, queryset2, 3600)
+		cached_queryset2 = cache.get(chart_key_2)
+
+	context = jcontextCreator(dashboardusercompany_ID, dashboardusercompany, cached_queryset1, cached_queryset2)
+
+	return render(request, 'dddashboard/test.html', context)
 

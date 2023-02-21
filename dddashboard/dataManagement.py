@@ -8,6 +8,7 @@ from django.db.models import Count, Q
 from django.core.cache import cache
 from datetime import datetime, timedelta
 from functools import wraps
+import json
 
 
 
@@ -91,13 +92,13 @@ def Companydata_sex_donut_industrychart(company):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
         
         
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
-
+        chart = json.dumps(fig.to_dict())
         return chart, hole_info
 
     else:
@@ -108,12 +109,14 @@ def Companydata_sex_donut_industrychart(company):
             annotations=[ 
             dict(text='No Company Info', x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
         
         
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart, "No Company info"
 
@@ -141,12 +144,13 @@ def Companydata_create_donut_chart(field_name, company):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
 
         # Disable hover text
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
 
         return chart, hole_info
 
@@ -156,12 +160,13 @@ def Companydata_create_donut_chart(field_name, company):
             annotations=[ 
             dict(text="No Company Info", x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
 
         # Disable hover text
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
 
         return chart, "No Company Info"
 
@@ -218,8 +223,7 @@ def sex_barchart_industrychart(position, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -250,8 +254,7 @@ def c_sex_barchart_industrychart(position, company, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -280,8 +283,7 @@ def minority_barchart_industrychart(position, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -310,8 +312,7 @@ def c_minority_barchart_industrychart(position, company, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -340,8 +341,8 @@ def aboriginal_barchart_industrychart(position, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart
 
@@ -371,8 +372,7 @@ def c_aboriginal_barchart_industrychart(position, company, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -401,8 +401,7 @@ def disability_barchart_industrychart(position, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -430,8 +429,7 @@ def c_disability_barchart_industrychart(position, company, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -461,8 +459,7 @@ def size_sex_barchart_industrychart(position, size, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -491,8 +488,8 @@ def size_minority_barchart_industrychart(position, size, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
+
 
         return chart
 
@@ -521,8 +518,8 @@ def size_aboriginal_barchart_industrychart(position, size, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
+
 
         return chart
 
@@ -551,8 +548,8 @@ def size_disability_barchart_industrychart(position, size, cheight):
                 hovertemplate=str(round(d['count'] / total_count * 100, 1)) + '%',
             ))
         customize_chart(fig, cheight)
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)#, default_width='175', default_height='24')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart
 
@@ -583,8 +580,8 @@ def size_create_donut_chart(field_name, size):
 
         # Disable hover text
         fig.update_traces(textinfo='none')
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart, hole_info
     
@@ -598,8 +595,8 @@ def size_create_donut_chart(field_name, size):
 
         # Disable hover text
         fig.update_traces(textinfo='none')
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart, "0"
 
@@ -646,8 +643,8 @@ def size_sex_donut_industrychart(size):
         
         
         fig.update_traces(textinfo='none')
-        config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart, "0"
 
@@ -682,11 +679,10 @@ def create_donut_chart(category, category_field, labels, colors, hole_info_text)
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
         dict(text=hole_info_text, x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+        height=175,
          )
     fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+    chart = json.dumps(fig.to_dict())
 
     return chart, hole_info
 
@@ -710,12 +706,12 @@ def sex_donut_industrychart():
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
         dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+        height=175,
          )
     
     fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
+    chart = json.dumps(fig.to_dict())
 
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
     return chart, hole_info
 
@@ -1142,12 +1138,13 @@ def q_Companydata_sex_donut_industrychart(cached_queryset2):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
         
         
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+        chart = json.dumps(fig.to_dict())
 
         return chart, hole_info
 
@@ -1194,12 +1191,13 @@ def q_Companydata_create_donut_chart(field_name, cached_queryset2):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
 
         # Disable hover text
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
 
         return chart, hole_info
 
@@ -1282,7 +1280,7 @@ def q_sex_barchart_industrychart(position, cheight, cached_queryset1):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1313,7 +1311,7 @@ def q_c_sex_barchart_industrychart(position, cheight, cached_queryset2):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1349,7 +1347,7 @@ def q_minority_barchart_industrychart(position, cheight, cached_queryset1):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1379,7 +1377,7 @@ def q_c_minority_barchart_industrychart(position, cheight, cached_queryset2):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1415,7 +1413,7 @@ def q_aboriginal_barchart_industrychart(position, cheight, cached_queryset1):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1446,7 +1444,7 @@ def q_c_aboriginal_barchart_industrychart(position, cheight, cached_queryset2):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1482,7 +1480,7 @@ def q_disability_barchart_industrychart(position, cheight, cached_queryset1):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
         return chart
 
 
@@ -1512,7 +1510,7 @@ def q_c_disability_barchart_industrychart(position, cheight, cached_queryset2):
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1544,7 +1542,7 @@ def q_size_sex_barchart_industrychart(position, size, cheight, cached_queryset1)
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1575,7 +1573,7 @@ def q_size_minority_barchart_industrychart(position, size, cheight, cached_query
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1606,7 +1604,7 @@ def q_size_aboriginal_barchart_industrychart(position, size, cheight, cached_que
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1637,7 +1635,7 @@ def q_size_disability_barchart_industrychart(position, size, cheight, cached_que
             ))
         q_customize_chart(fig, cheight)
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config)
+        chart = json.dumps(fig.to_dict())
 
         return chart
 
@@ -1665,12 +1663,13 @@ def q_size_create_donut_chart(field_name, size, cached_queryset1):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175
             )
 
         # Disable hover text
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
 
         return chart, hole_info
     
@@ -1680,12 +1679,13 @@ def q_size_create_donut_chart(field_name, size, cached_queryset1):
             annotations=[ 
             dict(text="0", x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Yes', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175
             )
 
         # Disable hover text
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')
+        chart = json.dumps(fig.to_dict())
 
         return chart, "0"
 
@@ -1714,12 +1714,14 @@ def q_size_sex_donut_industrychart(size, cached_queryset1):
             annotations=[ 
             dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
         
         
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+        chart = json.dumps(fig.to_dict())
+
 
         return chart, hole_info
 
@@ -1729,30 +1731,19 @@ def q_size_sex_donut_industrychart(size, cached_queryset1):
             annotations=[ 
             dict(text="0", x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
             dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+            height=175,
             )
         
         
         fig.update_traces(textinfo='none')
         config = {'displayModeBar': False}
-        chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+        chart = json.dumps(fig.to_dict())
 
         return chart, "0"
 
 @memoize
 def q_create_donut_chart(category, category_field, labels, colors, hole_info_text, cached_queryset1):
-    """
-    Creates a donut chart for the given category
 
-    Args:
-    category (str): The name of the category for the chart (e.g. 'Disability')
-    category_field (str): The field of the queryset1 object to filter on (e.g. 'person_with_disabilities')
-    labels (list of str): The labels for the chart's segments
-    colors (list of str): The colors for the chart's segments
-    hole_info_text (str): The text to be displayed in the center of the chart
-
-    Returns:
-    tuple: containing chart data in html format and hole_info
-    """
     # filter the data and count the number of items that match the filter
     most_recent_date = datetime.now().year
     data = {}
@@ -1766,15 +1757,16 @@ def q_create_donut_chart(category, category_field, labels, colors, hole_info_tex
 
     # Create the donut chart
     fig = go.Figure(data=[go.Pie(labels=labels, values=list(data.values()), hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+    fig.update_layout(showlegend=False, modebar_remove="v1hovermode", autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
         dict(text=hole_info_text, x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+        height=175,
+
          )
     fig.update_traces(textinfo='none')
-    config = {'displayModeBar': False}
-
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+    
+    chart = json.dumps(fig.to_dict())
 
     return chart, hole_info
 
@@ -1805,12 +1797,13 @@ def q_sex_donut_industrychart(cached_queryset1):
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
         dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
+        height=175,
          )
     
     fig.update_traces(textinfo='none')
     config = {'displayModeBar': False}
 
-    chart = fig.to_html(config=config, default_height='175')#, default_width='150')
+    chart = json.dumps(fig.to_dict())
 
     return chart, hole_info
 

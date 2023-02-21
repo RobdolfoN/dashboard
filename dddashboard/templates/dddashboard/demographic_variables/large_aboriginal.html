@@ -42,6 +42,8 @@
             /*! This file is auto-generated */
             !function (e, a, t) { var n, r, o, i = a.createElement("canvas"), p = i.getContext && i.getContext("2d"); function s(e, t) { var a = String.fromCharCode, e = (p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, e), 0, 0), i.toDataURL()); return p.clearRect(0, 0, i.width, i.height), p.fillText(a.apply(this, t), 0, 0), e === i.toDataURL() } function c(e) { var t = a.createElement("script"); t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t) } for (o = Array("flag", "emoji"), t.supports = { everything: !0, everythingExceptFlag: !0 }, r = 0; r < o.length; r++)t.supports[o[r]] = function (e) { if (p && p.fillText) switch (p.textBaseline = "top", p.font = "600 32px Arial", e) { case "flag": return s([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) ? !1 : !s([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !s([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]); case "emoji": return !s([129777, 127995, 8205, 129778, 127999], [129777, 127995, 8203, 129778, 127999]) }return !1 }(o[r]), t.supports.everything = t.supports.everything && t.supports[o[r]], "flag" !== o[r] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[o[r]]); t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function () { t.DOMReady = !0 }, t.supports.everything || (n = function () { t.readyCallback() }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function () { "complete" === a.readyState && t.readyCallback() })), (e = t.source || {}).concatemoji ? c(e.concatemoji) : e.wpemoji && e.twemoji && (c(e.twemoji), c(e.wpemoji))) }(window, document, window._wpemojiSettings);
         </script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
         <style type="text/css">
             img.wp-smiley,
             img.emoji {
@@ -1520,6 +1522,14 @@
                 }
             }
         </style>
+                        <style>
+                            /* hide the modebar */
+                            .modebar {
+                            display: none !important;
+                            }
+                                    
+                        </style>
+        
         <!-- end Simple Custom CSS and JS -->
         <!-- start Simple Custom CSS and JS -->
         <script type="text/javascript">
@@ -1610,7 +1620,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ aboriginal_executive_barchart|safe }}
+                                                                                            <div id="plot14"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -1621,19 +1631,19 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-4 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
+																								<!--p class="mytab-title"> HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
-																						<!--div class="is-layout-flex wp-container-8 wp-block-columns mytab-body">
-																							<div class="is-layout-flow wp-block-column">
+																						<div class="is-layout-flex wp-container-8 wp-block-columns mytab-body">
+																							<!--div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px; max-height: 470px;" decoding="async" loading="lazy">
                                                                                                     {{ aboriginal_executive_second_mostrecent_dchart1|safe }}
 																									<figcaption class="wp-element-caption">{{year_info}}</figcaption>
 																								</figure>
-																							</div>
+																							</div-->
 
 
 
@@ -1654,7 +1664,7 @@
 																									</figcaption>
 																								</figure>
 																							</div> -->
-																						</div-->
+																						</div>
 																					</div>
 																				</div>
 																			</div>
@@ -1676,7 +1686,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ c_aboriginal_executive_barchart|safe }}
+                                                                                            <div id="plot38"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -1687,21 +1697,21 @@
 																					<div class="is-layout-flow wp-block-column mytab-wrapper close-mytab">
 																						<div class="is-layout-flex wp-container-17 wp-block-columns mytab-header">
 																							<div class="is-layout-flow wp-block-column">
-																								<!--p class="mytab-title">HISTORICAL TRENDS</p-->
+																								<!--p class="mytab-title"> HISTORICAL TRENDS</p-->
 																							</div>
 																						</div>
 
 
 
 																						<!--div class="is-layout-flex wp-container-21 wp-block-columns mytab-body">
-																							<div class="is-layout-flow wp-block-column">
+																							<!--div class="is-layout-flow wp-block-column">
 																								<figure class="wp-block-image size-full small-circle" style="max-width: 470px;" decoding="async" loading="lazy">
                                                                                                         {{ Companydata_executive_aboriginal_second_mostrecent_dchart1|safe }}   
 																									<figcaption class="wp-element-caption">
 																										{{year_info}}
 																									</figcaption>
 																								</figure>
-																							</div>
+																							</div-->
 
 
 
@@ -1770,7 +1780,7 @@
 
 																						<figure
 																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ aboriginal_senior_leader_barchart|safe }}
+                                                                                            <div id="plot15"></div>
 
 																						</figure>
 																					</div>
@@ -1844,7 +1854,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ c_aboriginal_senior_leader_barchart|safe }} 
+                                                                                            <div id="plot39"></div> 
 																						</figure>
 																					</div>
 																				</div>
@@ -1936,7 +1946,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ aboriginal_manager_s_s_leader_barchart|safe }}
+                                                                                            <div id="plot16"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2009,7 +2019,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ c_aboriginal_manager_s_s_leader_barchart|safe }}
+                                                                                            <div id="plot40"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2100,7 +2110,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ aboriginal_foreperson_leader_barchart|safe }}
+                                                                                            <div id="plot17"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2172,7 +2182,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ c_aboriginal_foreperson_leader_barchart|safe }}
+                                                                                            <div id="plot41"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2265,7 +2275,7 @@
 
 																						<figure
 																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ aboriginal_individual_contributor_leader_barchart|safe }}
+                                                                                            <div id="plot18"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2338,7 +2348,7 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            {{ c_aboriginal_individual_contributor_leader_barchart|safe }}
+                                                                                            <div id="plot42"></div>
 																						</figure>
 																					</div>
 																				</div>
@@ -2487,6 +2497,291 @@
 					</div>
 				</div>
 			</div>
+            <script>
+                var data = {{ sex_dchart1|safe }}; 
+                var layout = { autosize: true };
+                Plotly.newPlot('plot1', data, layout);
+            </script>
+            <script>
+                var data = {{ sex_executive_barchart|safe }}; 
+                var layout = { autosize: true };
+                Plotly.newPlot('plot2', data, layout);
+            </script>
+            <script>
+                var data = {{ sex_senior_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+                Plotly.newPlot('plot3', data, layout);
+            </script>
+            <script>
+                var data = {{ sex_manager_s_s_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+                Plotly.newPlot('plot4', data, layout);
+            </script>
+            <script>
+                var data = {{ sex_foreperson_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot5', data, layout);
+            </script>
+            <script>
+                var data = {{ sex_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot6', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot7', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_executive_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot8', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_senior_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot9', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_manager_s_s_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot10', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_foreperson_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot11', data, layout);
+            </script>
+            <script>
+                var data = {{ minority_individual_contributor_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot12', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+                Plotly.newPlot('plot13', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_executive_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot14', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_senior_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot15', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_manager_s_s_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot16', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_foreperson_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot17', data, layout);
+            </script>
+            <script>
+                var data = {{ aboriginal_individual_contributor_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot18', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot19', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_executive_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot20', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_senior_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot21', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_manager_s_s_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot22', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_foreperson_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot23', data, layout);
+            </script>
+            <script>
+                var data = {{ disability_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot24', data, layout);
+            </script>
+            <script>
+                var data = {{ Companydata_sex_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot25', data, layout);
+            </script>
+            <script>
+                var data = {{ c_sex_executive_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot26', data, layout);
+            </script>
+            <script>
+                var data = {{ c_sex_senior_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot27', data, layout);
+            </script>
+            <script>
+                var data = {{ c_sex_manager_s_s_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot28', data, layout);
+            </script>
+            <script>
+                var data = {{ c_sex_foreperson_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot29', data, layout);
+            </script>
+            <script>
+                var data = {{ c_sex_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot30', data, layout);
+            </script>
+            <script>
+                var data = {{ Companydata_minority_dchart1|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot31', data, layout);
+            </script>
+            <script>
+                var data = {{ c_minority_executive_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot32', data, layout);
+            </script>
+            <script>
+                var data = {{ c_minority_senior_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot33', data, layout);
+            </script>
+            <script>
+                var data = {{ c_minority_manager_s_s_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot34', data, layout);
+            </script>
+            <script>
+                var data = {{ c_minority_foreperson_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot35', data, layout);
+            </script>
+            <script>
+                var data = {{ c_minority_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot36', data, layout);
+            </script>
+            <script>
+                var data = {{ Companydata_aboriginal_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot37', data, layout);
+            </script>
+            <script>
+                var data = {{ c_aboriginal_executive_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot38', data, layout);
+            </script>
+            <script>
+                var data = {{ c_aboriginal_senior_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot39', data, layout);
+            </script>
+        <script>
+                var data = {{ c_aboriginal_manager_s_s_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot40', data, layout);
+            </script>
+        <script>
+                var data = {{ c_aboriginal_foreperson_leader_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot41', data, layout);
+            </script>
+        <script>
+                var data = {{ c_aboriginal_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot42', data, layout);
+            </script>
+        <script>
+                var data = {{ Companydata_disability_dchart1|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot43', data, layout);
+            </script>
+        <script>
+                var data = {{ c_disability_executive_barchart|safe }};
+                var layout = { autosize: true }; 
+ 
+                Plotly.newPlot('plot44', data, layout);
+            </script>
+        <script>
+                var data = {{ c_disability_senior_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot45', data, layout);
+            </script>
+        <script>
+                var data = {{ c_disability_manager_s_s_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot46', data, layout);
+            </script>
+        <script>
+                var data = {{ c_disability_foreperson_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot47', data, layout);
+            </script>
+        <script>
+                var data = {{ c_disability_individual_contributor_leader_barchart|safe }}; 
+                var layout = { autosize: true }; 
+
+                Plotly.newPlot('plot48', data, layout);
+
+            </script>
+
 
 	{% endblock %}
 </html>
