@@ -1582,6 +1582,7 @@
 											<div class="is-layout-flow wp-block-column">
 												<h1><span class="weight-light">ABORIGINAL/</span>DETAILS</h1>
                                                 <form>
+                                                    {% csrf_token %}
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
                                                         <option value="{% url 'demographic_aboriginal' %}">ALL COMPANY SIZES</option>
                                                         <option value="{% url 'small_demographic_aboriginal' %}">SMALL</option>
@@ -1619,7 +1620,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if aboriginal_executive_barchart %}
                                                                                             <div id="plot14"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -1685,7 +1691,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if c_aboriginal_executive_barchart %}
                                                                                             <div id="plot38"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -1779,7 +1790,12 @@
 
 																						<figure
 																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if aboriginal_senior_leader_barchart %}
                                                                                             <div id="plot15"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 
 																						</figure>
 																					</div>
@@ -1853,7 +1869,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
-                                                                                            <div id="plot39"></div> 
+                                                                                             
+                                                                                            {% if c_aboriginal_senior_leader_barchart %}
+                                                                                            <div id="plot39"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -1945,7 +1966,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if aboriginal_manager_s_s_leader_barchart %}
                                                                                             <div id="plot16"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2018,7 +2044,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if c_aboriginal_manager_s_s_leader_barchart %}
                                                                                             <div id="plot40"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2109,7 +2140,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if aboriginal_foreperson_leader_barchart %}
                                                                                             <div id="plot17"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2181,7 +2217,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if c_aboriginal_foreperson_leader_barchart %}
                                                                                             <div id="plot41"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2274,7 +2315,12 @@
 
 																						<figure
 																							class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if aboriginal_individual_contributor_leader_barchart %}
                                                                                             <div id="plot18"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2347,7 +2393,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                           
+                                                                                            {% if c_aboriginal_individual_contributor_leader_barchart %}
                                                                                             <div id="plot42"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>

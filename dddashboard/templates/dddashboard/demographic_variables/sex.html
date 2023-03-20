@@ -1581,6 +1581,7 @@
 											<div class="is-layout-flow wp-block-column">
 												<h1><span class="weight-light">SEX/</span>DETAILS</h1>
                                                 <form>
+                                                    {% csrf_token %}
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
                                                         <option value="{% url 'demographic_sex' %}">ALL COMPANY SIZES</option>
                                                         <option value="{% url 'small_demographic_sex' %}">SMALL</option>
@@ -1610,9 +1611,13 @@
 																						<h4 class="has-text-align-left weight-light">
 																							INDUSTRY DATA</h4>
 
-																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;" loading="lazy">
-                                                                                            <div id="plot2"></div>
-																						</figure>
+                                                                                            <figure class="wp-block-image size-full"  style="max-width: 410px; max-height: 50px;" decoding="async" loading="lazy">
+                                                                                                {% if sex_executive_barchart %}
+                                                                                                <div id="plot2"></div>
+                                                                                                {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                {% endif %}
+                                                                                            </figure>
 																					</div>
 																				</div>
 
@@ -1671,8 +1676,12 @@
 																					<div class="is-layout-flow wp-block-column big-bar">
 																						<h4 class="has-text-align-left weight-light"> {{dashboardusercompany}} DATA</h4>
 																						<figure class="wp-block-image size-full"  style="max-width: 410px; max-height: 50px;" decoding="async" loading="lazy">
+                                                                                            {% if c_sex_executive_barchart %}
                                                                                             <div id="plot26"></div>
-																						</figure>
+                                                                                            {% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}	
+                                                                                            <div id="plot26"></div>																					</figure>
 
 																					</div>
 																				</div>
@@ -1822,7 +1831,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if c_sex_senior_leader_barchart %}
                                                                                             <div id="plot27"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            
 																						</figure>
 																					</div>
 																				</div>
@@ -1903,8 +1917,11 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if sex_manager_s_s_leader_barchart %}
                                                                                             <div id="plot4"></div>
-																							
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}	
 																						</figure>
 																					</div>
 																				</div>
@@ -1971,7 +1988,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if c_sex_manager_s_s_leader_barchart %}
                                                                                             <div id="plot28"></div>
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            
 																						</figure>
 																					</div>
 																				</div>
@@ -2053,7 +2075,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if sex_foreperson_leader_barchart %}
                                                                                             <div id="plot5"></div>
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            
 																						</figure>
 																					</div>
 																				</div>
@@ -2120,7 +2147,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if c_sex_foreperson_leader_barchart %}
                                                                                             <div id="plot29"></div>
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            
 																						</figure>
 																					</div>
 																				</div>
@@ -2200,7 +2232,12 @@
 																						<h4 class="has-text-align-left weight-light">INDUSTRY DATA</h4>
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            {% if sex_individual_contributor_leader_barchart %}
                                                                                             <div id="plot6"></div>
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            
 																						</figure>
 																					</div>
 																				</div>
@@ -2268,7 +2305,12 @@
 
 
 																						<figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                            
+                                                                                            {% if c_sex_individual_contributor_leader_barchart %}
                                                                                             <div id="plot30"></div>
+																							{% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
 																						</figure>
 																					</div>
 																				</div>
@@ -2459,7 +2501,6 @@
             <script>
                 var data = {{ minority_executive_barchart|safe }};
                 var layout = { autosize: true }; 
- 
                 Plotly.newPlot('plot8', data, layout);
             </script>
             <script>

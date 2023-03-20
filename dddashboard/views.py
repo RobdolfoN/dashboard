@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from django.core.cache import cache
+from django.core.mail import send_mail
 from .models import *
 from .forms import CreateUserForm, CustomerForm, DataForm
 # from .filters import OrderFilter
@@ -1294,6 +1295,35 @@ def large_demographicMinority(request):
 	return render(request, 'dddashboard/demographic_variables/large_visible_minority.html', context)
 
 #######################
+
+def contact(request):
+
+	username = request.user
+	dashboarduserinfo = Dashboard_user.objects.get(name=username)
+	dashboarduseremail = dashboarduserinfo.email
+
+
+	if request.method == 'POST':
+		
+		
+		message = request.POST['message']
+		message_from = 'message from: ' + str(dashboarduseremail)
+		message = str(message_from) +str(" ") +"message: " + str(message)
+		
+
+		send_mail(
+			username,
+			message,
+			dashboarduseremail, 
+			['hello@envolstrategies.com'],
+			)
+		return render (request, 'dddashboard/contact.html', {'username': username, 'message': message})
+
+	else:
+		context = {'username': username, 'dashboarduseremail':dashboarduseremail}
+		return render(request, 'dddashboard/contact.html', context)
+
+
 
 
 def test(request):

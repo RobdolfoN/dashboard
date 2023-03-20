@@ -204,7 +204,7 @@ def sex_barchart_industrychart(position, cheight):
     gender_codes = ['M', 'F', 'O']
     data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -233,7 +233,7 @@ def c_sex_barchart_industrychart(position, company, cheight):
     data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(name=company) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
 
     if len(data) == 0:
-        return "No data available for the specified query."
+        return None
 
 
     else:
@@ -264,7 +264,7 @@ def minority_barchart_industrychart(position, cheight):
     visible_minorities = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(year_created=most_recent_date)).values('visible_minorities').annotate(count=Count('visible_minorities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -293,7 +293,7 @@ def c_minority_barchart_industrychart(position, company, cheight):
     data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(name=company) & Q(year_created=most_recent_date)).values('visible_minorities').annotate(count=Count('visible_minorities'))
 
     if len(data) == 0:
-        return "No data available for the specified query."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -321,7 +321,7 @@ def aboriginal_barchart_industrychart(position, cheight):
     aboriginal_peoples = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(year_created=most_recent_date)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -352,7 +352,7 @@ def c_aboriginal_barchart_industrychart(position, company, cheight):
     data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(name=company) & Q(year_created=most_recent_date)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
     
     if len(data) == 0:
-        return "No data available for the specified query."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -381,7 +381,7 @@ def disability_barchart_industrychart(position, cheight):
     person_with_disabilities = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(year_created=most_recent_date)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -410,7 +410,7 @@ def c_disability_barchart_industrychart(position, company, cheight):
     person_with_disabilities = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(name=company) & Q(year_created=most_recent_date)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
     if len(data) == 0:
-        return "No data available for the specified query."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -439,7 +439,7 @@ def size_sex_barchart_industrychart(position, size, cheight):
     gender_codes = ['M', 'F', 'O']
     data = CompanyData.objects.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -468,7 +468,7 @@ def size_minority_barchart_industrychart(position, size, cheight):
     visible_minorities = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('visible_minorities').annotate(count=Count('visible_minorities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -498,7 +498,7 @@ def size_aboriginal_barchart_industrychart(position, size, cheight):
     aboriginal_peoples = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -528,7 +528,7 @@ def size_disability_barchart_industrychart(position, size, cheight):
     person_with_disabilities = ['Y', 'N']
     data = CompanyData.objects.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1163,7 +1163,7 @@ def q_Companydata_sex_donut_industrychart(cached_queryset2):
         config = {'displayModeBar': False}
         chart = fig.to_html(config=config, default_height='175')#, default_width='150')
 
-        return chart, "No Company info"
+        return None, None # chart, "No Company info"
 
 
 @memoize
@@ -1214,7 +1214,7 @@ def q_Companydata_create_donut_chart(field_name, cached_queryset2):
         config = {'displayModeBar': False}
         chart = fig.to_html(config=config, default_height='175')
 
-        return chart, "No Company Info"
+        return None, None # chart, "No Company Info"
 
 
 
@@ -1260,7 +1260,7 @@ def q_sex_barchart_industrychart(position, cheight, cached_queryset1):
     gender_codes = ['M', 'F', 'O']
     data = cached_queryset1.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1291,7 +1291,8 @@ def q_c_sex_barchart_industrychart(position, cheight, cached_queryset2):
     gender_codes = ['M', 'F', 'O']
     data = cached_queryset2.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
     if len(data) == 0:
-        return "No data available."
+        
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1357,7 +1358,7 @@ def q_c_minority_barchart_industrychart(position, cheight, cached_queryset2):
     visible_minorities = ['Y', 'N']
     data = cached_queryset2.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(year_created=most_recent_date)).values('visible_minorities').annotate(count=Count('visible_minorities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1423,7 +1424,7 @@ def q_c_aboriginal_barchart_industrychart(position, cheight, cached_queryset2):
     aboriginal_peoples = ['Y', 'N']
     data = cached_queryset2.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(year_created=most_recent_date)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1490,7 +1491,7 @@ def q_c_disability_barchart_industrychart(position, cheight, cached_queryset2):
     person_with_disabilities = ['Y', 'N']
     data = cached_queryset2.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(year_created=most_recent_date)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1521,7 +1522,7 @@ def q_size_sex_barchart_industrychart(position, size, cheight, cached_queryset1)
     gender_codes = ['M', 'F', 'O']
     data = cached_queryset1.filter(Q(gender_code__in=gender_codes) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('gender_code').annotate(count=Count('gender_code'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1552,7 +1553,7 @@ def q_size_minority_barchart_industrychart(position, size, cheight, cached_query
     visible_minorities = ['Y', 'N']
     data = cached_queryset1.filter(Q(visible_minorities__in=visible_minorities) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('visible_minorities').annotate(count=Count('visible_minorities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1583,7 +1584,7 @@ def q_size_aboriginal_barchart_industrychart(position, size, cheight, cached_que
     aboriginal_peoples = ['Y', 'N']
     data = cached_queryset1.filter(Q(visible_minorities__in=aboriginal_peoples) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('aboriginal_peoples').annotate(count=Count('aboriginal_peoples'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1614,7 +1615,7 @@ def q_size_disability_barchart_industrychart(position, size, cheight, cached_que
     person_with_disabilities = ['Y', 'N']
     data = cached_queryset1.filter(Q(visible_minorities__in=person_with_disabilities) & Q(position_category=position) & Q(company_size=size) & Q(year_created=most_recent_date)).values('person_with_disabilities').annotate(count=Count('person_with_disabilities'))
     if len(data) == 0:
-        return "No data available."
+        return None
     else:
         total_count = sum([d['count'] for d in data])
         fig = go.Figure()
@@ -1793,11 +1794,11 @@ def q_sex_donut_industrychart(cached_queryset1):
 
             # Use `hole` to create a donut-like pie chart
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.6, marker = dict(colors= colors))])
-    fig.update_layout(showlegend=False, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
+    fig.update_layout(showlegend=False, height=175, autosize=True, margin=dict(t=0, b=0, l=0, r=0, pad=0), paper_bgcolor='#F4F9FA',
         annotations=[ 
         dict(text=hole_info, x=0.5, y=0.55, font_size=18, font_family="Roboto", font_color='#174F6D', showarrow=False),
-        dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)],
-        height=175,
+        dict(text='Female', x=0.5, y=0.4, font_size=10, font_family="Roboto", font_color='#174F6D', showarrow=False)]
+        
          )
     
     fig.update_traces(textinfo='none')

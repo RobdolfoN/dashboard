@@ -42,6 +42,8 @@ urlpatterns = [
     path('demographic_variables/large_sex.html', views.large_demographicSex, name='large_demographic_sex'),
     path('demographic_variables/large_visible_minority.html', views.large_demographicMinority, name='large_demographic_minority'),
 
+    path('contact/', views.contact, name='contact'),
+
 
     path('upload/', views.uploadFile, name='upload'),
     path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),

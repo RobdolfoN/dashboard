@@ -1582,6 +1582,7 @@
 											<div class="is-layout-flow wp-block-column">
 												<h1><span class="weight-light">PERSONS WITH DISABILITIES/</span>DETAILS</h1>
                                                 <form>
+                                                    {% csrf_token %}
                                                     <select class="dashboard-select" onchange="location = this.value;"> 
                                                         <!--option value="{% url 'demographic_disability' %}">ALL COMPANY SIZES</option-->
                                                         <option value="{% url 'small_demographic_disability' %}">SMALL</option>
@@ -1620,7 +1621,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if disability_executive_barchart %}
                                                                                                     <div id="plot20"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -1686,7 +1691,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if c_disability_executive_barchart %}
                                                                                                     <div id="plot44"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -1780,7 +1789,11 @@
         
                                                                                                 <figure
                                                                                                     class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if disability_senior_leader_barchart %}
                                                                                                     <div id="plot21"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
         
                                                                                                 </figure>
                                                                                             </div>
@@ -1854,7 +1867,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if c_disability_senior_leader_barchart %}
                                                                                                     <div id="plot45"></div> 
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -1946,7 +1963,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if disability_manager_s_s_leader_barchart %}
                                                                                                     <div id="plot22"></div>
+                                                                                                     {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -2019,7 +2040,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if c_disability_manager_s_s_leader_barchart %}
                                                                                                     <div id="plot46"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -2110,7 +2135,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if disability_foreperson_leader_barchart %}
                                                                                                     <div id="plot23"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -2182,7 +2211,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if c_disability_foreperson_leader_barchart %}
                                                                                                     <div id="plot47"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -2275,7 +2308,11 @@
         
                                                                                                 <figure
                                                                                                     class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if disability_individual_contributor_leader_barchart %}
                                                                                                     <div id="plot24"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>
@@ -2348,7 +2385,11 @@
         
         
                                                                                                 <figure class="wp-block-image size-full" style="max-width: 410px; max-height: 50px;">
+                                                                                                    {% if c_disability_individual_contributor_leader_barchart %}
                                                                                                     <div id="plot48"></div>
+                                                                                                    {% else %}
+                                                                                                    <p>No data available.</p>
+                                                                                                    {% endif %}
                                                                                                 </figure>
                                                                                             </div>
                                                                                         </div>

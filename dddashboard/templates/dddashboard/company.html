@@ -66,34 +66,36 @@
 
 
 
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot2"></div>
-																							<figcaption class="wp-element-caption">Executive</figcaption>
-																						</figure>
-
-
-
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot3"></div>
-																							<figcaption class="wp-element-caption">Senior Leader</figcaption>
-																						</figure>
-
-
-
-																						<figure	class="wp-block-image size-full is-resized bar">
-																							<div id="plot4"></div>
-																							<figcaption	class="wp-element-caption">Manager / Supervisor /Superintendent</figcaption>
-																						</figure>
-
-																						<figure	class="wp-block-image size-full is-resized bar">
-																							<div id="plot5"></div>
-																							<figcaption class="wp-element-caption">Foreman</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if sex_executive_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px, "
+                                                                                                id="plot2"></div>
+                                                                                            {% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Executive</figcaption>
+                                                                                        </figure>
 
 																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot6"></div>
-																							<figcaption class="wp-element-caption"> Individual Contributor </figcaption>
-																						</figure>
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" 
+                                                                                                id="plot3"></div>
+                                                                                            <figcaption class="wp-element-caption"> Senior Leader </figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot4"></div>
+                                                                                            <figcaption class="wp-element-caption">  Manager / Supervisor / Superintendent </figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot5"></div>
+                                                                                            <figcaption class="wp-element-caption"> Foreman</figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot6"></div>
+                                                                                            <figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+                                                                                        </figure>
 																					</div>
 																				</div>
 																			</div>
@@ -179,47 +181,55 @@
 																						<h6 class="bar-title bar">Job Level</h6>
 
 																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot26"></div>
-																							<figcaption class="wp-element-caption"> Executive</figcaption>
-																						</figure>
+                                                                                            {% if c_sex_executive_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot26"></div>
+                                                                                            {% else %}
+                                                                                                <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption">Executive</figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_sex_senior_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot27"></div>
+                                                                                            {% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+																							<figcaption class="wp-element-caption">Senior Leader</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure	class="wp-block-image size-full is-resized bar">
-																							<div id="plot27"></div>
-																							<figcaption class="wp-element-caption"> Senior Leader
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_sex_manager_s_s_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot28"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot28"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_sex_foreperson_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot29"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption">Foreman</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot29"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
-
-
-
-																						<figure	class="wp-block-image size-full is-resized bar">
-																							<div id="plot30"></div>
-																							<figcaption class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_sex_individual_contributor_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot30"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+                                                                                        </figure>
 																					</div>
 																				</div>
 																			</div>
@@ -329,51 +339,41 @@
 
 
 																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot8"></div>
-																							<figcaption class="wp-element-caption">	Executive</figcaption>
-																						</figure>
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot8"></div>
+																							
+                                                                                            <figcaption class="wp-element-caption"> Executive</figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot9"></div>
+																							
+                                                                                            <figcaption class="wp-element-caption">
+                                                                                                Senior Leader
+                                                                                            </figcaption>
+                                                                                        </figure>
+
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot10"></div>
+																							
+                                                                                            <figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent
+                                                                                            </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot9"></div>
-																							<figcaption class="wp-element-caption"> Senior Leader
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot11"></div>
+																							
+                                                                                            <figcaption class="wp-element-caption"> Foreman </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot10"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot11"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot12"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot12"></div>
+																							
+                                                                                            <figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+                                                                                        </figure>
 																					</div>
 																				</div>
 																			</div>
@@ -508,57 +508,58 @@
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot32"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Executive</figcaption>
-																						</figure>
+																						<figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_minority_executive_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot32"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption">Executive</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot33"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Senior Leader
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_minority_senior_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot33"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Senior Leader </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot34"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_minority_manager_s_s_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot34"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot35"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_minority_foreperson_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot35"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Foreman</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot36"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_minority_individual_contributor_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot36"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+                                                                                        </figure>
 																					</div>
 																				</div>
 																			</div>
@@ -674,51 +675,43 @@
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot14"></div>
-																							<figcaption
-																								class="wp-element-caption">	Executive</figcaption>
-																						</figure>
-
-
-
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot15"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Senior Leader
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot16"></div>
-																							<figcaption class="wp-element-caption">
-																								Manager / Supervisor / Superintendent
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot17"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot18"></div>
-																							<figcaption class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot14"></div>
+																								
+																								<figcaption class="wp-element-caption">  Executive</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot15"></div>
+																								
+																								<figcaption class="wp-element-caption"> Senior Leader </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure  class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot16"></div>
+																								
+																								<figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot17"></div>
+																								
+																								<figcaption class="wp-element-caption">Foreman</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot18"></div>
+																								
+																								<figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+																							</figure>
 																					</div>
 																				</div>
 																			</div>
@@ -852,57 +845,58 @@
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot38"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Executive</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot39"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Senior Leader
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot40"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot41"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot42"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+																							<figure class="wp-block-image size-full is-resized bar">
+																								{% if c_aboriginal_executive_barchart %}
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot38"></div>
+																								{% else %}
+																								<p>No data available.</p>
+																								{% endif %}
+																								<figcaption class="wp-element-caption"> Executive</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								{% if c_aboriginal_senior_leader_barchart %}
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot39"></div>
+																								{% else %}
+																								<p>No data available.</p>
+																								{% endif %}
+																								<figcaption class="wp-element-caption"> Senior Leader </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								{% if c_aboriginal_manager_s_s_leader_barchart %}
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot40"></div>
+																								{% else %}
+																								<p>No data available.</p>
+																								{% endif %}
+																								<figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								{% if c_aboriginal_foreperson_leader_barchart %}
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot41"></div>
+																								{% else %}
+																								<p>No data available.</p>
+																								{% endif %}
+																								<figcaption class="wp-element-caption"> Foreman</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								{% if c_aboriginal_individual_contributor_leader_barchart %}
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot42"></div>
+																								{% else %}
+																								<p>No data available.</p>
+																								{% endif %}
+																								<figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+																							</figure>
 																					</div>
 																				</div>
 																			</div>
@@ -1013,57 +1007,43 @@
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot20"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Executive</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot21"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Senior Leader
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot22"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot23"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
-
-
-
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot24"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot20"></div>
+																								
+																								<figcaption class="wp-element-caption"> Executive</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot21"></div>
+																								
+																								<figcaption class="wp-element-caption"> Senior Leader </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot22"></div>
+																								
+																								<figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot23"></div>
+																								
+																								<figcaption class="wp-element-caption">Foreman</figcaption>
+																							</figure>
+	
+	
+	
+																							<figure class="wp-block-image size-full is-resized bar">
+																								<div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot24"></div>
+																								
+																								<figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+																							</figure>
 																					</div>
 																				</div>
 																			</div>
@@ -1202,51 +1182,57 @@
 
 
 																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot44"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Executive</figcaption>
-																						</figure>
+                                                                                            {% if c_disability_executive_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot44"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Executive</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure
-																							class="wp-block-image size-full is-resized bar">
-																							<div id="plot45"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Senior Leader
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_disability_senior_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot45"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Senior Leader </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot46"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Manager / Supervisor /
-																								Superintendent
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_disability_manager_s_s_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot46"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Manager / Supervisor / Superintendent </figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure class="wp-block-image size-full is-resized bar">
-																							<div id="plot47"></div>
-																							<figcaption
-																								class="wp-element-caption">
-																								Foreman</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_disability_foreperson_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot47"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Foreman</figcaption>
+                                                                                        </figure>
 
 
 
-																						<figure	class="wp-block-image size-full is-resized bar">
-																							<div id="plot48"></div>
-																							<figcaption class="wp-element-caption">
-																								Individual Contributor
-																							</figcaption>
-																						</figure>
+                                                                                        <figure class="wp-block-image size-full is-resized bar">
+                                                                                            {% if c_disability_individual_contributor_leader_barchart %}
+                                                                                            <div decoding="async" loading="lazy" alt="" class="wp-image-1110" width="110" height="12" sizes="(max-width: 110px) 100vw, 110px" id="plot48"></div>
+																							{% else %}
+                                                                                            <p>No data available.</p>
+                                                                                            {% endif %}
+                                                                                            <figcaption class="wp-element-caption"> Individual Contributor </figcaption>
+                                                                                        </figure>
 																					</div>
 																				</div>
 																			</div>
